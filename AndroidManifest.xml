@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	package="com.coyote.drinknomore"
+	android:versionCode="1"
+	android:versionName="@string/app_version"
+	android:installLocation="auto">
+	<uses-sdk
+		android:minSdkVersion="7"
+		android:targetSdkVersion="18" />
+	<uses-permission android:name="android.permission.GET_TASKS" />
+	<application
+		android:label="@string/app_name"
+		android:name=".DrinknomoreApplication"
+		android:icon="@drawable/ic_launcher"
+		android:allowBackup="true">
+		<activity
+			android:name=".HomeActivity"
+			android:label="@string/app_name">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
+		<provider
+			android:name="com.coyote.drinknomore.provider.DrinknomoreProvider"
+			android:authorities="com.coyote.drinknomore.provider"
+			android:label="@string/app_provider_name"
+			android:description="@string/app_provider_description"
+			android:exported="false" />
+	</application>
+</manifest>

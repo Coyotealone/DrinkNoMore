@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<string name="questions_arguments_invalid_field_error">Field Arguments is invalid.</string>
+	<string name="questions_arguments_label">Arguments</string>
+	<string name="questions_question_invalid_field_error">Field Question is invalid.</string>
+	<string name="questions_question_label">Question</string>
+	<string name="questions_reponse_invalid_field_error">Field Reponse is invalid.</string>
+	<string name="questions_reponse_label">Reponse</string>
+	<string name="reponses_arguments_invalid_field_error">Field Arguments is invalid.</string>
+	<string name="reponses_arguments_label">Arguments</string>
+	<string name="reponses_questions_invalid_field_error">Field Questions is invalid.</string>
+	<string name="reponses_questions_label">Questions</string>
+	<string name="reponses_reponse_invalid_field_error">Field Reponse is invalid.</string>
+	<string name="reponses_reponse_label">Reponse</string>
+	<string name="statistiques_date_date_title">Select date date</string>
+	<string name="statistiques_date_invalid_field_error">Field Date is invalid.</string>
+	<string name="statistiques_date_label">Date</string>
+	<string name="statistiques_date_time_title">Select date time</string>
+	<string name="statistiques_nberreurs_invalid_field_error">Field Nberreurs is invalid.</string>
+	<string name="statistiques_nberreurs_label">Nberreurs</string>
+	<string name="app_provider_description">Provider of drinknomore to access data</string>
+	<string name="app_provider_name">Provider of drinknomore</string>
+	<string name="uri_not_supported">URI not supported</string>
+</resources>

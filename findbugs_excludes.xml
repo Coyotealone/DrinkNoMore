@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FindBugsFilter>
+  <Match>
+    <Class name="~.*\.R\$.*"/>
+  </Match>
+  <Match>
+    <Or>
+    <Package name="~com[.]coyote[.]drinknomore[.]criterias[.]base([.].*)?" />
+    <Package name="~com[.]coyote[.]drinknomore[.]data[.]base([.].*)?" />
+    <Package name="~com[.]coyote[.]drinknomore[.]harmony([.].*)?" />
+    <Package name="~com[.]coyote[.]drinknomore[.]provider[.]base([.].*)?" />
+    <Package name="~com[.]coyote[.]drinknomore[.]provider[.]utils[.]base([.].*)?" />
+    <Class name="~com[.]coyote[.]drinknomore[.]DrinknomoreApplicationBase.java"/>
+    </Or>
+  </Match>
+</FindBugsFilter>
