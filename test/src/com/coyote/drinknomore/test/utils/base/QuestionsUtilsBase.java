@@ -5,7 +5,7 @@
  * Description : 
  * Author(s)   : Harmony
  * Licence     : 
- * Last update : Dec 18, 2014
+ * Last update : Dec 19, 2014
  *
  **************************************************************************/
 package com.coyote.drinknomore.test.utils.base;
@@ -18,7 +18,8 @@ import com.coyote.drinknomore.entity.Questions;
 
 import com.coyote.drinknomore.test.utils.TestUtils;
 import com.coyote.drinknomore.entity.Reponses;
-import com.coyote.drinknomore.test.utils.ReponsesUtils;
+import com.coyote.drinknomore.fixture.ReponsesDataLoader;
+
 
 import java.util.ArrayList;
 
@@ -34,11 +35,16 @@ public abstract class QuestionsUtilsBase {
         Questions questions = new Questions();
 
         questions.setId(TestUtils.generateRandomInt(0,100) + 1);
-        questions.setQuestion("question_"+TestUtils.generateRandomString(10));
+        questions.setEnigme("enigme_"+TestUtils.generateRandomString(10));
         questions.setArguments("arguments_"+TestUtils.generateRandomString(10));
+        ArrayList<Reponses> reponses =
+            new ArrayList<Reponses>();
+        reponses.addAll(ReponsesDataLoader.getInstance(ctx).getMap().values());
         ArrayList<Reponses> relatedReponses = new ArrayList<Reponses>();
-        relatedReponses.add(ReponsesUtils.generateRandom(ctx));
-        questions.setReponse(relatedReponses);
+        if (!reponses.isEmpty()) {
+            relatedReponses.add(reponses.get(TestUtils.generateRandomInt(0, reponses.size())));
+            questions.setReponse(relatedReponses);
+        }
 
         return questions;
     }
@@ -56,7 +62,7 @@ public abstract class QuestionsUtilsBase {
         Assert.assertNotNull(questions2);
         if (questions1!=null && questions2 !=null){
             Assert.assertEquals(questions1.getId(), questions2.getId());
-            Assert.assertEquals(questions1.getQuestion(), questions2.getQuestion());
+            Assert.assertEquals(questions1.getEnigme(), questions2.getEnigme());
             Assert.assertEquals(questions1.getArguments(), questions2.getArguments());
             if (questions1.getReponse() != null
                     && questions2.getReponse() != null) {

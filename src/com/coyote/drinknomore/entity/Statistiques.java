@@ -16,7 +16,7 @@ import com.tactfactory.harmony.annotation.GeneratedValue.Strategy;
 import com.tactfactory.harmony.annotation.Id;
 
 @Entity
-public class Statistiques  implements Serializable , Parcelable {
+public class Statistiques implements Serializable , Parcelable {
 
     /** Parent parcelable for parcellisation purposes. */
     protected List<Parcelable> parcelableParents;
@@ -37,7 +37,6 @@ public class Statistiques  implements Serializable , Parcelable {
 	
 	@Column(type = Type.INT)
     private Integer nberreurs;
-    
 
     /**
      * Default constructor.

@@ -5,26 +5,26 @@
  * Description : 
  * Author(s)   : Harmony
  * Licence     : 
- * Last update : Dec 18, 2014
+ * Last update : Dec 19, 2014
  *
  **************************************************************************/
 package com.coyote.drinknomore.test.base;
 
-
+import java.io.File;
 
 import com.coyote.drinknomore.provider.DrinknomoreProvider;
-
-
-
+import com.coyote.drinknomore.DrinknomoreApplication;
+import com.coyote.drinknomore.fixture.DataLoader;
+import com.coyote.drinknomore.harmony.util.DatabaseUtil;
 import com.coyote.drinknomore.data.DrinknomoreSQLiteOpenHelper;
-
+import com.coyote.drinknomore.data.base.SQLiteAdapterBase;
 
 import android.content.BroadcastReceiver;
 import android.content.ContentProvider;
 
 import android.content.Intent;
 import android.content.IntentFilter;
-
+import android.database.sqlite.SQLiteDatabase;
 import android.test.AndroidTestCase;
 import android.test.IsolatedContext;
 import android.test.RenamingDelegatingContext;
@@ -136,5 +136,52 @@ public class TestContextMock {
         DrinknomoreSQLiteOpenHelper.isJUnit = true;
         this.setMockContext();
 
+        String dbPath =
+                this.androidTestCase.getContext()
+                        .getDatabasePath(SQLiteAdapterBase.DB_NAME)
+                        .getAbsolutePath() + ".test";
+
+        File cacheDbFile = new File(dbPath);
+
+        if (!cacheDbFile.exists() || !DataLoader.hasFixturesBeenLoaded) {
+            if (DrinknomoreApplication.DEBUG) {
+                android.util.Log.d("TEST", "Create new Database cache");
+            }
+
+            // Create initial database
+            DrinknomoreSQLiteOpenHelper helper =
+                    new DrinknomoreSQLiteOpenHelper(
+                        this.getMockContext(),
+                        SQLiteAdapterBase.DB_NAME,
+                        null,
+                        DrinknomoreApplication.getVersionCode(
+                                this.getMockContext()));
+
+            SQLiteDatabase db = helper.getWritableDatabase();
+            DrinknomoreSQLiteOpenHelper.clearDatabase(db);
+
+            db.beginTransaction();
+            DataLoader dataLoader = new DataLoader(this.getMockContext());
+            dataLoader.clean();
+            dataLoader.loadData(db,
+                        DataLoader.MODE_APP |
+                        DataLoader.MODE_DEBUG |
+                        DataLoader.MODE_TEST);
+            db.setTransactionSuccessful();
+            db.endTransaction();
+            db.close();
+
+            DatabaseUtil.exportDB(this.getMockContext(),
+                    cacheDbFile,
+                    SQLiteAdapterBase.DB_NAME);
+        } else {
+            if (DrinknomoreApplication.DEBUG) {
+                android.util.Log.d("TEST", "Re use old Database cache");
+            }
+            DatabaseUtil.importDB(this.getMockContext(),
+                    cacheDbFile,
+                    SQLiteAdapterBase.DB_NAME,
+                    false);
+        }
     }
 }

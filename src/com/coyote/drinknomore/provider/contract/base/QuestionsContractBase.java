@@ -5,7 +5,7 @@
  * Description : 
  * Author(s)   : Harmony
  * Licence     : 
- * Last update : Dec 18, 2014
+ * Last update : Dec 19, 2014
  *
  **************************************************************************/
 package com.coyote.drinknomore.provider.contract.base;
@@ -36,12 +36,12 @@ public abstract class QuestionsContractBase {
     public static final String ALIASED_COL_ID =
             QuestionsContract.TABLE_NAME + "." + COL_ID;
 
-    /** question. */
-    public static final String COL_QUESTION =
-            "question";
+    /** enigme. */
+    public static final String COL_ENIGME =
+            "enigme";
     /** Alias. */
-    public static final String ALIASED_COL_QUESTION =
-            QuestionsContract.TABLE_NAME + "." + COL_QUESTION;
+    public static final String ALIASED_COL_ENIGME =
+            QuestionsContract.TABLE_NAME + "." + COL_ENIGME;
 
     /** arguments. */
     public static final String COL_ARGUMENTS =
@@ -60,14 +60,14 @@ public abstract class QuestionsContractBase {
     /** Global Fields. */
     public static final String[] COLS = new String[] {
             QuestionsContract.COL_ID,
-            QuestionsContract.COL_QUESTION,
+            QuestionsContract.COL_ENIGME,
             QuestionsContract.COL_ARGUMENTS,
     };
 
     /** Global Fields. */
     public static final String[] ALIASED_COLS = new String[] {
             QuestionsContract.ALIASED_COL_ID,
-            QuestionsContract.ALIASED_COL_QUESTION,
+            QuestionsContract.ALIASED_COL_ENIGME,
             QuestionsContract.ALIASED_COL_ARGUMENTS,
     };
 
@@ -85,9 +85,9 @@ public abstract class QuestionsContractBase {
             result.put(QuestionsContract.COL_ID,
                 String.valueOf(item.getId()));
 
-            if (item.getQuestion() != null) {
-                result.put(QuestionsContract.COL_QUESTION,
-                    item.getQuestion());
+            if (item.getEnigme() != null) {
+                result.put(QuestionsContract.COL_ENIGME,
+                    item.getEnigme());
             }
 
             if (item.getArguments() != null) {
@@ -125,8 +125,8 @@ public abstract class QuestionsContractBase {
                 result.setId(
                         cursor.getInt(index));
 
-                index = cursor.getColumnIndexOrThrow(QuestionsContract.COL_QUESTION);
-                result.setQuestion(
+                index = cursor.getColumnIndexOrThrow(QuestionsContract.COL_ENIGME);
+                result.setEnigme(
                         cursor.getString(index));
 
                 index = cursor.getColumnIndexOrThrow(QuestionsContract.COL_ARGUMENTS);

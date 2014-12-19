@@ -5,7 +5,7 @@
  * Description : 
  * Author(s)   : Harmony
  * Licence     : 
- * Last update : Dec 18, 2014
+ * Last update : Dec 19, 2014
  *
  **************************************************************************/
 package com.coyote.drinknomore.data.base;
@@ -77,7 +77,7 @@ public abstract class QuestionsSQLiteAdapterBase
         + QuestionsContract.TABLE_NAME    + " ("
         
          + QuestionsContract.COL_ID    + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-         + QuestionsContract.COL_QUESTION    + " VARCHAR NOT NULL,"
+         + QuestionsContract.COL_ENIGME    + " VARCHAR NOT NULL,"
          + QuestionsContract.COL_ARGUMENTS    + " VARCHAR NOT NULL"
 
         
@@ -142,7 +142,7 @@ public abstract class QuestionsSQLiteAdapterBase
                 new ReponsesSQLiteAdapter(this.ctx);
         reponseAdapter.open(this.mDatabase);
         android.database.Cursor reponseCursor = reponseAdapter
-                    .getByQuestions(
+                    .getByQuestion(
                             result.getId(),
                             ReponsesContract.ALIASED_COLS,
                             null,
@@ -199,7 +199,7 @@ public abstract class QuestionsSQLiteAdapterBase
             reponseAdapter.open(this.mDatabase);
             for (Reponses reponses
                         : item.getReponse()) {
-                reponses.setQuestions(item);
+                reponses.setQuestion(item);
                 reponseAdapter.insertOrUpdate(reponses);
             }
         }

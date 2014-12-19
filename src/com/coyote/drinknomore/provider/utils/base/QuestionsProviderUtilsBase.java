@@ -5,7 +5,7 @@
  * Description : 
  * Author(s)   : Harmony
  * Licence     : 
- * Last update : Dec 18, 2014
+ * Last update : Dec 19, 2014
  *
  **************************************************************************/
 package com.coyote.drinknomore.provider.utils.base;
@@ -95,7 +95,7 @@ public abstract class QuestionsProviderUtilsBase
             operations.add(ContentProviderOperation.newUpdate(ReponsesProviderAdapter.REPONSES_URI)
                     .withValueBackReference(
                             ReponsesContract
-                                    .COL_QUESTIONS_ID,
+                                    .COL_QUESTION_ID,
                             0)
                     .withSelection(
                             crit.toSQLiteSelection(),
@@ -278,7 +278,7 @@ public abstract class QuestionsProviderUtilsBase
             operations.add(ContentProviderOperation.newUpdate(
                     ReponsesProviderAdapter.REPONSES_URI)
                     .withValue(
-                            ReponsesContract.COL_QUESTIONS_ID,
+                            ReponsesContract.COL_QUESTION_ID,
                             item.getId())
                     .withSelection(
                             selection,
@@ -287,7 +287,7 @@ public abstract class QuestionsProviderUtilsBase
 
             // Remove old associated reponse
             crit.setType(Type.NOT_IN);
-            reponseCrit.add(ReponsesContract.COL_QUESTIONS_ID,
+            reponseCrit.add(ReponsesContract.COL_QUESTION_ID,
                     String.valueOf(item.getId()),
                     Type.EQUALS);
             
@@ -295,7 +295,7 @@ public abstract class QuestionsProviderUtilsBase
             operations.add(ContentProviderOperation.newUpdate(
                     ReponsesProviderAdapter.REPONSES_URI)
                     .withValue(
-                            ReponsesContract.COL_QUESTIONS_ID,
+                            ReponsesContract.COL_QUESTION_ID,
                             null)
                     .withSelection(
                             reponseCrit.toSQLiteSelection(),
@@ -329,7 +329,7 @@ public abstract class QuestionsProviderUtilsBase
         android.database.Cursor reponsesCursor = prov.query(
                 ReponsesProviderAdapter.REPONSES_URI,
                 ReponsesContract.ALIASED_COLS,
-                ReponsesContract.ALIASED_COL_QUESTIONS_ID
+                ReponsesContract.ALIASED_COL_QUESTION_ID
                         + "= ?",
                 new String[]{String.valueOf(item.getId())},
                 null);

@@ -5,7 +5,7 @@
  * Description : 
  * Author(s)   : Harmony
  * Licence     : 
- * Last update : Dec 18, 2014
+ * Last update : Dec 19, 2014
  *
  **************************************************************************/
 package com.coyote.drinknomore.provider.base;
@@ -210,7 +210,7 @@ public abstract class QuestionsProviderAdapterBase
                 questionsId = Integer.parseInt(uri.getPathSegments().get(1));
                 ReponsesSQLiteAdapter reponseAdapter = new ReponsesSQLiteAdapter(this.ctx);
                 reponseAdapter.open(this.getDb());
-                result = reponseAdapter.getByQuestions(questionsId, ReponsesContract.ALIASED_COLS, selection, selectionArgs, null);
+                result = reponseAdapter.getByQuestion(questionsId, ReponsesContract.ALIASED_COLS, selection, selectionArgs, null);
                 break;
 
             default:

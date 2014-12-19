@@ -15,7 +15,7 @@ import com.tactfactory.harmony.annotation.Id;
 import com.tactfactory.harmony.annotation.OneToMany;
 
 @Entity
-public class Reponses  implements Serializable , Parcelable {
+public class Reponses implements Serializable , Parcelable {
 
     /** Parent parcelable for parcellisation purposes. */
     protected List<Parcelable> parcelableParents;
@@ -32,14 +32,14 @@ public class Reponses  implements Serializable , Parcelable {
     private int id;
 
 	@Column(type = Type.STRING)
-    private String reponse;
+    private String solution;
 	
 	@Column(type = Type.STRING)
     private String arguments;
 	
 	@ManyToOne(targetEntity="Questions", inversedBy="reponse")
-	private Questions questions;
-
+	@Column(nullable=true)
+	private Questions question;
 
     /**
      * Default constructor.
@@ -63,17 +63,17 @@ public class Reponses  implements Serializable , Parcelable {
     }
 
     /**
-     * @return the reponse
+     * @return the solution
      */
-    public String getReponse() {
-         return this.reponse;
+    public String getSolution() {
+         return this.solution;
     }
 
     /**
-     * @param value the reponse to set
+     * @param value the solution to set
      */
-    public void setReponse(final String value) {
-         this.reponse = value;
+    public void setSolution(final String value) {
+         this.solution = value;
     }
 
     /**
@@ -91,17 +91,17 @@ public class Reponses  implements Serializable , Parcelable {
     }
 
     /**
-     * @return the questions
+     * @return the question
      */
-    public Questions getQuestions() {
-         return this.questions;
+    public Questions getQuestion() {
+         return this.question;
     }
 
     /**
-     * @param value the questions to set
+     * @param value the question to set
      */
-    public void setQuestions(final Questions value) {
-         this.questions = value;
+    public void setQuestion(final Questions value) {
+         this.question = value;
     }
 
     /**
@@ -118,11 +118,11 @@ public class Reponses  implements Serializable , Parcelable {
             this.parcelableParents.add(this);
         }
         dest.writeInt(this.getId());
-        dest.writeString(this.getReponse());
+        dest.writeString(this.getSolution());
         dest.writeString(this.getArguments());
-        if (this.getQuestions() != null
-                    && !this.parcelableParents.contains(this.getQuestions())) {
-            this.getQuestions().writeToParcel(this.parcelableParents, dest, flags);
+        if (this.getQuestion() != null
+                    && !this.parcelableParents.contains(this.getQuestion())) {
+            this.getQuestion().writeToParcel(this.parcelableParents, dest, flags);
         } else {
             dest.writeParcelable(null, flags);
         }
@@ -138,9 +138,9 @@ public class Reponses  implements Serializable , Parcelable {
      */
     public void readFromParcel(Parcel parc) {
         this.setId(parc.readInt());
-        this.setReponse(parc.readString());
+        this.setSolution(parc.readString());
         this.setArguments(parc.readString());
-        this.setQuestions((Questions) parc.readParcelable(Questions.class.getClassLoader()));
+        this.setQuestion((Questions) parc.readParcelable(Questions.class.getClassLoader()));
     }
 
     /**
@@ -200,5 +200,10 @@ public class Reponses  implements Serializable , Parcelable {
             return new Reponses[size];
         }
     };
+    
+    @Override
+	public String toString() {
+		return this.solution;
+	}
 
 }

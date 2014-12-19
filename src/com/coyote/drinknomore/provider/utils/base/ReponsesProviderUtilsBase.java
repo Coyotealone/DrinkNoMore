@@ -5,7 +5,7 @@
  * Description : 
  * Author(s)   : Harmony
  * Licence     : 
- * Last update : Dec 18, 2014
+ * Last update : Dec 19, 2014
  *
  **************************************************************************/
 package com.coyote.drinknomore.provider.utils.base;
@@ -149,9 +149,9 @@ public abstract class ReponsesProviderUtilsBase
             result = ReponsesContract.cursorToItem(cursor);
             cursor.close();
 
-            if (result.getQuestions() != null) {
-                result.setQuestions(
-                    this.getAssociateQuestions(result));
+            if (result.getQuestion() != null) {
+                result.setQuestion(
+                    this.getAssociateQuestion(result));
             }
         }
 
@@ -244,11 +244,11 @@ public abstract class ReponsesProviderUtilsBase
 
     /** Relations operations. */
     /**
-     * Get associate Questions.
+     * Get associate Question.
      * @param item Reponses
      * @return Questions
      */
-    public Questions getAssociateQuestions(
+    public Questions getAssociateQuestion(
             final Reponses item) {
         Questions result;
         ContentResolver prov = this.getContext().getContentResolver();
@@ -256,7 +256,7 @@ public abstract class ReponsesProviderUtilsBase
                 QuestionsProviderAdapter.QUESTIONS_URI,
                 QuestionsContract.ALIASED_COLS,
                 QuestionsContract.ALIASED_COL_ID + "= ?",
-                new String[]{String.valueOf(item.getQuestions().getId())},
+                new String[]{String.valueOf(item.getQuestion().getId())},
                 null);
 
         if (questionsCursor.getCount() > 0) {

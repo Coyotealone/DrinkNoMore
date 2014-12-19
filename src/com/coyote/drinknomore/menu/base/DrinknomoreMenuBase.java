@@ -5,7 +5,7 @@
  * Description : 
  * Author(s)   : Harmony
  * Licence     : 
- * Last update : Dec 18, 2014
+ * Last update : Dec 19, 2014
  *
  **************************************************************************/
 package com.coyote.drinknomore.menu.base;
@@ -19,6 +19,10 @@ import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.util.SparseArray;
 
+import com.coyote.drinknomore.menu.CrudCreateMenuWrapper;
+import com.coyote.drinknomore.menu.CrudDeleteMenuWrapper;
+import com.coyote.drinknomore.menu.CrudEditMenuWrapper;
+import com.coyote.drinknomore.menu.SaveMenuWrapper;
 
 /**
  * DrinknomoreMenuBase.
@@ -27,6 +31,14 @@ import android.util.SparseArray;
  * please see DrinknomoreMenu.
  */
 public abstract class DrinknomoreMenuBase {
+    /** Crudcreate value. */
+    public static final int CRUDCREATE = 0x1;
+    /** Cruddelete value. */
+    public static final int CRUDDELETE = 0x2;
+    /** Crudedit value. */
+    public static final int CRUDEDIT = 0x3;
+    /** Save value. */
+    public static final int SAVE = 0x4;
 
     /** Array of MenuWrapperBase. */
     protected SparseArray<MenuWrapperBase> menus =
@@ -63,6 +75,10 @@ public abstract class DrinknomoreMenuBase {
 
         this.fragment    = fragment;
         this.ctx     = ctx;
+        this.menus.put(CRUDCREATE, new CrudCreateMenuWrapper());
+        this.menus.put(CRUDDELETE, new CrudDeleteMenuWrapper());
+        this.menus.put(CRUDEDIT, new CrudEditMenuWrapper());
+        this.menus.put(SAVE, new SaveMenuWrapper());
 
     }
 

@@ -5,7 +5,7 @@
  * Description : 
  * Author(s)   : Harmony
  * Licence     : 
- * Last update : Dec 18, 2014
+ * Last update : Dec 19, 2014
  *
  **************************************************************************/
 package com.coyote.drinknomore.data.base;
@@ -79,12 +79,12 @@ public abstract class ReponsesSQLiteAdapterBase
         + ReponsesContract.TABLE_NAME    + " ("
         
          + ReponsesContract.COL_ID    + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-         + ReponsesContract.COL_REPONSE    + " VARCHAR NOT NULL,"
+         + ReponsesContract.COL_SOLUTION    + " VARCHAR NOT NULL,"
          + ReponsesContract.COL_ARGUMENTS    + " VARCHAR NOT NULL,"
-         + ReponsesContract.COL_QUESTIONS_ID    + " INTEGER NOT NULL,"
+         + ReponsesContract.COL_QUESTION_ID    + " INTEGER,"
 
         
-         + "FOREIGN KEY(" + ReponsesContract.COL_QUESTIONS_ID + ") REFERENCES " 
+         + "FOREIGN KEY(" + ReponsesContract.COL_QUESTION_ID + ") REFERENCES " 
              + QuestionsContract.TABLE_NAME 
                 + " (" + QuestionsContract.COL_ID + ")"
         + ");"
@@ -144,26 +144,26 @@ public abstract class ReponsesSQLiteAdapterBase
         final Reponses result = this.cursorToItem(cursor);
         cursor.close();
 
-        if (result.getQuestions() != null) {
-            final QuestionsSQLiteAdapter questionsAdapter =
+        if (result.getQuestion() != null) {
+            final QuestionsSQLiteAdapter questionAdapter =
                     new QuestionsSQLiteAdapter(this.ctx);
-            questionsAdapter.open(this.mDatabase);
+            questionAdapter.open(this.mDatabase);
             
-            result.setQuestions(questionsAdapter.getByID(
-                            result.getQuestions().getId()));
+            result.setQuestion(questionAdapter.getByID(
+                            result.getQuestion().getId()));
         }
         return result;
     }
 
     /**
-     * Find & read Reponses by questions.
-     * @param questionsId questionsId
+     * Find & read Reponses by question.
+     * @param questionId questionId
      * @param orderBy Order by string (can be null)
      * @return List of Reponses entities
      */
-     public android.database.Cursor getByQuestions(final int questionsId, String[] projection, String selection, String[] selectionArgs, String orderBy) {
-        String idSelection = ReponsesContract.COL_QUESTIONS_ID + "= ?";
-        String idSelectionArgs = String.valueOf(questionsId);
+     public android.database.Cursor getByQuestion(final int questionId, String[] projection, String selection, String[] selectionArgs, String orderBy) {
+        String idSelection = ReponsesContract.COL_QUESTION_ID + "= ?";
+        String idSelectionArgs = String.valueOf(questionId);
         if (!Strings.isNullOrEmpty(selection)) {
             selection += " AND " + idSelection;
             selectionArgs = ObjectArrays.concat(selectionArgs, idSelectionArgs);

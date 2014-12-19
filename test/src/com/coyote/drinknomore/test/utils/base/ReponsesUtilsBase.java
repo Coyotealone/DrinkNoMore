@@ -5,7 +5,7 @@
  * Description : 
  * Author(s)   : Harmony
  * Licence     : 
- * Last update : Dec 18, 2014
+ * Last update : Dec 19, 2014
  *
  **************************************************************************/
 package com.coyote.drinknomore.test.utils.base;
@@ -17,9 +17,11 @@ import com.coyote.drinknomore.entity.Reponses;
 
 
 import com.coyote.drinknomore.test.utils.TestUtils;
+import com.coyote.drinknomore.entity.Questions;
+import com.coyote.drinknomore.fixture.QuestionsDataLoader;
 
-import com.coyote.drinknomore.test.utils.QuestionsUtils;
 
+import java.util.ArrayList;
 
 public abstract class ReponsesUtilsBase {
 
@@ -33,9 +35,14 @@ public abstract class ReponsesUtilsBase {
         Reponses reponses = new Reponses();
 
         reponses.setId(TestUtils.generateRandomInt(0,100) + 1);
-        reponses.setReponse("reponse_"+TestUtils.generateRandomString(10));
+        reponses.setSolution("solution_"+TestUtils.generateRandomString(10));
         reponses.setArguments("arguments_"+TestUtils.generateRandomString(10));
-        reponses.setQuestions(QuestionsUtils.generateRandom(ctx));
+        ArrayList<Questions> questions =
+            new ArrayList<Questions>();
+        questions.addAll(QuestionsDataLoader.getInstance(ctx).getMap().values());
+        if (!questions.isEmpty()) {
+            reponses.setQuestion(questions.get(TestUtils.generateRandomInt(0, questions.size())));
+        }
 
         return reponses;
     }
@@ -53,13 +60,13 @@ public abstract class ReponsesUtilsBase {
         Assert.assertNotNull(reponses2);
         if (reponses1!=null && reponses2 !=null){
             Assert.assertEquals(reponses1.getId(), reponses2.getId());
-            Assert.assertEquals(reponses1.getReponse(), reponses2.getReponse());
+            Assert.assertEquals(reponses1.getSolution(), reponses2.getSolution());
             Assert.assertEquals(reponses1.getArguments(), reponses2.getArguments());
-            if (reponses1.getQuestions() != null
-                    && reponses2.getQuestions() != null) {
+            if (reponses1.getQuestion() != null
+                    && reponses2.getQuestion() != null) {
                 if (checkRecursiveId) {
-                    Assert.assertEquals(reponses1.getQuestions().getId(),
-                            reponses2.getQuestions().getId());
+                    Assert.assertEquals(reponses1.getQuestion().getId(),
+                            reponses2.getQuestion().getId());
                 }
             }
         }

@@ -5,7 +5,7 @@
  * Description : 
  * Author(s)   : Harmony
  * Licence     : 
- * Last update : Dec 18, 2014
+ * Last update : Dec 19, 2014
  *
  **************************************************************************/
 package com.coyote.drinknomore.test.base;
@@ -17,6 +17,7 @@ import android.test.suitebuilder.annotation.SmallTest;
 import com.coyote.drinknomore.data.ReponsesSQLiteAdapter;
 import com.coyote.drinknomore.entity.Reponses;
 
+import com.coyote.drinknomore.fixture.ReponsesDataLoader;
 
 import com.coyote.drinknomore.test.utils.*;
 
@@ -45,6 +46,13 @@ public abstract class ReponsesTestDBBase extends TestDBBase {
         this.adapter = new ReponsesSQLiteAdapter(this.ctx);
         this.adapter.open();
 
+        this.entities = new ArrayList<Reponses>();        
+        this.entities.addAll(ReponsesDataLoader.getInstance(this.ctx).getMap().values());
+        if (entities.size()>0){
+            this.entity = this.entities.get(TestUtils.generateRandomInt(0,entities.size()-1));
+        }
+
+        this.nbEntities += ReponsesDataLoader.getInstance(this.ctx).getMap().size();
     }
 
     /* (non-Javadoc)

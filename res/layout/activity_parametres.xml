@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:harmony="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/txtParametres"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/lblParametres"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/txtParametres_jours"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lblParametres_jours"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <CheckBox
+        android:id="@+id/cb_horaire_lundi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lblParametres_horaire_lundi" />
+
+    <CheckBox
+        android:id="@+id/cb_horaire_mardi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lblParametres_horaire_mardi" />
+
+    <CheckBox
+        android:id="@+id/cb_horaire_mercredi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lblParametres_horaire_mercredi" />
+
+    <CheckBox
+        android:id="@+id/cb_horaire_jeudi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lblParametres_horaire_jeudi" />
+
+    <CheckBox
+        android:id="@+id/cb_horaire_vendredi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lblParametres_horaire_vendredi" />
+
+    <CheckBox
+        android:id="@+id/cb_horaire_samedi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lblParametres_horaire_samedi" />
+
+    <CheckBox
+        android:id="@+id/cb_horaire_dimanche"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lblParametres_horaire_dimanche" />
+
+    <TextView
+        android:id="@+id/txtParametres_horaire"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lblParametres_horaire"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <com.coyote.drinknomore.harmony.widget.TimeWidget
+        android:id="@+id/timeWidget_Parametres_horaire"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        harmony:timeWidget_dialogTitle="@string/timeWidget_Parametres_horaire" >
+    </com.coyote.drinknomore.harmony.widget.TimeWidget>
+
+    <Button
+        android:id="@+id/btnParametres_valider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btnParametres_valider" />
+
+</LinearLayout>

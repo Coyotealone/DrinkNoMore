@@ -5,6 +5,8 @@ import android.os.Parcelable;
 import java.util.List;
 import java.util.ArrayList;
 import java.io.Serializable;
+
+import com.google.common.base.Function;
 import com.tactfactory.harmony.annotation.Column;
 import com.tactfactory.harmony.annotation.Column.Type;
 import com.tactfactory.harmony.annotation.Entity;
@@ -16,7 +18,7 @@ import com.tactfactory.harmony.annotation.ManyToOne;
 import com.tactfactory.harmony.annotation.OneToMany;
 
 @Entity
-public class Questions  implements Serializable , Parcelable {
+public class Questions implements Serializable , Parcelable {
 
     /** Parent parcelable for parcellisation purposes. */
     protected List<Parcelable> parcelableParents;
@@ -33,13 +35,13 @@ public class Questions  implements Serializable , Parcelable {
     private int id;
 
 	@Column(type = Type.STRING)
-    private String question;
+    private String enigme;
 	
 	@Column(type = Type.STRING)
     private String arguments;
 
-	@OneToMany(mappedBy="questions", targetEntity="Reponses")
-	private ArrayList<Reponses> reponse;
+	@OneToMany(mappedBy="question", targetEntity="Reponses")
+	private ArrayList<Reponses> reponse = new ArrayList<Reponses>();
 
 
     /**
@@ -64,17 +66,17 @@ public class Questions  implements Serializable , Parcelable {
     }
 
     /**
-     * @return the question
+     * @return the enigme
      */
-    public String getQuestion() {
-         return this.question;
+    public String getEnigme() {
+         return this.enigme;
     }
 
     /**
-     * @param value the question to set
+     * @param value the enigme to set
      */
-    public void setQuestion(final String value) {
-         this.question = value;
+    public void setEnigme(final String value) {
+         this.enigme = value;
     }
 
     /**
@@ -119,7 +121,7 @@ public class Questions  implements Serializable , Parcelable {
             this.parcelableParents.add(this);
         }
         dest.writeInt(this.getId());
-        dest.writeString(this.getQuestion());
+        dest.writeString(this.getEnigme());
         dest.writeString(this.getArguments());
 
         if (this.getReponse() != null) {
@@ -146,7 +148,7 @@ public class Questions  implements Serializable , Parcelable {
      */
     public void readFromParcel(Parcel parc) {
         this.setId(parc.readInt());
-        this.setQuestion(parc.readString());
+        this.setEnigme(parc.readString());
         this.setArguments(parc.readString());
 
         int nbReponse = parc.readInt();
@@ -218,5 +220,13 @@ public class Questions  implements Serializable , Parcelable {
             return new Questions[size];
         }
     };
+
+
+	@Override
+	public String toString() {
+		return this.enigme;
+	}
+    
+
 
 }

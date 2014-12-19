@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:harmony="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    <TextView
+        android:id="@+id/statistiques_date_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/statistiques_date_label"/>
+    <com.coyote.drinknomore.harmony.widget.DateTimeWidget
+        android:id="@+id/statistiques_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/statistiques_date_label"
+        harmony:dateTimeWidget_dateDialogTitle="@string/statistiques_date_date_title"
+        harmony:dateTimeWidget_timeDialogTitle="@string/statistiques_date_time_title" />
+    <TextView
+        android:id="@+id/statistiques_nberreurs_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/statistiques_date"
+        android:text="@string/statistiques_nberreurs_label"/>
+    <EditText
+        android:id="@+id/statistiques_nberreurs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:layout_below="@+id/statistiques_nberreurs_label" />
+</RelativeLayout>

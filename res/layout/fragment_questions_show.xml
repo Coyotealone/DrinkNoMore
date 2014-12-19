@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ScrollView 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+        <RelativeLayout
+            android:id="@+id/questions_data_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp" >
+            <TextView
+                android:id="@+id/questions_enigme_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/questions_enigme_label"/>
+            <TextView
+                android:id="@+id/questions_enigme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textIsSelectable="true"
+                android:layout_below="@+id/questions_enigme_label" />
+            <TextView
+                android:id="@+id/questions_arguments_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/questions_enigme"
+                android:text="@string/questions_arguments_label"/>
+            <TextView
+                android:id="@+id/questions_arguments"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textIsSelectable="true"
+                android:layout_below="@+id/questions_arguments_label" />
+            <TextView
+                android:id="@+id/questions_reponse_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/questions_arguments"
+                android:text="@string/questions_reponse_label"/>
+            <TextView
+                android:id="@+id/questions_reponse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textIsSelectable="true"
+                android:layout_below="@+id/questions_reponse_label" />
+        </RelativeLayout>
+    </ScrollView>
+    <TextView
+        android:id="@+id/questions_empty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:visibility="gone"
+        android:text="@string/questions_not_found" />
+</RelativeLayout>

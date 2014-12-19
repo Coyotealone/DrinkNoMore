@@ -5,7 +5,7 @@
  * Description : 
  * Author(s)   : Harmony
  * Licence     : 
- * Last update : Dec 18, 2014
+ * Last update : Dec 19, 2014
  *
  **************************************************************************/
 package com.coyote.drinknomore.provider.base;
@@ -49,8 +49,8 @@ public abstract class ReponsesProviderAdapterBase
     protected static final int REPONSES_ONE =
             362515516;
 
-    /** REPONSES_QUESTIONS. */
-    protected static final int REPONSES_QUESTIONS =
+    /** REPONSES_QUESTION. */
+    protected static final int REPONSES_QUESTION =
             362515517;
 
     /**
@@ -70,8 +70,8 @@ public abstract class ReponsesProviderAdapterBase
                 REPONSES_ONE);
         DrinknomoreProvider.getUriMatcher().addURI(
                 DrinknomoreProvider.authority,
-                reponsesType + "/#" + "/questions",
-                REPONSES_QUESTIONS);
+                reponsesType + "/#" + "/question",
+                REPONSES_QUESTION);
     }
 
     /**
@@ -87,7 +87,7 @@ public abstract class ReponsesProviderAdapterBase
 
         this.uriIds.add(REPONSES_ALL);
         this.uriIds.add(REPONSES_ONE);
-        this.uriIds.add(REPONSES_QUESTIONS);
+        this.uriIds.add(REPONSES_QUESTION);
     }
 
     @Override
@@ -110,7 +110,7 @@ public abstract class ReponsesProviderAdapterBase
             case REPONSES_ONE:
                 result = single + "reponses";
                 break;
-            case REPONSES_QUESTIONS:
+            case REPONSES_QUESTION:
                 result = single + "reponses";
                 break;
             default:
@@ -205,19 +205,19 @@ public abstract class ReponsesProviderAdapterBase
                 result = this.queryById(uri.getPathSegments().get(1));
                 break;
             
-            case REPONSES_QUESTIONS:
+            case REPONSES_QUESTION:
                 reponsesCursor = this.queryById(
                         uri.getPathSegments().get(1));
                 
                 if (reponsesCursor.getCount() > 0) {
                     reponsesCursor.moveToFirst();
-                    int questionsId = reponsesCursor.getInt(
+                    int questionId = reponsesCursor.getInt(
                             reponsesCursor.getColumnIndex(
-                                    ReponsesContract.COL_QUESTIONS_ID));
+                                    ReponsesContract.COL_QUESTION_ID));
                     
                     QuestionsSQLiteAdapter questionsAdapter = new QuestionsSQLiteAdapter(this.ctx);
                     questionsAdapter.open(this.getDb());
-                    result = questionsAdapter.query(questionsId);
+                    result = questionsAdapter.query(questionId);
                 }
                 break;
 

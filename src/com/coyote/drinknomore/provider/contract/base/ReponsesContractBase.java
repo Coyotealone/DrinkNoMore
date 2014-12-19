@@ -5,7 +5,7 @@
  * Description : 
  * Author(s)   : Harmony
  * Licence     : 
- * Last update : Dec 18, 2014
+ * Last update : Dec 19, 2014
  *
  **************************************************************************/
 package com.coyote.drinknomore.provider.contract.base;
@@ -36,12 +36,12 @@ public abstract class ReponsesContractBase {
     public static final String ALIASED_COL_ID =
             ReponsesContract.TABLE_NAME + "." + COL_ID;
 
-    /** reponse. */
-    public static final String COL_REPONSE =
-            "reponse";
+    /** solution. */
+    public static final String COL_SOLUTION =
+            "solution";
     /** Alias. */
-    public static final String ALIASED_COL_REPONSE =
-            ReponsesContract.TABLE_NAME + "." + COL_REPONSE;
+    public static final String ALIASED_COL_SOLUTION =
+            ReponsesContract.TABLE_NAME + "." + COL_SOLUTION;
 
     /** arguments. */
     public static final String COL_ARGUMENTS =
@@ -50,12 +50,12 @@ public abstract class ReponsesContractBase {
     public static final String ALIASED_COL_ARGUMENTS =
             ReponsesContract.TABLE_NAME + "." + COL_ARGUMENTS;
 
-    /** questions_id. */
-    public static final String COL_QUESTIONS_ID =
-            "questions_id";
+    /** question_id. */
+    public static final String COL_QUESTION_ID =
+            "question_id";
     /** Alias. */
-    public static final String ALIASED_COL_QUESTIONS_ID =
-            ReponsesContract.TABLE_NAME + "." + COL_QUESTIONS_ID;
+    public static final String ALIASED_COL_QUESTION_ID =
+            ReponsesContract.TABLE_NAME + "." + COL_QUESTION_ID;
 
 
 
@@ -67,17 +67,17 @@ public abstract class ReponsesContractBase {
     /** Global Fields. */
     public static final String[] COLS = new String[] {
             ReponsesContract.COL_ID,
-            ReponsesContract.COL_REPONSE,
+            ReponsesContract.COL_SOLUTION,
             ReponsesContract.COL_ARGUMENTS,
-            ReponsesContract.COL_QUESTIONS_ID
+            ReponsesContract.COL_QUESTION_ID
     };
 
     /** Global Fields. */
     public static final String[] ALIASED_COLS = new String[] {
             ReponsesContract.ALIASED_COL_ID,
-            ReponsesContract.ALIASED_COL_REPONSE,
+            ReponsesContract.ALIASED_COL_SOLUTION,
             ReponsesContract.ALIASED_COL_ARGUMENTS,
-            ReponsesContract.ALIASED_COL_QUESTIONS_ID
+            ReponsesContract.ALIASED_COL_QUESTION_ID
     };
 
 
@@ -94,9 +94,9 @@ public abstract class ReponsesContractBase {
             result.put(ReponsesContract.COL_ID,
                 String.valueOf(item.getId()));
 
-            if (item.getReponse() != null) {
-                result.put(ReponsesContract.COL_REPONSE,
-                    item.getReponse());
+            if (item.getSolution() != null) {
+                result.put(ReponsesContract.COL_SOLUTION,
+                    item.getSolution());
             }
 
             if (item.getArguments() != null) {
@@ -104,9 +104,11 @@ public abstract class ReponsesContractBase {
                     item.getArguments());
             }
 
-            if (item.getQuestions() != null) {
-                result.put(ReponsesContract.COL_QUESTIONS_ID,
-                    item.getQuestions().getId());
+            if (item.getQuestion() != null) {
+                result.put(ReponsesContract.COL_QUESTION_ID,
+                    item.getQuestion().getId());
+            } else {
+                result.put(ReponsesContract.COL_QUESTION_ID, (String) null);
             }
 
 
@@ -139,19 +141,21 @@ public abstract class ReponsesContractBase {
                 result.setId(
                         cursor.getInt(index));
 
-                index = cursor.getColumnIndexOrThrow(ReponsesContract.COL_REPONSE);
-                result.setReponse(
+                index = cursor.getColumnIndexOrThrow(ReponsesContract.COL_SOLUTION);
+                result.setSolution(
                         cursor.getString(index));
 
                 index = cursor.getColumnIndexOrThrow(ReponsesContract.COL_ARGUMENTS);
                 result.setArguments(
                         cursor.getString(index));
 
-                if (result.getQuestions() == null) {
-                    final Questions questions = new Questions();
-                    index = cursor.getColumnIndexOrThrow(ReponsesContract.COL_QUESTIONS_ID);
-                    questions.setId(cursor.getInt(index));
-                    result.setQuestions(questions);
+                if (result.getQuestion() == null) {
+                    final Questions question = new Questions();
+                    index = cursor.getColumnIndexOrThrow(ReponsesContract.COL_QUESTION_ID);
+                    if (!cursor.isNull(index)) {
+                        question.setId(cursor.getInt(index));
+                        result.setQuestion(question);
+                        }
                 }
 
 
