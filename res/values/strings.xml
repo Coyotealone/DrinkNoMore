@@ -80,5 +80,6 @@
 	<string name="statistiques_progress_save_message">Statistiques is saving to database…</string>
 	<string name="statistiques_progress_save_title">Statistiques save progress</string>
 	<string name="timeWidget_Parametres_horaire" />
+	<string name="time_Parametres_horaire"></string>
 	<string name="uri_not_supported">URI not supported</string>
 </resources>

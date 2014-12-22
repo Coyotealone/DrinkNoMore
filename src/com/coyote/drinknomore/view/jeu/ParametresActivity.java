@@ -15,6 +15,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 
+
 public class ParametresActivity extends Activity{
 
 	public static final String PREFS_NAME = "prefFile";
@@ -34,7 +35,7 @@ public class ParametresActivity extends Activity{
 		final CheckBox cb_horaire_vendredi = (CheckBox) this.findViewById(R.id.cb_horaire_vendredi);
 		final CheckBox cb_horaire_samedi = (CheckBox) this.findViewById(R.id.cb_horaire_samedi);
 		final CheckBox cb_horaire_dimanche = (CheckBox) this.findViewById(R.id.cb_horaire_dimanche);
-		//final String time_widget_parametres_horaire = (String) this.findViewById(R.id.timeWidget_Parametres_horaire);
+		final TimeWidget timewidget = (TimeWidget) this.findViewById(R.id.timeWidget_Parametres_horaire);
 
 		cb_horaire_lundi.setChecked(settings.getBoolean("cb_horaire_lundi", false));
 		cb_horaire_mardi.setChecked(settings.getBoolean("cb_horaire_mardi", false));
@@ -43,7 +44,10 @@ public class ParametresActivity extends Activity{
 		cb_horaire_vendredi.setChecked(settings.getBoolean("cb_horaire_vendredi", false));
 		cb_horaire_samedi.setChecked(settings.getBoolean("cb_horaire_samedi", false));
 		cb_horaire_dimanche.setChecked(settings.getBoolean("cb_horaire_dimanche", false));
-		
+
+		String valuetime = settings.getString("timeWidget_Parametres_horaire", null);
+		if(valuetime != null )
+			timewidget.setTime(DateTime.now());
 
 		Button btnParametres_valider = (Button) this.findViewById(R.id.btnParametres_valider);
 		btnParametres_valider.setOnClickListener(new OnClickListener() {
@@ -62,8 +66,8 @@ public class ParametresActivity extends Activity{
 				editor.putBoolean("cb_horaire_vendredi", cb_horaire_vendredi.isChecked());
 				editor.putBoolean("cb_horaire_samedi", cb_horaire_samedi.isChecked());
 				editor.putBoolean("cb_horaire_dimanche", cb_horaire_dimanche.isChecked());
-				//editor.putString("timeWidget_Parametres_horaire", time_widget_parametres_horaire);
-				
+				editor.putString("timeWidget_Parametres_horaire", timewidget.toString());
+
 				//Commit values
 				editor.commit();
 
