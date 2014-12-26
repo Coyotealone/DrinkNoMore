@@ -1,7 +1,10 @@
 package com.coyote.drinknomore.view.jeu;
 
 import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
+import com.coyote.drinknomore.Fonctions;
 import com.coyote.drinknomore.HomeActivity;
 import com.coyote.drinknomore.R;
 import com.coyote.drinknomore.harmony.widget.TimeWidget;
@@ -47,7 +50,11 @@ public class ParametresActivity extends Activity{
 
 		String valuetime = settings.getString("timeWidget_Parametres_horaire", null);
 		if(valuetime != null )
-			timewidget.setTime(DateTime.now());
+		{
+			DateTimeFormatter formatter = DateTimeFormat.forPattern("hh:mm");
+			timewidget.setTime(formatter.parseDateTime(valuetime));
+
+		}
 
 		Button btnParametres_valider = (Button) this.findViewById(R.id.btnParametres_valider);
 		btnParametres_valider.setOnClickListener(new OnClickListener() {
@@ -66,7 +73,11 @@ public class ParametresActivity extends Activity{
 				editor.putBoolean("cb_horaire_vendredi", cb_horaire_vendredi.isChecked());
 				editor.putBoolean("cb_horaire_samedi", cb_horaire_samedi.isChecked());
 				editor.putBoolean("cb_horaire_dimanche", cb_horaire_dimanche.isChecked());
-				editor.putString("timeWidget_Parametres_horaire", timewidget.toString());
+
+				String valuesave = Fonctions.SplitTime((String) timewidget.getTime().toDate().toString());
+				if(valuesave == "")
+					valuesave = null;
+				editor.putString("timeWidget_Parametres_horaire", valuesave);
 
 				//Commit values
 				editor.commit();
