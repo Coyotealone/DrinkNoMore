@@ -5,7 +5,7 @@
  * Description : 
  * Author(s)   : Harmony
  * Licence     : 
- * Last update : Dec 19, 2014
+ * Last update : Dec 26, 2014
  *
  **************************************************************************/
 package com.coyote.drinknomore.data.base;
@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import com.coyote.drinknomore.data.DrinknomoreSQLiteOpenHelper;
+
 import com.coyote.drinknomore.data.ReponsesSQLiteAdapter;
 import com.coyote.drinknomore.provider.contract.ReponsesContract;
 import com.coyote.drinknomore.data.QuestionsSQLiteAdapter;
@@ -31,7 +31,6 @@ import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 
 
-import com.coyote.drinknomore.fixture.DataLoader;
 
 
 /**
@@ -109,9 +108,6 @@ public class DrinknomoreSQLiteOpenHelperBase
             }
             db.execSQL(StatistiquesSQLiteAdapter.getSchema());
             db.execSQL("PRAGMA foreign_keys = ON;");
-            if (!DrinknomoreSQLiteOpenHelper.isJUnit) {
-                this.loadData(db);
-            }
         }
 
     }
@@ -147,19 +143,6 @@ public class DrinknomoreSQLiteOpenHelperBase
         // TODO : Upgrade your tables !
     }
 
-    /**
-     * Loads data from the fixture files.
-     * @param db The database to populate with fixtures
-     */
-    private void loadData(final SQLiteDatabase db) {
-        final DataLoader dataLoader = new DataLoader(this.ctx);
-        dataLoader.clean();
-        int mode = DataLoader.MODE_APP;
-        if (DrinknomoreApplication.DEBUG) {
-            mode = DataLoader.MODE_APP | DataLoader.MODE_DEBUG;
-        }
-        dataLoader.loadData(db, mode);
-    }
 
     /**
      * Creates a empty database on the system and rewrites it with your own

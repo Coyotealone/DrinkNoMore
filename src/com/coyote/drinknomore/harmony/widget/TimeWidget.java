@@ -5,7 +5,7 @@
  * Description : 
  * Author(s)   : Harmony
  * Licence     : 
- * Last update : Dec 19, 2014
+ * Last update : Dec 26, 2014
  *
  **************************************************************************/
 package com.coyote.drinknomore.harmony.widget;
@@ -107,7 +107,7 @@ public class TimeWidget extends FrameLayout implements OnClickListener {
                // 24H format
                int format24Hid = a.getInt(
                        R.styleable.TimeWidget_timeWidget_format24H,
-                       1);
+                       3);
                switch (format24Hid) {
                     case H24_ENUM_CONSTANT:
                        this.timeFormat = TimeFormatType.H24;

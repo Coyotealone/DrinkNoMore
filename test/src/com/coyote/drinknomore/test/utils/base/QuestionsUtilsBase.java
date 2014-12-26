@@ -5,7 +5,7 @@
  * Description : 
  * Author(s)   : Harmony
  * Licence     : 
- * Last update : Dec 19, 2014
+ * Last update : Dec 26, 2014
  *
  **************************************************************************/
 package com.coyote.drinknomore.test.utils.base;
@@ -18,8 +18,7 @@ import com.coyote.drinknomore.entity.Questions;
 
 import com.coyote.drinknomore.test.utils.TestUtils;
 import com.coyote.drinknomore.entity.Reponses;
-import com.coyote.drinknomore.fixture.ReponsesDataLoader;
-
+import com.coyote.drinknomore.test.utils.ReponsesUtils;
 
 import java.util.ArrayList;
 
@@ -37,14 +36,9 @@ public abstract class QuestionsUtilsBase {
         questions.setId(TestUtils.generateRandomInt(0,100) + 1);
         questions.setEnigme("enigme_"+TestUtils.generateRandomString(10));
         questions.setArguments("arguments_"+TestUtils.generateRandomString(10));
-        ArrayList<Reponses> reponses =
-            new ArrayList<Reponses>();
-        reponses.addAll(ReponsesDataLoader.getInstance(ctx).getMap().values());
         ArrayList<Reponses> relatedReponses = new ArrayList<Reponses>();
-        if (!reponses.isEmpty()) {
-            relatedReponses.add(reponses.get(TestUtils.generateRandomInt(0, reponses.size())));
-            questions.setReponse(relatedReponses);
-        }
+        relatedReponses.add(ReponsesUtils.generateRandom(ctx));
+        questions.setReponse(relatedReponses);
 
         return questions;
     }

@@ -5,7 +5,7 @@
  * Description : 
  * Author(s)   : Harmony
  * Licence     : 
- * Last update : Dec 19, 2014
+ * Last update : Dec 26, 2014
  *
  **************************************************************************/
 package com.coyote.drinknomore.criterias.base.value;

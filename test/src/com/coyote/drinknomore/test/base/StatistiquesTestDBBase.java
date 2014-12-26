@@ -5,7 +5,7 @@
  * Description : 
  * Author(s)   : Harmony
  * Licence     : 
- * Last update : Dec 19, 2014
+ * Last update : Dec 26, 2014
  *
  **************************************************************************/
 package com.coyote.drinknomore.test.base;
@@ -17,7 +17,6 @@ import android.test.suitebuilder.annotation.SmallTest;
 import com.coyote.drinknomore.data.StatistiquesSQLiteAdapter;
 import com.coyote.drinknomore.entity.Statistiques;
 
-import com.coyote.drinknomore.fixture.StatistiquesDataLoader;
 
 import com.coyote.drinknomore.test.utils.*;
 
@@ -46,13 +45,6 @@ public abstract class StatistiquesTestDBBase extends TestDBBase {
         this.adapter = new StatistiquesSQLiteAdapter(this.ctx);
         this.adapter.open();
 
-        this.entities = new ArrayList<Statistiques>();        
-        this.entities.addAll(StatistiquesDataLoader.getInstance(this.ctx).getMap().values());
-        if (entities.size()>0){
-            this.entity = this.entities.get(TestUtils.generateRandomInt(0,entities.size()-1));
-        }
-
-        this.nbEntities += StatistiquesDataLoader.getInstance(this.ctx).getMap().size();
     }
 
     /* (non-Javadoc)

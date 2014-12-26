@@ -5,7 +5,7 @@
  * Description : 
  * Author(s)   : Harmony
  * Licence     : 
- * Last update : Dec 19, 2014
+ * Last update : Dec 26, 2014
  *
  **************************************************************************/
 package com.coyote.drinknomore;
@@ -43,55 +43,46 @@ public class HomeActivity extends HarmonyFragmentActivity
      * Initialize the buttons click listeners.
      */
     private void initButtons() {
-        this.findViewById(R.id.reponses_list_button)
-                        .setOnClickListener(this);
-        this.findViewById(R.id.questions_list_button)
-                        .setOnClickListener(this);
-        this.findViewById(R.id.statistiques_list_button)
-                        .setOnClickListener(this);
-        this.findViewById(R.id.btn_parametres)
-						.setOnClickListener(this);
-        this.findViewById(R.id.btn_play)
-        				.setOnClickListener(this);
-    }
-    
-    @Override
-    public void onClick(View v) {
-        Intent intent;
-        switch (v.getId()) {
-            case R.id.reponses_list_button:
-                intent = new Intent(this,
-                        ReponsesListActivity.class);
-                break;
+		this.findViewById(R.id.reponses_list_button).setOnClickListener(this);
+		this.findViewById(R.id.questions_list_button).setOnClickListener(this);
+		this.findViewById(R.id.statistiques_list_button).setOnClickListener(
+				this);
+		this.findViewById(R.id.btn_parametres).setOnClickListener(this);
+		this.findViewById(R.id.btn_play).setOnClickListener(this);
+	}
 
-            case R.id.questions_list_button:
-                intent = new Intent(this,
-                        QuestionsListActivity.class);
-                break;
+	@Override
+	public void onClick(View v) {
+		Intent intent;
+		switch (v.getId()) {
+		case R.id.reponses_list_button:
+			intent = new Intent(this, ReponsesListActivity.class);
+			break;
 
-            case R.id.statistiques_list_button:
-                intent = new Intent(this,
-                        StatistiquesListActivity.class);
-                break;
-            
-            case R.id.btn_parametres:
-            	intent = new Intent(this,
-            			ParametresActivity.class);
-            	break;
-            	
-            case R.id.btn_play:
-            	intent = new Intent(this,
-            			JeuActivity.class);
-            	break;
+		case R.id.questions_list_button:
+			intent = new Intent(this, QuestionsListActivity.class);
+			break;
 
-            default:
-                intent = null;
-                break;
-        }
+		case R.id.statistiques_list_button:
+			intent = new Intent(this, StatistiquesListActivity.class);
+			break;
 
-        if (intent != null) {
-            this.startActivity(intent);
-        }
-    }
+		case R.id.btn_parametres:
+			intent = new Intent(this, ParametresActivity.class);
+			break;
+
+		case R.id.btn_play:
+			intent = new Intent(this, JeuActivity.class);
+			break;
+
+		default:
+			intent = null;
+			break;
+		}
+
+		if (intent != null) {
+			this.startActivity(intent);
+		}
+	}
 
 }
