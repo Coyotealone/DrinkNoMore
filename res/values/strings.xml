@@ -82,4 +82,8 @@
 	<string name="timeWidget_Parametres_horaire" />
 	<string name="time_Parametres_horaire"></string>
 	<string name="uri_not_supported">URI not supported</string>
+    <string name="jeu_txtTitle">Jeu</string>
+    <string name="jeu_txtEnigme">Question</string>
+    <string name="jeu_txtReponse">Reponse</string>
+    <string name="jeu_btnValider">Valider</string>
 </resources>

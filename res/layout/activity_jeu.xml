@@ -2,7 +2,38 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
-    
+    android:orientation="vertical"
+    android:weightSum="1">
 
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/jeu_txtTitle"
+        android:id="@+id/jeu_txtTitle"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/jeu_txtEnigme"
+        android:id="@+id/jeu_txtEnigme"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.15" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/jeu_txtReponse"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.20"
+        android:text="@string/jeu_txtReponse" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/jeu_btnValider"
+        android:id="@+id/jeu_btnValider"
+        android:layout_gravity="center_horizontal" />
 </LinearLayout>
