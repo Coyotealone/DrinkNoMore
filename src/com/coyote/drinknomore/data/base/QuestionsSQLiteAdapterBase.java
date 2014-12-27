@@ -35,7 +35,7 @@ import com.coyote.drinknomore.DrinknomoreApplication;
  * You should edit QuestionsAdapter class instead of this<br/>
  * one or you will lose all your modifications.</i></b>
  */
-public abstract class QuestionsSQLiteAdapterBase
+public class QuestionsSQLiteAdapterBase
                         extends SQLiteAdapter<Questions> {
 
     /** TAG for debug purpose. */
