@@ -341,6 +341,18 @@ public class QuestionsSQLiteAdapterBase
                 null);
     }
 
+    public int[] getId()
+    {
+        int[] result = null;
+        ArrayList<Questions> AllQuestions = this.getAll();
+        result = new int[AllQuestions.size()];
+        int index = 0;
+        for (Questions questions1 : AllQuestions) {
+            result[index] = questions1.getId();
+            index++;
+        };
+        return result;
+    }
 
 }
 

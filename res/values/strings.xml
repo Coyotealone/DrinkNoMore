@@ -86,4 +86,8 @@
     <string name="jeu_txtEnigme">Question</string>
     <string name="jeu_txtReponse">Reponse</string>
     <string name="jeu_btnValider">Valider</string>
+    <string name="Jeu_Radio_Rep1">Reponse1</string>
+    <string name="Jeu_Radio_Rep2">Reponse2</string>
+    <string name="Jeu_Radio_Rep3">Reponse3</string>
+    <string name="Jeu_Radio_Rep4">Reponse4</string>
 </resources>

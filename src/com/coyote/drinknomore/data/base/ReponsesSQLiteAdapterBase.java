@@ -37,7 +37,7 @@ import com.coyote.drinknomore.DrinknomoreApplication;
  * You should edit ReponsesAdapter class instead of this<br/>
  * one or you will lose all your modifications.</i></b>
  */
-public abstract class ReponsesSQLiteAdapterBase
+public class ReponsesSQLiteAdapterBase
                         extends SQLiteAdapter<Reponses> {
 
     /** TAG for debug purpose. */
