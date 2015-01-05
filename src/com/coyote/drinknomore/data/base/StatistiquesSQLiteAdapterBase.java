@@ -34,7 +34,7 @@ import com.coyote.drinknomore.DrinknomoreApplication;
  * You should edit StatistiquesAdapter class instead of this<br/>
  * one or you will lose all your modifications.</i></b>
  */
-public abstract class StatistiquesSQLiteAdapterBase
+public class StatistiquesSQLiteAdapterBase
                         extends SQLiteAdapter<Statistiques> {
 
     /** TAG for debug purpose. */
