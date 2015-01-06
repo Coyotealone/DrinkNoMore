@@ -85,11 +85,7 @@ public class JeuActivity extends Activity {
          *  {@value #questions} Questions
          *  @see com.coyote.drinknomore.entity.Questions
          */
-        final Questions questions;
-        /**
-         *  {@value #stats} Statistiques
-         *  @see com.coyote.drinknomore.entity.Statistiques
-         */
+
         final Statistiques stats = new Statistiques();
         /**
          *  {@value #questionsSQL} QuestionsSQLiteAdapaterBase
@@ -110,6 +106,8 @@ public class JeuActivity extends Activity {
          */
         final StatistiquesSQLiteAdapterBase statsSQL = new StatistiquesSQLiteAdapterBase(this);
 
+        SharedPreferences.Editor editor = settings.edit();
+
         /**
          *  open db questionsSQL
          */
@@ -118,13 +116,12 @@ public class JeuActivity extends Activity {
          *  open db reponsesSQL
          */
         reponsesSQL.open();
-
         /**
          * String containing the question recovered database
          * {@value #enigme} String
          * init empty
          */
-        String enigme = "";
+        String enigme = "Aucune donnée enregistrée";
         /**
          *  String containing the good response recovered database
          *  {@value #reponses} String
@@ -154,66 +151,71 @@ public class JeuActivity extends Activity {
          * {@value 0}
          */
         int min = 0;
-        /**
-         * int maximum into random
-         * {@value nbQuestions.length - 1}
-         */
-        int max = nbQuestions.length - 1;
-        /**
-         * {@value #new Random}
-         */
-        Random rand = new Random();
-        // nextInt is normally exclusive of the top value,
-        // so add 1 to make it inclusive
-        int randomNum = rand.nextInt((max - min) + 1) + min;
 
-        /**
-         * init questions compared to id in db
-         * {@value #questionsSQL.getByID}
-         * @param int value array nbQuestions
-         */
-        questions = questionsSQL.getByID(nbQuestions[randomNum]);
-        /**
-         * set enigme with getEnigme()
-         * {@value #questions.getEnigme()}
-         */
-        enigme = questions.getEnigme();
-        /**
-         * set reponses with getArguments()
-         * {@value #questions.getArguments()}
-         */
-        reponses = questions.getArguments();
+        if(nbQuestions.length > 1) {
+            /**
+             * int maximum into random
+             * {@value nbQuestions.length - 1}
+             */
+            int max = nbQuestions.length - 1;
+            /**
+             * {@value #new Random}
+             */
+            Random rand = new Random();
+            // nextInt is normally exclusive of the top value,
+            // so add 1 to make it inclusive
+            int randomNum = rand.nextInt((max - min) + 1) + min;
+
+            /**
+             * init questions compared to id in db
+             * {@value #questionsSQL.getByID}
+             * @param int value array nbQuestions
+             */
+            Questions questions = questionsSQL.getByID(nbQuestions[randomNum]);
+            editor.putInt("questions_id", randomNum);
+            /**
+             * set enigme with getEnigme()
+             * {@value #questions.getEnigme()}
+             */
+            enigme = questions.getEnigme();
+            /**
+             * set reponses with getArguments()
+             * {@value #questions.getArguments()}
+             */
+            reponses = questions.getArguments();
+            /**
+             * split choixreponses
+             * @param ;
+             * @return array String
+             */
+            choixreponses = reponses.split(";");
+            /**
+             * set text radioButton
+             * {@value #choixreponses[0]}
+             */
+            rdbtnRep1.setText(choixreponses[0]);
+            /**
+             * set text radioButton
+             * {@value #choixreponses[1]}
+             */
+            rdbtnRep2.setText(choixreponses[1]);
+            /**
+             * set text radioButton
+             * {@value #choixreponses[2]}
+             */
+            rdbtnRep3.setText(choixreponses[2]);
+            /**
+             * set text radioButton
+             * {@value #choixreponses[3]}
+             */
+            rdbtnRep4.setText(choixreponses[3]);
+        }
         /**
          * set text view enigme
          * {@value #enigme}
          */
         txtviewEnigme.setText(enigme);
-        /**
-         * split choixreponses
-         * @param ;
-         * @return array String
-         */
-        choixreponses = reponses.split(";");
-        /**
-         * set text radioButton
-         * {@value #choixreponses[0]}
-         */
-        rdbtnRep1.setText(choixreponses[0]);
-        /**
-         * set text radioButton
-         * {@value #choixreponses[1]}
-         */
-        rdbtnRep2.setText(choixreponses[1]);
-        /**
-         * set text radioButton
-         * {@value #choixreponses[2]}
-         */
-        rdbtnRep3.setText(choixreponses[2]);
-        /**
-         * set text radioButton
-         * {@value #choixreponses[3]}
-         */
-        rdbtnRep4.setText(choixreponses[3]);
+
 
         /**
          * Button init by id activity_jeu
@@ -237,6 +239,12 @@ public class JeuActivity extends Activity {
                  *
                  */
                 SharedPreferences.Editor editor = settings.edit();
+
+                Integer question_id = settings.getInt("questions_id", 0);
+                if(question_id > 0 ){
+                    Questions questions = questionsSQL.getByID(question_id);
+
+
                 /**
                  *
                  */
@@ -244,7 +252,7 @@ public class JeuActivity extends Activity {
                 /**
                  *
                  */
-                reponse = allreponses.get(0).getSolution();
+                reponse = allreponses.get(0).getSolution();}
                 /**
                  *  find radiobutton checked
                  *  @value #getCheckedRadioButtonId()
