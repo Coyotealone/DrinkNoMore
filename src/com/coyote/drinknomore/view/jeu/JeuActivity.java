@@ -183,47 +183,146 @@ public class JeuActivity extends Activity {
          * {@value #questions.getArguments()}
          */
         reponses = questions.getArguments();
+        /**
+         * set text view enigme
+         * {@value #enigme}
+         */
         txtviewEnigme.setText(enigme);
+        /**
+         * split choixreponses
+         * @param ;
+         * @return array String
+         */
         choixreponses = reponses.split(";");
+        /**
+         * set text radioButton
+         * {@value #choixreponses[0]}
+         */
         rdbtnRep1.setText(choixreponses[0]);
+        /**
+         * set text radioButton
+         * {@value #choixreponses[1]}
+         */
         rdbtnRep2.setText(choixreponses[1]);
+        /**
+         * set text radioButton
+         * {@value #choixreponses[2]}
+         */
         rdbtnRep3.setText(choixreponses[2]);
+        /**
+         * set text radioButton
+         * {@value #choixreponses[3]}
+         */
         rdbtnRep4.setText(choixreponses[3]);
 
+        /**
+         * Button init by id activity_jeu
+         *
+         */
         Button btnJeu_valider = (Button) this
                 .findViewById(R.id.jeu_btnValider);
+        /**
+         * Action onClickButton btnJeu_valider
+         */
         btnJeu_valider.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-
+                /**
+                 * String reponse containing value reponse about question
+                 * @value empty
+                 */
                 String reponse = "";
-                RadioButton RadioButtonReponse;
+                /**
+                 *
+                 */
                 SharedPreferences.Editor editor = settings.edit();
-
+                /**
+                 *
+                 */
                 ArrayList<Reponses> allreponses = questions.getReponse();
+                /**
+                 *
+                 */
                 reponse = allreponses.get(0).getSolution();
-
+                /**
+                 *  find radiobutton checked
+                 *  @value #getCheckedRadioButtonId()
+                 */
                 int selectedId = rdgpRep.getCheckedRadioButtonId();
-
-                // find the radiobutton by returned id
-                RadioButtonReponse = (RadioButton) findViewById(selectedId);
-
-                Integer verifreponse = Integer.parseInt(RadioButtonReponse.getText().toString());
-
-                if(Integer.parseInt(reponse) == verifreponse) {
+                /**
+                 * Find the radiobutton by returned id
+                 */
+                RadioButton RadioButtonReponse = (RadioButton) findViewById(selectedId);
+                /**
+                 *
+                 */
+                String verifreponse = RadioButtonReponse.getText().toString();
+                /**
+                 * check value response checked and response question
+                 */
+                if(reponse.equals(verifreponse)) {
+                    /**
+                     *  open db stats
+                     */
                     statsSQL.open();
+                    /**
+                     *  set number errors
+                     *  @value #setNberreurs
+                     *  @param int erreurs[0]
+                     */
                     stats.setNberreurs(erreurs[0]);
+                    /**
+                     *  set date
+                     *  @value #setDate
+                     *  @param DateTime.now()
+                     */
                     stats.setDate(DateTime.now());
+                    /**
+                     *  insert stats in db
+                     *  @param stats
+                     */
                     statsSQL.insert(stats);
+                    /**
+                     *  send toast
+                     *  @param JeuActivity.this
+                     *  @param String "Bonne réponse :)"
+                     *  @param int Toast.LENGTH_SHORT
+                     */
                     Toast.makeText(JeuActivity.this,
                             "Bonne réponse :)", Toast.LENGTH_SHORT).show();
+                    /**
+                     *  init intent in new view
+                     *  @param JeuActivity.this
+                     *  @param HomeActivity.class
+                     */
                     Intent intent = new Intent(JeuActivity.this, HomeActivity.class);
+                    /**
+                     *  show new intent
+                     *  @param intent
+                     */
                     startActivity(intent);
                 }
+                /**
+                 *
+                 */
                 else{
+                    /**
+                     *  incremented number errors
+                     */
                     erreurs[0]++;
+                    /**
+                     *  set number errors in SharedPreferences
+                     *  @param String "nb_erreurs"
+                     *  @param Integer erreurs[0]
+                     */
                     editor.putInt("nb_erreurs", erreurs[0]);
+                    /**
+                     *  send toast
+                     *  @param JeuActivity.this
+                     *  @param String "Try Again !"
+                     *  @param int Toast.LENGTH_SHORT
+                     */
                     Toast.makeText(JeuActivity.this,
                             "Try Again !", Toast.LENGTH_SHORT).show();
 
