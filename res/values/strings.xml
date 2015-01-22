@@ -90,4 +90,15 @@
     <string name="Jeu_Radio_Rep2">Reponse2</string>
     <string name="Jeu_Radio_Rep3">Reponse3</string>
     <string name="Jeu_Radio_Rep4">Reponse4</string>
+    <string name="Jeu_BonneReponse">Bonne réponse</string>
+    <string name="Jeu_MauvaiseReponse">Try Again</string>
+    <string name="Jeu_Nb_Erreurs">nb_erreurs</string>
+    <string name="Parametres_cb_horaire_lundi">cb_horaire_lundi</string>
+    <string name="Parametres_cb_horaire_mardi">cb_horaire_mardi</string>
+    <string name="Parametres_cb_horaire_jeudi">cb_horaire_jeudi</string>
+    <string name="Parametres_cb_horaire_mercredi">cb_horaire_mercredi</string>
+    <string name="Parametres_cb_horaire_vendredi">cb_horaire_vendredi</string>
+    <string name="Parametres_cb_horaire_samedi">cb_horaire_samedi</string>
+    <string name="Parametres_cb_horaire_dimanche">cb_horaire_dimanche</string>
+    <string name="Parametres_timeWidget_horaire">timeWidget_Parametres_horaire</string>
 </resources>

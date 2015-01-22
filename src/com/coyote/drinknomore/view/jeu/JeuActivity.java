@@ -136,29 +136,14 @@ public class JeuActivity extends Activity {
          * {@value #erreurs} Integer[]
          * init 0 if SharedPreferences empty
          */
-        final Integer[] erreurs = {settings.getInt("nb_erreurs", 0)};
+        final Integer[] erreurs = {settings.getInt(getString(R.string.Jeu_Nb_Erreurs), 0)};
         /**
          * Array int containing all id Questions
          * {@value #getId()}
          */
         int[] nbQuestions = questionsSQL.getId();
-        /**
-         * int minimum into random
-         * {@value 0}
-         */
-        int min = 0;
-        /**
-         * int maximum into random
-         * {@value nbQuestions.length - 1}
-         */
-        int max = nbQuestions.length - 1;
-        /**
-         * {@value #new Random}
-         */
-        Random rand = new Random();
-        // nextInt is normally exclusive of the top value,
-        // so add 1 to make it inclusive
-        int randomNum = rand.nextInt((max - min) + 1) + min;
+
+        int randomNum = Fonctions.RandomId(nbQuestions.length);
         /**
          * init questions compared to id in db
          * {@value #questionsSQL.getByID}
@@ -190,26 +175,28 @@ public class JeuActivity extends Activity {
          * set text radioButton
          * {@value #choixreponses[0]}
          */
-        rdbtnRep1.setText(choixreponses[0]);
-        /**
-         * set text radioButton
-         * {@value #choixreponses[1]}
-         */
-        rdbtnRep2.setText(choixreponses[1]);
-        /**
-         * set text radioButton
-         * {@value #choixreponses[2]}
-         */
-        rdbtnRep3.setText(choixreponses[2]);
-        /**
-         * set text radioButton
-         * {@value #choixreponses[3]}
-         */
-        rdbtnRep4.setText(choixreponses[3]);
-        /**
-         * Button init by id activity_jeu
-         *
-         */
+        if(choixreponses.length > 3) {
+            rdbtnRep1.setText(choixreponses[0]);
+            /**
+             * set text radioButton
+             * {@value #choixreponses[1]}
+             */
+            rdbtnRep2.setText(choixreponses[1]);
+            /**
+             * set text radioButton
+             * {@value #choixreponses[2]}
+             */
+            rdbtnRep3.setText(choixreponses[2]);
+            /**
+             * set text radioButton
+             * {@value #choixreponses[3]}
+             */
+            rdbtnRep4.setText(choixreponses[3]);
+            /**
+             * Button init by id activity_jeu
+             *
+             */
+        }
         Button btnJeu_valider = (Button) this
                 .findViewById(R.id.jeu_btnValider);
         /**
@@ -234,7 +221,8 @@ public class JeuActivity extends Activity {
                 /**
                  * set string reponse about object allreponses with function getSolution()
                  */
-                reponse = allreponses.get(0).getSolution();
+                if(allreponses.size() > 0)
+                    reponse = allreponses.get(0).getSolution();
                 /**
                  * find radiobutton checked
                  * @value #getCheckedRadioButtonId()
@@ -276,11 +264,11 @@ public class JeuActivity extends Activity {
                     /**
                      * send toast
                      * @param JeuActivity.this
-                     * @param String "Bonne réponse :)"
+                     * @param String R.string.Jeu_BonneReponse
                      * @param int Toast.LENGTH_SHORT
                      */
                     Toast.makeText(JeuActivity.this,
-                            "Bonne réponse :)", Toast.LENGTH_SHORT).show();
+                            getString(R.string.Jeu_BonneReponse), Toast.LENGTH_SHORT).show();
                     /**
                      * init intent in new view
                      * @param JeuActivity.this
@@ -303,18 +291,18 @@ public class JeuActivity extends Activity {
                     erreurs[0]++;
                     /**
                      * set number errors in SharedPreferences
-                     * @param String "nb_erreurs"
+                     * @param String R.string.Jeu_Nb_Erreurs
                      * @param Integer erreurs[0]
                      */
-                    editor.putInt("nb_erreurs", erreurs[0]);
+                    editor.putInt(getString(R.string.Jeu_Nb_Erreurs), erreurs[0]);
                     /**
                      * send toast
                      * @param JeuActivity.this
-                     * @param String "Try Again !"
+                     * @param String R.string.Jeu_MauvaiseReponse
                      * @param int Toast.LENGTH_SHORT
                      */
                     Toast.makeText(JeuActivity.this,
-                            "Try Again !", Toast.LENGTH_SHORT).show();
+                            getString(R.string.Jeu_MauvaiseReponse), Toast.LENGTH_SHORT).show();
                 }
             }
         });

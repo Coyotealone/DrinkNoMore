@@ -6,6 +6,8 @@ import com.coyote.drinknomore.data.base.QuestionsSQLiteAdapterBase;
 import com.coyote.drinknomore.entity.Questions;
 import com.coyote.drinknomore.entity.Reponses;
 
+import java.util.Random;
+
 public class Fonctions {
 
     /**
@@ -23,4 +25,23 @@ public class Fonctions {
 		}
 		return result;
 	}
+
+    public static Integer RandomId(int maxId)
+    {
+        int min = 0;
+        /**
+         * int maximum into random
+         * {@value nbQuestions.length - 1}
+         */
+        int max = maxId - 1;
+        /**
+         * {@value #new Random}
+         */
+        Random rand = new Random();
+        // nextInt is normally exclusive of the top value,
+        // so add 1 to make it inclusive
+        int randomNum = rand.nextInt((max - min) + 1) + min;
+
+        return randomNum;
+    }
 }
