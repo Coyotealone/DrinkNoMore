@@ -8,6 +8,11 @@ import com.coyote.drinknomore.entity.Reponses;
 
 public class Fonctions {
 
+    /**
+     *
+     * @param value
+     * @return String
+     */
 	public static String SplitTime(String value) {
 		String[] nospace = value.split(" ");
 		String result = "";

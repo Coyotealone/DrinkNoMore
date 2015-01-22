@@ -13,7 +13,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.coyote.drinknomore.Fonctions;
 import com.coyote.drinknomore.HomeActivity;
 import com.coyote.drinknomore.R;
@@ -24,27 +23,24 @@ import com.coyote.drinknomore.data.base.StatistiquesSQLiteAdapterBase;
 import com.coyote.drinknomore.entity.Questions;
 import com.coyote.drinknomore.entity.Reponses;
 import com.coyote.drinknomore.entity.Statistiques;
-
 import org.joda.time.DateTime;
-
 import java.util.ArrayList;
 import java.util.Random;
 
 public class JeuActivity extends Activity {
-
     /**
      * name SharedPreferences
+     *
      * @value #PREFS_NAME String
      */
     public static final String PREFS_NAME = "prefFileJeu";
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         //Show view activity_jeu
         this.setContentView(R.layout.activity_jeu);
-
         /**
          * {@value #settings} SharePreferences
          * @param String PREFS_NAME
@@ -52,68 +48,69 @@ public class JeuActivity extends Activity {
          */
         final SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
         /**
-         *  {@value #viewTxtEnigme} TextView
-         *  init by id view activity_jeu
+         * {@value #viewTxtEnigme} TextView
+         * init by id view activity_jeu
          */
         final TextView txtviewEnigme = (TextView) findViewById(R.id.jeu_txtEnigme);
         /**
-         *  {@value #rdbtnRep1} RadioButton
-         *  init by id view activity_jeu
+         * {@value #rdbtnRep1} RadioButton
+         * init by id view activity_jeu
          */
         final RadioButton rdbtnRep1 = (RadioButton) findViewById(R.id.Jeu_Radio_Rep1);
         /**
-         *  {@value #rdbtnRep2} RadioButton
-         *  init by id view activity_jeu
+         * {@value #rdbtnRep2} RadioButton
+         * init by id view activity_jeu
          */
         final RadioButton rdbtnRep2 = (RadioButton) findViewById(R.id.Jeu_Radio_Rep2);
         /**
-         *  {@value #rdbtnRep3} RadioButton
-         *  init by id view activity_jeu
+         * {@value #rdbtnRep3} RadioButton
+         * init by id view activity_jeu
          */
         final RadioButton rdbtnRep3 = (RadioButton) findViewById(R.id.Jeu_Radio_Rep3);
         /**
-         *  {@value #rdbtnRep4} RadioButton
-         *  init by id view activity_jeu
+         * {@value #rdbtnRep4} RadioButton
+         * init by id view activity_jeu
          */
         final RadioButton rdbtnRep4 = (RadioButton) findViewById(R.id.Jeu_Radio_Rep4);
         /**
-         *  {@value #rdgpRep} RadioGroup
-         *  init by id view activity_jeu
+         * {@value #rdgpRep} RadioGroup
+         * init by id view activity_jeu
          */
         final RadioGroup rdgpRep = (RadioGroup) findViewById(R.id.radioReponses);
         /**
-         *  {@value #questions} Questions
-         *  @see com.coyote.drinknomore.entity.Questions
+         * {@value #questions} Questions
+         * @see com.coyote.drinknomore.entity.Questions
          */
-
+        final Questions questions;
+        /**
+         * {@value #stats} Statistiques
+         * @see com.coyote.drinknomore.entity.Statistiques
+         */
         final Statistiques stats = new Statistiques();
         /**
-         *  {@value #questionsSQL} QuestionsSQLiteAdapaterBase
-         *  @see com.coyote.drinknomore.data.base.QuestionsSQLiteAdapterBase
-         *  @param this
+         * {@value #questionsSQL} QuestionsSQLiteAdapaterBase
+         * @see com.coyote.drinknomore.data.base.QuestionsSQLiteAdapterBase
+         * @param this
          */
         final QuestionsSQLiteAdapterBase questionsSQL = new QuestionsSQLiteAdapterBase(this);
         /**
-         *  {@value #reponsesSQL} ReponsesSQLiteAdapaterBase
-         *  @see com.coyote.drinknomore.data.base.ReponsesSQLiteAdapterBase
-         *  @param this
+         * {@value #reponsesSQL} ReponsesSQLiteAdapaterBase
+         * @see com.coyote.drinknomore.data.base.ReponsesSQLiteAdapterBase
+         * @param this
          */
         final ReponsesSQLiteAdapterBase reponsesSQL = new ReponsesSQLiteAdapterBase(this);
         /**
-         *  {@value #statsSQL} StatistiquesSQLiteAdapaterBase
-         *  @see com.coyote.drinknomore.data.base.ReponsesSQLiteAdapterBase
-         *  @param this
+         * {@value #statsSQL} StatistiquesSQLiteAdapaterBase
+         * @see com.coyote.drinknomore.data.base.ReponsesSQLiteAdapterBase
+         * @param this
          */
         final StatistiquesSQLiteAdapterBase statsSQL = new StatistiquesSQLiteAdapterBase(this);
-
-        SharedPreferences.Editor editor = settings.edit();
-
         /**
-         *  open db questionsSQL
+         * open db questionsSQL
          */
         questionsSQL.open();
         /**
-         *  open db reponsesSQL
+         * open db reponsesSQL
          */
         reponsesSQL.open();
         /**
@@ -121,26 +118,25 @@ public class JeuActivity extends Activity {
          * {@value #enigme} String
          * init empty
          */
-        String enigme = "Aucune donnée enregistrée";
+        String enigme = "";
         /**
-         *  String containing the good response recovered database
-         *  {@value #reponses} String
-         *  init empty
+         * String containing the good response recovered database
+         * {@value #reponses} String
+         * init empty
          */
         String reponses = "";
         /**
-         *  Array String containing responses recovered database
-         *  {@value #choixreponses} String[]
-         *  init null
+         * Array String containing responses recovered database
+         * {@value #choixreponses} String[]
+         * init null
          */
         String[] choixreponses = null;
         /**
-         *  Array Integer containing number errors
-         *  {@value #erreurs} Integer[]
-         *  init 0 if SharedPreferences empty
+         * Array Integer containing number errors
+         * {@value #erreurs} Integer[]
+         * init 0 if SharedPreferences empty
          */
         final Integer[] erreurs = {settings.getInt("nb_erreurs", 0)};
-
         /**
          * Array int containing all id Questions
          * {@value #getId()}
@@ -151,72 +147,65 @@ public class JeuActivity extends Activity {
          * {@value 0}
          */
         int min = 0;
-
-        if(nbQuestions.length > 1) {
-            /**
-             * int maximum into random
-             * {@value nbQuestions.length - 1}
-             */
-            int max = nbQuestions.length - 1;
-            /**
-             * {@value #new Random}
-             */
-            Random rand = new Random();
-            // nextInt is normally exclusive of the top value,
-            // so add 1 to make it inclusive
-            int randomNum = rand.nextInt((max - min) + 1) + min;
-
-            /**
-             * init questions compared to id in db
-             * {@value #questionsSQL.getByID}
-             * @param int value array nbQuestions
-             */
-            Questions questions = questionsSQL.getByID(nbQuestions[randomNum]);
-            editor.putInt("questions_id", randomNum);
-            /**
-             * set enigme with getEnigme()
-             * {@value #questions.getEnigme()}
-             */
-            enigme = questions.getEnigme();
-            /**
-             * set reponses with getArguments()
-             * {@value #questions.getArguments()}
-             */
-            reponses = questions.getArguments();
-            /**
-             * split choixreponses
-             * @param ;
-             * @return array String
-             */
-            choixreponses = reponses.split(";");
-            /**
-             * set text radioButton
-             * {@value #choixreponses[0]}
-             */
-            rdbtnRep1.setText(choixreponses[0]);
-            /**
-             * set text radioButton
-             * {@value #choixreponses[1]}
-             */
-            rdbtnRep2.setText(choixreponses[1]);
-            /**
-             * set text radioButton
-             * {@value #choixreponses[2]}
-             */
-            rdbtnRep3.setText(choixreponses[2]);
-            /**
-             * set text radioButton
-             * {@value #choixreponses[3]}
-             */
-            rdbtnRep4.setText(choixreponses[3]);
-        }
+        /**
+         * int maximum into random
+         * {@value nbQuestions.length - 1}
+         */
+        int max = nbQuestions.length - 1;
+        /**
+         * {@value #new Random}
+         */
+        Random rand = new Random();
+        // nextInt is normally exclusive of the top value,
+        // so add 1 to make it inclusive
+        int randomNum = rand.nextInt((max - min) + 1) + min;
+        /**
+         * init questions compared to id in db
+         * {@value #questionsSQL.getByID}
+         * @param int value array nbQuestions
+         */
+        questions = questionsSQL.getByID(nbQuestions[randomNum]);
+        /**
+         * set enigme with getEnigme()
+         * {@value #questions.getEnigme()}
+         */
+        enigme = questions.getEnigme();
+        /**
+         * set reponses with getArguments()
+         * {@value #questions.getArguments()}
+         */
+        reponses = questions.getArguments();
         /**
          * set text view enigme
          * {@value #enigme}
          */
         txtviewEnigme.setText(enigme);
-
-
+        /**
+         * split choixreponses
+         * @param ;
+         * @return array String
+         */
+        choixreponses = reponses.split(";");
+        /**
+         * set text radioButton
+         * {@value #choixreponses[0]}
+         */
+        rdbtnRep1.setText(choixreponses[0]);
+        /**
+         * set text radioButton
+         * {@value #choixreponses[1]}
+         */
+        rdbtnRep2.setText(choixreponses[1]);
+        /**
+         * set text radioButton
+         * {@value #choixreponses[2]}
+         */
+        rdbtnRep3.setText(choixreponses[2]);
+        /**
+         * set text radioButton
+         * {@value #choixreponses[3]}
+         */
+        rdbtnRep4.setText(choixreponses[3]);
         /**
          * Button init by id activity_jeu
          *
@@ -227,7 +216,6 @@ public class JeuActivity extends Activity {
          * Action onClickButton btnJeu_valider
          */
         btnJeu_valider.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 /**
@@ -239,23 +227,17 @@ public class JeuActivity extends Activity {
                  *
                  */
                 SharedPreferences.Editor editor = settings.edit();
-
-                Integer question_id = settings.getInt("questions_id", 0);
-                if(question_id > 0 ){
-                    Questions questions = questionsSQL.getByID(question_id);
-
-
                 /**
-                 *
+                 *  Array containing all responses
                  */
                 ArrayList<Reponses> allreponses = questions.getReponse();
                 /**
-                 *
+                 * set string reponse about object allreponses with function getSolution()
                  */
-                reponse = allreponses.get(0).getSolution();}
+                reponse = allreponses.get(0).getSolution();
                 /**
-                 *  find radiobutton checked
-                 *  @value #getCheckedRadioButtonId()
+                 * find radiobutton checked
+                 * @value #getCheckedRadioButtonId()
                  */
                 int selectedId = rdgpRep.getCheckedRadioButtonId();
                 /**
@@ -263,77 +245,76 @@ public class JeuActivity extends Activity {
                  */
                 RadioButton RadioButtonReponse = (RadioButton) findViewById(selectedId);
                 /**
-                 *
+                 *  set verifreponse about radio button check
                  */
                 String verifreponse = RadioButtonReponse.getText().toString();
                 /**
                  * check value response checked and response question
                  */
-                if(reponse.equals(verifreponse)) {
+                if (reponse.equals(verifreponse)) {
                     /**
-                     *  open db stats
+                     * open db stats
                      */
                     statsSQL.open();
                     /**
-                     *  set number errors
-                     *  @value #setNberreurs
-                     *  @param int erreurs[0]
+                     * set number errors
+                     * @value #setNberreurs
+                     * @param int erreurs[0]
                      */
                     stats.setNberreurs(erreurs[0]);
                     /**
-                     *  set date
-                     *  @value #setDate
-                     *  @param DateTime.now()
+                     * set date
+                     * @value #setDate
+                     * @param DateTime.now()
                      */
                     stats.setDate(DateTime.now());
                     /**
-                     *  insert stats in db
-                     *  @param stats
+                     * insert stats in db
+                     * @param stats
                      */
                     statsSQL.insert(stats);
                     /**
-                     *  send toast
-                     *  @param JeuActivity.this
-                     *  @param String "Bonne réponse :)"
-                     *  @param int Toast.LENGTH_SHORT
+                     * send toast
+                     * @param JeuActivity.this
+                     * @param String "Bonne réponse :)"
+                     * @param int Toast.LENGTH_SHORT
                      */
                     Toast.makeText(JeuActivity.this,
                             "Bonne réponse :)", Toast.LENGTH_SHORT).show();
                     /**
-                     *  init intent in new view
-                     *  @param JeuActivity.this
-                     *  @param HomeActivity.class
+                     * init intent in new view
+                     * @param JeuActivity.this
+                     * @param HomeActivity.class
                      */
                     Intent intent = new Intent(JeuActivity.this, HomeActivity.class);
                     /**
-                     *  show new intent
-                     *  @param intent
+                     * show new intent
+                     * @param intent
                      */
                     startActivity(intent);
                 }
                 /**
                  *
                  */
-                else{
+                else {
                     /**
-                     *  incremented number errors
+                     * incremented number errors
                      */
                     erreurs[0]++;
                     /**
-                     *  set number errors in SharedPreferences
-                     *  @param String "nb_erreurs"
-                     *  @param Integer erreurs[0]
+                     * set number errors in SharedPreferences
+                     * @param String "nb_erreurs"
+                     * @param Integer erreurs[0]
                      */
                     editor.putInt("nb_erreurs", erreurs[0]);
                     /**
-                     *  send toast
-                     *  @param JeuActivity.this
-                     *  @param String "Try Again !"
-                     *  @param int Toast.LENGTH_SHORT
+                     * send toast
+                     * @param JeuActivity.this
+                     * @param String "Try Again !"
+                     * @param int Toast.LENGTH_SHORT
                      */
                     Toast.makeText(JeuActivity.this,
                             "Try Again !", Toast.LENGTH_SHORT).show();
-
                 }
             }
         });
