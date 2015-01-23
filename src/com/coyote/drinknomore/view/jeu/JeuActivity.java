@@ -25,6 +25,7 @@ import com.coyote.drinknomore.entity.Questions;
 import com.coyote.drinknomore.entity.Reponses;
 import com.coyote.drinknomore.entity.Statistiques;
 import com.coyote.drinknomore.harmony.widget.TimeWidget;
+import com.coyote.drinknomore.view.YoutubeActivity;
 
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
@@ -334,6 +335,10 @@ public class JeuActivity extends Activity {
                      */
                     Toast.makeText(JeuActivity.this,
                             getString(R.string.Jeu_MauvaiseReponse), Toast.LENGTH_SHORT).show();
+
+                    //YoutubeActivity ya = new YoutubeActivity();
+                    Intent intent = new Intent(JeuActivity.this, YoutubeActivity.class);
+                    startActivity(intent);
                     //WebService wb = new WebService(JeuActivity.this);
                     //wb.execute("https://www.youtube.com/watch?v=r2ShaMdKF6E");
 

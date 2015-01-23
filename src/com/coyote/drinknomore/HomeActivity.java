@@ -2,15 +2,16 @@
  * HomeActivity.java, drinknomore Android
  *
  * Copyright 2014
- * Description : 
+ * Description :
  * Author(s)   : Harmony
- * Licence     : 
+ * Licence     :
  * Last update : Dec 26, 2014
  *
  **************************************************************************/
 package com.coyote.drinknomore;
 
 import com.coyote.drinknomore.harmony.view.HarmonyFragmentActivity;
+import com.coyote.drinknomore.view.YoutubeActivity;
 import com.coyote.drinknomore.view.reponses.ReponsesListActivity;
 import com.coyote.drinknomore.view.jeu.JeuActivity;
 import com.coyote.drinknomore.view.jeu.ParametresActivity;
@@ -28,14 +29,14 @@ import android.view.View.OnClickListener;
  * BEWARE : This class is regenerated with orm:generate:crud. Don't modify it.
  * @see android.app.Activity
  */
-public class HomeActivity extends HarmonyFragmentActivity 
+public class HomeActivity extends HarmonyFragmentActivity
         implements OnClickListener {
 
     @Override
     public void onCreate(Bundle savedInstanceState)    {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.main);
-        
+
         this.initButtons();
     }
 
@@ -45,10 +46,10 @@ public class HomeActivity extends HarmonyFragmentActivity
     private void initButtons() {
 		this.findViewById(R.id.reponses_list_button).setOnClickListener(this);
 		this.findViewById(R.id.questions_list_button).setOnClickListener(this);
-		this.findViewById(R.id.statistiques_list_button).setOnClickListener(
-				this);
+		this.findViewById(R.id.statistiques_list_button).setOnClickListener(this);
 		this.findViewById(R.id.btn_parametres).setOnClickListener(this);
 		this.findViewById(R.id.btn_play).setOnClickListener(this);
+        this.findViewById(R.id.btn_youtube).setOnClickListener(this);
 	}
 
 	@Override
@@ -74,6 +75,10 @@ public class HomeActivity extends HarmonyFragmentActivity
 		case R.id.btn_play:
 			intent = new Intent(this, JeuActivity.class);
 			break;
+
+        case R.id.btn_youtube:
+            intent = new Intent(this, YoutubeActivity.class);
+            break;
 
 		default:
 			intent = null;
