@@ -88,60 +88,14 @@ public class JeuActivity extends Activity {
          */
         final RadioGroup rdgpRep = (RadioGroup) findViewById(R.id.radioReponses);
 
-        Calendar rightNow = Calendar.getInstance();
-        String day_of_week = Fonctions.NameDay(rightNow.get(Calendar.DAY_OF_WEEK));
-
         final SharedPreferences settingsParameters = getSharedPreferences(PREFS_PARAMETERS, 0);
 
+        Calendar calendar_now = Calendar.getInstance();
+        String day_of_week = Fonctions.NameDay(calendar_now.get(Calendar.DAY_OF_WEEK));
+
         Boolean checkday = checkday(settingsParameters, day_of_week);
-        /*switch (day_of_week) {
-            case "1":  checkday = settingsParameters.getBoolean(
-                    getString(R.string.Parametres_cb_horaire_dimanche), false);
-                break;
-            case "2":  checkday = settingsParameters.getBoolean(
-                    getString(R.string.Parametres_cb_horaire_lundi), false);
-                break;
-            case "3":  checkday = settingsParameters.getBoolean(
-                    getString(R.string.Parametres_cb_horaire_mardi), false);
-                break;
-            case "4":  checkday = settingsParameters.getBoolean(
-                    getString(R.string.Parametres_cb_horaire_mercredi), false);
-                break;
-            case "5":  checkday = settingsParameters.getBoolean(
-                    getString(R.string.Parametres_cb_horaire_jeudi), false);
-                break;
-            case "6":  checkday = settingsParameters.getBoolean(
-                    getString(R.string.Parametres_cb_horaire_vendredi), false);
-                break;
-            case "7":  checkday = settingsParameters.getBoolean(
-                    getString(R.string.Parametres_cb_horaire_samedi), false);
-                break;
-            default: checkday = false;
-                break;
-        }*/
 
-        String time_save = settingsParameters.getString(
-                getString(R.string.Parametres_timeWidget_horaire),null);
-
-        DateTimeFormatter formatter = DateTimeFormat.forPattern("HH:mm");
-        DateTime datetime_save = formatter.parseDateTime(time_save);
-        String time_now = String.valueOf(rightNow.get(Calendar.HOUR)) + ':' +
-                String.valueOf(rightNow.get(Calendar.MINUTE));
-        DateTime datetime_now = formatter.parseDateTime(time_now);
-            /*if(datetime_save.compareTo(datetime_now) < 0)
-            {
-                //Accéder au question
-                Toast.makeText(JeuActivity.this,
-                        "Timesave est avant stringtimenow!", Toast.LENGTH_SHORT).show();
-            }
-            if(datetime_save.compareTo(datetime_now) > 0)
-            {
-                //Ne pas accéder au question
-                Toast.makeText(JeuActivity.this,
-                        "Timesave est après stringtimenow!", Toast.LENGTH_SHORT).show();
-            }*/
-
-        if(checkday == false && datetime_save.compareTo(datetime_now) > 0)
+        if(checkday == true && (compareDateTime(settingsParameters, calendar_now) > 0))
         {
             Toast.makeText(JeuActivity.this,
                     "Tu ne peux pas jouer !", Toast.LENGTH_SHORT).show();
@@ -417,5 +371,18 @@ public class JeuActivity extends Activity {
                 break;
         }
         return checkday;
+    }
+
+    private Integer compareDateTime(SharedPreferences settingsParameters, Calendar calendar_now)
+    {
+        String time_save = settingsParameters.getString(
+                getString(R.string.Parametres_timeWidget_horaire),null);
+
+        DateTimeFormatter formatter = DateTimeFormat.forPattern("HH:mm");
+        DateTime datetime_save = formatter.parseDateTime(time_save);
+        String time_now = String.valueOf(calendar_now.get(Calendar.HOUR)) + ':' +
+                String.valueOf(calendar_now.get(Calendar.MINUTE));
+        DateTime datetime_now = formatter.parseDateTime(time_now);
+        return datetime_save.compareTo(datetime_now);
     }
 }
