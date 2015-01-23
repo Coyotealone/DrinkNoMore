@@ -3,12 +3,9 @@ package com.coyote.drinknomore.view.jeu;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -16,26 +13,20 @@ import android.widget.Toast;
 import com.coyote.drinknomore.Fonctions;
 import com.coyote.drinknomore.HomeActivity;
 import com.coyote.drinknomore.R;
-import com.coyote.drinknomore.WebService;
-import com.coyote.drinknomore.data.StatistiquesSQLiteAdapter;
 import com.coyote.drinknomore.data.base.QuestionsSQLiteAdapterBase;
 import com.coyote.drinknomore.data.base.ReponsesSQLiteAdapterBase;
 import com.coyote.drinknomore.data.base.StatistiquesSQLiteAdapterBase;
 import com.coyote.drinknomore.entity.Questions;
 import com.coyote.drinknomore.entity.Reponses;
 import com.coyote.drinknomore.entity.Statistiques;
-import com.coyote.drinknomore.harmony.widget.TimeWidget;
-import com.coyote.drinknomore.view.YoutubeActivity;
+import com.coyote.drinknomore.view.youtube.YoutubeActivity;
 
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.Random;
 
 public class JeuActivity extends Activity {
     /**

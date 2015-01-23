@@ -11,7 +11,7 @@
 package com.coyote.drinknomore;
 
 import com.coyote.drinknomore.harmony.view.HarmonyFragmentActivity;
-import com.coyote.drinknomore.view.YoutubeActivity;
+import com.coyote.drinknomore.view.youtube.YoutubeActivity;
 import com.coyote.drinknomore.view.reponses.ReponsesListActivity;
 import com.coyote.drinknomore.view.jeu.JeuActivity;
 import com.coyote.drinknomore.view.jeu.ParametresActivity;

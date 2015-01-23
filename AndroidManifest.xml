@@ -184,6 +184,9 @@
         <activity
             android:name=".view.jeu.ParametresActivity"
             android:label="@string/app_name" />
+        <activity
+            android:name=".view.youtube.YoutubeActivity"
+            android:label="@string/app_name" />
 
         <provider
             android:name=".provider.DrinknomoreProvider"
@@ -191,17 +194,6 @@
             android:description="@string/app_provider_description"
             android:exported="false"
             android:label="@string/app_provider_name" />
-
-        <activity
-            android:name=".view.YoutubeActivity"
-            android:label="@string/title_activity_youtube"
-            android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>

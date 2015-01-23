@@ -1,4 +1,4 @@
-package com.coyote.drinknomore;
+package com.coyote.drinknomore.view.youtube;
 
 /**
  * Created by Coyote on 23/01/15.

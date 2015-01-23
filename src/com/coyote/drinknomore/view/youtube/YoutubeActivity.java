@@ -1,18 +1,23 @@
-package com.coyote.drinknomore.view;
+package com.coyote.drinknomore.view.youtube;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View.OnClickListener;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.Toast;
 
-import com.coyote.drinknomore.Config;
 import com.coyote.drinknomore.R;
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
-import com.google.android.youtube.player.YouTubePlayer.PlayerStyle;
 import com.google.android.youtube.player.YouTubePlayerView;
+
+import com.coyote.drinknomore.view.youtube.Config;
+
+import java.util.Calendar;
 
 public class YoutubeActivity extends YouTubeBaseActivity implements
         YouTubePlayer.OnInitializedListener {
@@ -21,6 +26,9 @@ public class YoutubeActivity extends YouTubeBaseActivity implements
 
     // YouTube player view
     private YouTubePlayerView youTubeView;
+    private Button btn_skip_music;
+
+    Config conf = new Config();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,10 +40,20 @@ public class YoutubeActivity extends YouTubeBaseActivity implements
         setContentView(R.layout.activity_youtube);
 
         youTubeView = (YouTubePlayerView) findViewById(R.id.youtube_view);
-
+        if(this != null)
         // Initializing video player with developer key
-        youTubeView.initialize(Config.DEVELOPER_KEY, this);
+            youTubeView.initialize(Config.DEVELOPER_KEY, this);
 
+        /*btn_skip_music = (Button) findViewById(R.id.btn_skip_music);
+        btn_skip_music.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(YoutubeActivity.this,
+                        "Skip Button OnClick", Toast.LENGTH_SHORT).show();
+
+            }
+        });*/
     }
 
     @Override
@@ -61,7 +79,7 @@ public class YoutubeActivity extends YouTubeBaseActivity implements
             //player.loadVideo(Config.YOUTUBE_VIDEO_CODE);
 
             // Hiding player controls
-            player.setPlayerStyle(PlayerStyle.CHROMELESS);
+            //player.setPlayerStyle(PlayerStyle.CHROMELESS);
         }
     }
 
@@ -76,5 +94,7 @@ public class YoutubeActivity extends YouTubeBaseActivity implements
     private YouTubePlayer.Provider getYouTubePlayerProvider() {
         return (YouTubePlayerView) findViewById(R.id.youtube_view);
     }
+
+
 
 }
