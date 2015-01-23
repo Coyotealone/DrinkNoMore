@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.coyote.drinknomore.Fonctions;
 import com.coyote.drinknomore.HomeActivity;
 import com.coyote.drinknomore.R;
+import com.coyote.drinknomore.WebService;
 import com.coyote.drinknomore.data.StatistiquesSQLiteAdapter;
 import com.coyote.drinknomore.data.base.QuestionsSQLiteAdapterBase;
 import com.coyote.drinknomore.data.base.ReponsesSQLiteAdapterBase;
@@ -23,8 +24,16 @@ import com.coyote.drinknomore.data.base.StatistiquesSQLiteAdapterBase;
 import com.coyote.drinknomore.entity.Questions;
 import com.coyote.drinknomore.entity.Reponses;
 import com.coyote.drinknomore.entity.Statistiques;
+import com.coyote.drinknomore.harmony.widget.TimeWidget;
+
 import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
+
+import java.sql.Time;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Random;
 
 public class JeuActivity extends Activity {
@@ -33,7 +42,8 @@ public class JeuActivity extends Activity {
      *
      * @value #PREFS_NAME String
      */
-    public static final String PREFS_NAME = "prefFileJeu";
+    public static final String PREFS_GAME = "prefFileJeu";
+    public static final String PREFS_PARAMETERS = "prefFileParameters";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +56,7 @@ public class JeuActivity extends Activity {
          * @param String PREFS_NAME
          * @param Integer Mode init 0
          */
-        final SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+        final SharedPreferences settings = getSharedPreferences(PREFS_GAME, 0);
         /**
          * {@value #viewTxtEnigme} TextView
          * init by id view activity_jeu
@@ -77,6 +87,73 @@ public class JeuActivity extends Activity {
          * init by id view activity_jeu
          */
         final RadioGroup rdgpRep = (RadioGroup) findViewById(R.id.radioReponses);
+
+        Calendar rightNow = Calendar.getInstance();
+        String day_of_week = Fonctions.NameDay(rightNow.get(Calendar.DAY_OF_WEEK));
+
+        final SharedPreferences settingsParameters = getSharedPreferences(PREFS_PARAMETERS, 0);
+
+        Boolean checkday = checkday(settingsParameters, day_of_week);
+        /*switch (day_of_week) {
+            case "1":  checkday = settingsParameters.getBoolean(
+                    getString(R.string.Parametres_cb_horaire_dimanche), false);
+                break;
+            case "2":  checkday = settingsParameters.getBoolean(
+                    getString(R.string.Parametres_cb_horaire_lundi), false);
+                break;
+            case "3":  checkday = settingsParameters.getBoolean(
+                    getString(R.string.Parametres_cb_horaire_mardi), false);
+                break;
+            case "4":  checkday = settingsParameters.getBoolean(
+                    getString(R.string.Parametres_cb_horaire_mercredi), false);
+                break;
+            case "5":  checkday = settingsParameters.getBoolean(
+                    getString(R.string.Parametres_cb_horaire_jeudi), false);
+                break;
+            case "6":  checkday = settingsParameters.getBoolean(
+                    getString(R.string.Parametres_cb_horaire_vendredi), false);
+                break;
+            case "7":  checkday = settingsParameters.getBoolean(
+                    getString(R.string.Parametres_cb_horaire_samedi), false);
+                break;
+            default: checkday = false;
+                break;
+        }*/
+
+        String time_save = settingsParameters.getString(
+                getString(R.string.Parametres_timeWidget_horaire),null);
+
+        DateTimeFormatter formatter = DateTimeFormat.forPattern("HH:mm");
+        DateTime datetime_save = formatter.parseDateTime(time_save);
+        String time_now = String.valueOf(rightNow.get(Calendar.HOUR)) + ':' +
+                String.valueOf(rightNow.get(Calendar.MINUTE));
+        DateTime datetime_now = formatter.parseDateTime(time_now);
+            /*if(datetime_save.compareTo(datetime_now) < 0)
+            {
+                //Accéder au question
+                Toast.makeText(JeuActivity.this,
+                        "Timesave est avant stringtimenow!", Toast.LENGTH_SHORT).show();
+            }
+            if(datetime_save.compareTo(datetime_now) > 0)
+            {
+                //Ne pas accéder au question
+                Toast.makeText(JeuActivity.this,
+                        "Timesave est après stringtimenow!", Toast.LENGTH_SHORT).show();
+            }*/
+
+        if(checkday == false && datetime_save.compareTo(datetime_now) > 0)
+        {
+            Toast.makeText(JeuActivity.this,
+                    "Tu ne peux pas jouer !", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(JeuActivity.this, HomeActivity.class);
+            /**
+             * show new intent
+             * @param intent
+             */
+            startActivity(intent);
+        }
+
+
         /**
          * {@value #questions} Questions
          * @see com.coyote.drinknomore.entity.Questions
@@ -303,8 +380,42 @@ public class JeuActivity extends Activity {
                      */
                     Toast.makeText(JeuActivity.this,
                             getString(R.string.Jeu_MauvaiseReponse), Toast.LENGTH_SHORT).show();
+                    //WebService wb = new WebService(JeuActivity.this);
+                    //wb.execute("https://www.youtube.com/watch?v=r2ShaMdKF6E");
+
                 }
             }
         });
+    }
+
+    private Boolean checkday(SharedPreferences settingsParameters, String day_of_week)
+    {
+        Boolean checkday = false;
+        switch (day_of_week) {
+            case "1":  checkday = settingsParameters.getBoolean(
+                    getString(R.string.Parametres_cb_horaire_dimanche), false);
+                break;
+            case "2":  checkday = settingsParameters.getBoolean(
+                    getString(R.string.Parametres_cb_horaire_lundi), false);
+                break;
+            case "3":  checkday = settingsParameters.getBoolean(
+                    getString(R.string.Parametres_cb_horaire_mardi), false);
+                break;
+            case "4":  checkday = settingsParameters.getBoolean(
+                    getString(R.string.Parametres_cb_horaire_mercredi), false);
+                break;
+            case "5":  checkday = settingsParameters.getBoolean(
+                    getString(R.string.Parametres_cb_horaire_jeudi), false);
+                break;
+            case "6":  checkday = settingsParameters.getBoolean(
+                    getString(R.string.Parametres_cb_horaire_vendredi), false);
+                break;
+            case "7":  checkday = settingsParameters.getBoolean(
+                    getString(R.string.Parametres_cb_horaire_samedi), false);
+                break;
+            default: checkday = false;
+                break;
+        }
+        return checkday;
     }
 }

@@ -19,7 +19,7 @@ import android.widget.CheckBox;
 
 public class ParametresActivity extends Activity {
 
-	public static final String PREFS_NAME = "prefFile";
+	public static final String PREFS_PARAMETERS = "prefFileParameters";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +28,7 @@ public class ParametresActivity extends Activity {
 		this.setContentView(R.layout.activity_parametres);
 
 		// Restore preferences
-		SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+		SharedPreferences settings = getSharedPreferences(PREFS_PARAMETERS, 0);
 		final CheckBox cb_horaire_lundi = (CheckBox) this
 				.findViewById(R.id.cb_horaire_lundi);
 		final CheckBox cb_horaire_mardi = (CheckBox) this
@@ -80,7 +80,7 @@ public class ParametresActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+				SharedPreferences settings = getSharedPreferences(PREFS_PARAMETERS, 0);
 
 				// Set values in editor
 				SharedPreferences.Editor editor = settings.edit();

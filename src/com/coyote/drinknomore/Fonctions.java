@@ -1,14 +1,22 @@
 package com.coyote.drinknomore;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 
 import com.coyote.drinknomore.data.base.QuestionsSQLiteAdapterBase;
 import com.coyote.drinknomore.entity.Questions;
 import com.coyote.drinknomore.entity.Reponses;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
 import java.util.Random;
 
 public class Fonctions {
+
+    public static final String PREFS_PARAMETERS = "prefFileParameters";
 
     /**
      *
@@ -43,5 +51,29 @@ public class Fonctions {
         int randomNum = rand.nextInt((max - min) + 1) + min;
 
         return randomNum;
+    }
+
+    public static String NameDay(int day)
+    {
+        String dayString;
+        switch (day) {
+            case 1:  dayString = "Parametres_cb_horaire_dimanche";
+                break;
+            case 2:  dayString = "Parametres_cb_horaire_lundi";
+                break;
+            case 3:  dayString = "Parametres_cb_horaire_mardi";
+                break;
+            case 4:  dayString = "Parametres_cb_horaire_mercredi";
+                break;
+            case 5:  dayString = "Parametres_cb_horaire_jeudi";
+                break;
+            case 6:  dayString = "Parametres_cb_horaire_vendredi";
+                break;
+            case 7:  dayString = "Parametres_cb_horaire_samedi";
+                break;
+            default: dayString = "Invalid day";
+                break;
+        }
+        return dayString;
     }
 }
