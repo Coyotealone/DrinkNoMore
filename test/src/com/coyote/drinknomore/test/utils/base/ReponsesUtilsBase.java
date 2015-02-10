@@ -1,11 +1,11 @@
 /**************************************************************************
  * ReponsesUtilsBase.java, drinknomore Android
  *
- * Copyright 2014
+ * Copyright 2015
  * Description : 
  * Author(s)   : Harmony
  * Licence     : 
- * Last update : Dec 26, 2014
+ * Last update : Feb 10, 2015
  *
  **************************************************************************/
 package com.coyote.drinknomore.test.utils.base;
@@ -17,9 +17,11 @@ import com.coyote.drinknomore.entity.Reponses;
 
 
 import com.coyote.drinknomore.test.utils.TestUtils;
+import com.coyote.drinknomore.entity.Questions;
+import com.coyote.drinknomore.fixture.QuestionsDataLoader;
 
-import com.coyote.drinknomore.test.utils.QuestionsUtils;
 
+import java.util.ArrayList;
 
 public abstract class ReponsesUtilsBase {
 
@@ -35,7 +37,12 @@ public abstract class ReponsesUtilsBase {
         reponses.setId(TestUtils.generateRandomInt(0,100) + 1);
         reponses.setSolution("solution_"+TestUtils.generateRandomString(10));
         reponses.setArguments("arguments_"+TestUtils.generateRandomString(10));
-        reponses.setQuestion(QuestionsUtils.generateRandom(ctx));
+        ArrayList<Questions> questions =
+            new ArrayList<Questions>();
+        questions.addAll(QuestionsDataLoader.getInstance(ctx).getMap().values());
+        if (!questions.isEmpty()) {
+            reponses.setQuestion(questions.get(TestUtils.generateRandomInt(0, questions.size())));
+        }
 
         return reponses;
     }

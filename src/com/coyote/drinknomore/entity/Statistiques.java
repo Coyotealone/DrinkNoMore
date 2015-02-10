@@ -16,10 +16,11 @@ import com.tactfactory.harmony.annotation.GeneratedValue.Strategy;
 import com.tactfactory.harmony.annotation.Id;
 
 @Entity
-public class Statistiques implements Serializable, Parcelable {
+public class Statistiques implements Serializable , Parcelable {
 
-	/** Parent parcelable for parcellisation purposes. */
-	protected List<Parcelable> parcelableParents;
+    /** Parent parcelable for parcellisation purposes. */
+    protected List<Parcelable> parcelableParents;
+
 
 	/**
 	 * 
@@ -37,57 +38,55 @@ public class Statistiques implements Serializable, Parcelable {
 	@Column(type = Type.INT)
 	private Integer nberreurs;
 
-	/**
-	 * Default constructor.
-	 */
-	public Statistiques() {
 
-	}
+    /**
+     * Default constructor.
+     */
+    public Statistiques() {
 
-	/**
-	 * @return the id
-	 */
-	public int getId() {
-		return this.id;
-	}
+    }
 
-	/**
-	 * @param value
-	 *            the id to set
-	 */
-	public void setId(final int value) {
-		this.id = value;
-	}
+    /**
+     * @return the id
+     */
+    public int getId() {
+         return this.id;
+    }
 
-	/**
-	 * @return the date
-	 */
-	public DateTime getDate() {
-		return this.date;
-	}
+    /**
+     * @param value the id to set
+     */
+    public void setId(final int value) {
+         this.id = value;
+    }
 
-	/**
-	 * @param value
-	 *            the date to set
-	 */
-	public void setDate(final DateTime value) {
-		this.date = value;
-	}
+    /**
+     * @return the date
+     */
+    public DateTime getDate() {
+         return this.date;
+    }
 
-	/**
-	 * @return the nberreurs
-	 */
-	public Integer getNberreurs() {
-		return this.nberreurs;
-	}
+    /**
+     * @param value the date to set
+     */
+    public void setDate(final DateTime value) {
+         this.date = value;
+    }
 
-	/**
-	 * @param value
-	 *            the nberreurs to set
-	 */
-	public void setNberreurs(final Integer value) {
-		this.nberreurs = value;
-	}
+    /**
+     * @return the nberreurs
+     */
+    public Integer getNberreurs() {
+         return this.nberreurs;
+    }
+
+    /**
+     * @param value the nberreurs to set
+     */
+    public void setNberreurs(final Integer value) {
+         this.nberreurs = value;
+    }
 
     /**
      * This stub of code is regenerated. DO NOT MODIFY.
@@ -132,69 +131,62 @@ public class Statistiques implements Serializable, Parcelable {
         this.setNberreurs(parc.readInt());
     }
 
-	/**
-	 * Parcel Constructor.
-	 * 
-	 * @param parc
-	 *            The parcel to read from
-	 */
-	public Statistiques(Parcel parc) {
-		// You can chose not to use harmony's generated parcel.
-		// To do this, remove this line.
-		this.readFromParcel(parc);
+    /**
+     * Parcel Constructor.
+     *
+     * @param parc The parcel to read from
+     */
+    public Statistiques(Parcel parc) {
+        // You can chose not to use harmony's generated parcel.
+        // To do this, remove this line.
+        this.readFromParcel(parc);
 
-		// You can implement your own parcel mechanics here.
+        // You can  implement your own parcel mechanics here.
 
-	}
+    }
 
-	/*
-	 * This method is not regenerated. You can implement your own parcel
-	 * mechanics here.
-	 */
-	@Override
-	public void writeToParcel(Parcel dest, int flags) {
-		// You can chose not to use harmony's generated parcel.
-		// To do this, remove this line.
-		this.writeToParcelRegen(dest, flags);
-		// You can implement your own parcel mechanics here.
-	}
+    /* This method is not regenerated. You can implement your own parcel mechanics here. */
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        // You can chose not to use harmony's generated parcel.
+        // To do this, remove this line.
+        this.writeToParcelRegen(dest, flags);
+        // You can  implement your own parcel mechanics here.
+    }
 
-	/**
-	 * Use this method to write this entity to a parcel from another entity.
-	 * (Useful for relations)
-	 * 
-	 * @param parent
-	 *            The entity being parcelled that need to parcel this one
-	 * @param dest
-	 *            The destination parcel
-	 * @param flags
-	 *            The flags
-	 */
-	public synchronized void writeToParcel(List<Parcelable> parents,
-			Parcel dest, int flags) {
-		this.parcelableParents = new ArrayList<Parcelable>(parents);
-		dest.writeParcelable(this, flags);
-		this.parcelableParents = null;
-	}
+    /**
+     * Use this method to write this entity to a parcel from another entity.
+     * (Useful for relations)
+     *
+     * @param parent The entity being parcelled that need to parcel this one
+     * @param dest The destination parcel
+     * @param flags The flags
+     */
+    public synchronized void writeToParcel(List<Parcelable> parents, Parcel dest, int flags) {
+        this.parcelableParents = new ArrayList<Parcelable>(parents);
+        dest.writeParcelable(this, flags);
+        this.parcelableParents = null;
+    }
 
-	@Override
-	public int describeContents() {
-		// This should return 0
-		// or CONTENTS_FILE_DESCRIPTOR if your entity is a FileDescriptor.
-		return 0;
-	}
+    @Override
+    public int describeContents() {
+        // This should return 0 
+        // or CONTENTS_FILE_DESCRIPTOR if your entity is a FileDescriptor.
+        return 0;
+    }
 
-	/**
-	 * Parcelable creator.
-	 */
-	public static final Parcelable.Creator<Statistiques> CREATOR = new Parcelable.Creator<Statistiques>() {
-		public Statistiques createFromParcel(Parcel in) {
-			return new Statistiques(in);
-		}
-
-		public Statistiques[] newArray(int size) {
-			return new Statistiques[size];
-		}
-	};
+    /**
+     * Parcelable creator.
+     */
+    public static final Parcelable.Creator<Statistiques> CREATOR
+        = new Parcelable.Creator<Statistiques>() {
+        public Statistiques createFromParcel(Parcel in) {
+            return new Statistiques(in);
+        }
+        
+        public Statistiques[] newArray(int size) {
+            return new Statistiques[size];
+        }
+    };
 
 }

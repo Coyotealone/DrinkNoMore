@@ -93,6 +93,7 @@
     <string name="Jeu_Radio_Rep4">Reponse4</string>
     <string name="Jeu_BonneReponse">Bonne réponse</string>
     <string name="Jeu_MauvaiseReponse">Try Again</string>
+    <string name="Jeu_ErreurDonnees">Erreur lors du chargement des données</string>
     <string name="Jeu_Nb_Erreurs">nb_erreurs</string>
     <string name="Parametres_cb_horaire_lundi">cb_horaire_lundi</string>
     <string name="Parametres_cb_horaire_mardi">cb_horaire_mardi</string>
@@ -111,5 +112,4 @@
     <string name="action_settings">Settings</string>
     <string name="main_youtube">Youtube Test</string>
     <string name="btn_skip_music">Skip Music</string>
-
 </resources>

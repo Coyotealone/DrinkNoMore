@@ -1,11 +1,11 @@
 /**************************************************************************
  * TimeWidget.java, drinknomore Android
  *
- * Copyright 2014
+ * Copyright 2015
  * Description : 
  * Author(s)   : Harmony
  * Licence     : 
- * Last update : Dec 26, 2014
+ * Last update : Feb 10, 2015
  *
  **************************************************************************/
 package com.coyote.drinknomore.harmony.widget;
@@ -107,7 +107,7 @@ public class TimeWidget extends FrameLayout implements OnClickListener {
                // 24H format
                int format24Hid = a.getInt(
                        R.styleable.TimeWidget_timeWidget_format24H,
-                       3);
+                       2);
                switch (format24Hid) {
                     case H24_ENUM_CONSTANT:
                        this.timeFormat = TimeFormatType.H24;
@@ -122,7 +122,7 @@ public class TimeWidget extends FrameLayout implements OnClickListener {
                        break;
 
                     default:
-                        this.timeFormat = TimeFormatType.H24;
+                        this.timeFormat = TimeFormatType.ANDROID_CONF;
                         break;
                }
 

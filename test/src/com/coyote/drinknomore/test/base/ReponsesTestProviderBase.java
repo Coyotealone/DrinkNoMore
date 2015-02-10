@@ -1,11 +1,11 @@
 /**************************************************************************
  * ReponsesTestProviderBase.java, drinknomore Android
  *
- * Copyright 2014
+ * Copyright 2015
  * Description : 
  * Author(s)   : Harmony
  * Licence     : 
- * Last update : Dec 26, 2014
+ * Last update : Feb 10, 2015
  *
  **************************************************************************/
 package com.coyote.drinknomore.test.base;
@@ -20,6 +20,7 @@ import com.coyote.drinknomore.data.ReponsesSQLiteAdapter;
 
 import com.coyote.drinknomore.entity.Reponses;
 
+import com.coyote.drinknomore.fixture.ReponsesDataLoader;
 
 import java.util.ArrayList;
 import com.coyote.drinknomore.test.utils.*;
@@ -59,6 +60,13 @@ public abstract class ReponsesTestProviderBase extends TestDBBase {
 
         this.adapter = new ReponsesSQLiteAdapter(this.ctx);
 
+        this.entities = new ArrayList<Reponses>();        
+        this.entities.addAll(ReponsesDataLoader.getInstance(this.ctx).getMap().values());
+        if (this.entities.size()>0) {
+            this.entity = this.entities.get(TestUtils.generateRandomInt(0,entities.size()-1));
+        }
+
+        this.nbEntities += ReponsesDataLoader.getInstance(this.ctx).getMap().size();
         this.provider = this.getContext().getContentResolver();
         this.providerUtils = new ReponsesProviderUtils(this.getContext());
     }

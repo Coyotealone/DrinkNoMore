@@ -11,14 +11,15 @@
 package com.coyote.drinknomore;
 
 import com.coyote.drinknomore.harmony.view.HarmonyFragmentActivity;
-import com.coyote.drinknomore.view.youtube.YoutubeActivity;
 import com.coyote.drinknomore.view.reponses.ReponsesListActivity;
 import com.coyote.drinknomore.view.jeu.JeuActivity;
 import com.coyote.drinknomore.view.jeu.ParametresActivity;
 import com.coyote.drinknomore.view.questions.QuestionsListActivity;
 import com.coyote.drinknomore.view.statistiques.StatistiquesListActivity;
+import com.coyote.drinknomore.view.youtube.YoutubeActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -30,26 +31,28 @@ import android.view.View.OnClickListener;
  * @see android.app.Activity
  */
 public class HomeActivity extends HarmonyFragmentActivity
-        implements OnClickListener {
+implements OnClickListener {
 
-    @Override
-    public void onCreate(Bundle savedInstanceState)    {
-        super.onCreate(savedInstanceState);
-        this.setContentView(R.layout.main);
+	@Override
+	public void onCreate(Bundle savedInstanceState)    {
+		super.onCreate(savedInstanceState);
+		this.setContentView(R.layout.main);
 
-        this.initButtons();
-    }
+		Intent intent = new Intent(this, YoutubeActivity.class);
+		this.startActivity(intent);
+		//this.initButtons();
+	}
 
-    /**
-     * Initialize the buttons click listeners.
-     */
-    private void initButtons() {
+	/**
+	 * Initialize the buttons click listeners.
+	 */
+	private void initButtons() {
 		this.findViewById(R.id.reponses_list_button).setOnClickListener(this);
 		this.findViewById(R.id.questions_list_button).setOnClickListener(this);
 		this.findViewById(R.id.statistiques_list_button).setOnClickListener(this);
 		this.findViewById(R.id.btn_parametres).setOnClickListener(this);
 		this.findViewById(R.id.btn_play).setOnClickListener(this);
-        this.findViewById(R.id.btn_youtube).setOnClickListener(this);
+		this.findViewById(R.id.btn_youtube).setOnClickListener(this);
 	}
 
 	@Override
@@ -76,9 +79,9 @@ public class HomeActivity extends HarmonyFragmentActivity
 			intent = new Intent(this, JeuActivity.class);
 			break;
 
-        case R.id.btn_youtube:
-            intent = new Intent(this, YoutubeActivity.class);
-            break;
+		case R.id.btn_youtube:
+			intent = new Intent(this, YoutubeActivity.class);
+			break;
 
 		default:
 			intent = null;
