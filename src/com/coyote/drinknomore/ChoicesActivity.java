@@ -16,8 +16,6 @@ import com.coyote.drinknomore.view.jeu.JeuActivity;
 import com.coyote.drinknomore.view.jeu.ParametresActivity;
 import com.coyote.drinknomore.view.questions.QuestionsListActivity;
 import com.coyote.drinknomore.view.statistiques.StatistiquesListActivity;
-import com.coyote.drinknomore.view.youtube.YoutubeActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -36,7 +34,7 @@ implements OnClickListener {
 	public void onCreate(Bundle savedInstanceState)    {
 		super.onCreate(savedInstanceState);
 		this.setContentView(R.layout.main);
-		
+
 		this.initButtons();
 	}
 
@@ -48,7 +46,6 @@ implements OnClickListener {
 		this.findViewById(R.id.questions_list_button).setOnClickListener(this);
 		this.findViewById(R.id.statistiques_list_button).setOnClickListener(this);
 		this.findViewById(R.id.btn_parametres).setOnClickListener(this);
-		this.findViewById(R.id.btn_play).setOnClickListener(this);
 	}
 
 	@Override
@@ -69,10 +66,6 @@ implements OnClickListener {
 
 		case R.id.btn_parametres:
 			intent = new Intent(this, ParametresActivity.class);
-			break;
-
-		case R.id.btn_play:
-			intent = new Intent(this, JeuActivity.class);
 			break;
 
 		default:

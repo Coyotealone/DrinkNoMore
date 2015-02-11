@@ -4,7 +4,7 @@ import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
 import com.coyote.drinknomore.Fonctions;
-import com.coyote.drinknomore.HomeActivity;
+import com.coyote.drinknomore.ChoicesActivity;
 import com.coyote.drinknomore.R;
 import com.coyote.drinknomore.harmony.widget.TimeWidget;
 
@@ -47,20 +47,20 @@ public class ParametresActivity extends Activity {
 				.findViewById(R.id.timeWidget_Parametres_horaire);
 
 		cb_horaire_lundi.setChecked(
-                settings.getBoolean(getString(R.string.Parametres_cb_horaire_lundi),
-				false));
+				settings.getBoolean(getString(R.string.Parametres_cb_horaire_lundi),
+						false));
 		cb_horaire_mardi.setChecked(settings.getBoolean(
-                getString(R.string.Parametres_cb_horaire_mardi),
+				getString(R.string.Parametres_cb_horaire_mardi),
 				false));
 		cb_horaire_mercredi.setChecked(settings.getBoolean(
 				getString(R.string.Parametres_cb_horaire_mercredi), false));
 		cb_horaire_jeudi.setChecked(settings.getBoolean(
-                getString(R.string.Parametres_cb_horaire_jeudi),
+				getString(R.string.Parametres_cb_horaire_jeudi),
 				false));
 		cb_horaire_vendredi.setChecked(settings.getBoolean(
 				getString(R.string.Parametres_cb_horaire_vendredi), false));
 		cb_horaire_samedi.setChecked(settings.getBoolean(
-                getString(R.string.Parametres_cb_horaire_samedi),
+				getString(R.string.Parametres_cb_horaire_samedi),
 				false));
 		cb_horaire_dimanche.setChecked(settings.getBoolean(
 				getString(R.string.Parametres_cb_horaire_dimanche), false));
@@ -110,7 +110,7 @@ public class ParametresActivity extends Activity {
 
 				// Show view Parametres
 				Intent intent = new Intent(ParametresActivity.this,
-						HomeActivity.class);
+						ChoicesActivity.class);
 				startActivity(intent);
 
 			}

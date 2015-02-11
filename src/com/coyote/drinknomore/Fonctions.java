@@ -1,28 +1,25 @@
 package com.coyote.drinknomore;
 
-import android.content.Context;
-import android.content.SharedPreferences;
+import java.util.ArrayList;
+import java.util.Random;
 
+import android.content.Context;
+
+import com.coyote.drinknomore.data.QuestionsSQLiteAdapter;
 import com.coyote.drinknomore.data.base.QuestionsSQLiteAdapterBase;
+import com.coyote.drinknomore.data.base.ReponsesSQLiteAdapterBase;
 import com.coyote.drinknomore.entity.Questions;
 import com.coyote.drinknomore.entity.Reponses;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.util.Random;
-
 public class Fonctions {
 
-    public static final String PREFS_PARAMETERS = "prefFileParameters";
+	public static final String PREFS_PARAMETERS = "prefFileParameters";
 
-    /**
-     *
-     * @param value
-     * @return String
-     */
+	/**
+	 *
+	 * @param value
+	 * @return String
+	 */
 	public static String SplitTime(String value) {
 		String[] nospace = value.split(" ");
 		String result = "";
@@ -34,46 +31,75 @@ public class Fonctions {
 		return result;
 	}
 
-    public static Integer RandomId(int maxId)
-    {
-        int min = 0;
-        /**
-         * int maximum into random
-         * {@value nbQuestions.length - 1}
-         */
-        int max = maxId - 1;
-        /**
-         * {@value #new Random}
-         */
-        Random rand = new Random();
-        // nextInt is normally exclusive of the top value,
-        // so add 1 to make it inclusive
-        int randomNum = rand.nextInt((max - min) + 1) + min;
+	public static Integer RandomId(int maxId)
+	{
+		int min = 0;
+		/**
+		 * int maximum into random
+		 * {@value nbQuestions.length - 1}
+		 */
+		int max = maxId - 1;
+		/**
+		 * {@value #new Random}
+		 */
+		Random rand = new Random();
+		// nextInt is normally exclusive of the top value,
+		// so add 1 to make it inclusive
+		int randomNum = rand.nextInt((max - min) + 1) + min;
 
-        return randomNum;
-    }
+		return randomNum;
+	}
 
-    public static String NameDay(int day)
-    {
-        String dayString;
-        switch (day) {
-            case 1:  dayString = "Parametres_cb_horaire_dimanche";
-                break;
-            case 2:  dayString = "Parametres_cb_horaire_lundi";
-                break;
-            case 3:  dayString = "Parametres_cb_horaire_mardi";
-                break;
-            case 4:  dayString = "Parametres_cb_horaire_mercredi";
-                break;
-            case 5:  dayString = "Parametres_cb_horaire_jeudi";
-                break;
-            case 6:  dayString = "Parametres_cb_horaire_vendredi";
-                break;
-            case 7:  dayString = "Parametres_cb_horaire_samedi";
-                break;
-            default: dayString = "Invalid day";
-                break;
-        }
-        return dayString;
-    }
+	public static String NameDay(int day)
+	{
+		String dayString;
+		switch (day) {
+		case 1:  dayString = "Parametres_cb_horaire_dimanche";
+		break;
+		case 2:  dayString = "Parametres_cb_horaire_lundi";
+		break;
+		case 3:  dayString = "Parametres_cb_horaire_mardi";
+		break;
+		case 4:  dayString = "Parametres_cb_horaire_mercredi";
+		break;
+		case 5:  dayString = "Parametres_cb_horaire_jeudi";
+		break;
+		case 6:  dayString = "Parametres_cb_horaire_vendredi";
+		break;
+		case 7:  dayString = "Parametres_cb_horaire_samedi";
+		break;
+		default: dayString = "Invalid day";
+		break;
+		}
+		return dayString;
+	}
+
+	public Integer AssociateQuestionsReponses(Context ctx)
+	{
+		QuestionsSQLiteAdapterBase questionsSQL = new QuestionsSQLiteAdapterBase(ctx);
+		ReponsesSQLiteAdapterBase reponsesSQL = new ReponsesSQLiteAdapterBase(ctx);
+		questionsSQL.open();
+		reponsesSQL.open();
+		int[] nbQuestions = questionsSQL.getId();
+		if(nbQuestions.length > 0)
+		{
+			Questions questions = new Questions();
+			Reponses reponses = new Reponses();
+			ArrayList<Reponses> tabReponses = new ArrayList<Reponses>();
+			
+			for(Integer i=0; i<nbQuestions.length; i++)
+			{
+				questions = questionsSQL.getByID(nbQuestions[i]);
+				reponses = reponsesSQL.getByID(nbQuestions[i]);
+				reponses.setQuestion(questions);
+				tabReponses.add(reponses);
+				questions.setReponse(tabReponses);
+				questionsSQL.insertOrUpdate(questions);
+				reponsesSQL.insertOrUpdate(reponses);
+			}
+			
+			return 99;
+		}
+		return -10;
+	}
 }

@@ -11,7 +11,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.coyote.drinknomore.Fonctions;
-import com.coyote.drinknomore.HomeActivity;
+import com.coyote.drinknomore.ChoicesActivity;
 import com.coyote.drinknomore.R;
 import com.coyote.drinknomore.data.base.QuestionsSQLiteAdapterBase;
 import com.coyote.drinknomore.data.base.ReponsesSQLiteAdapterBase;
@@ -90,7 +90,7 @@ public class JeuActivity extends Activity {
 		{
 			Toast.makeText(JeuActivity.this,
 					"Tu ne peux pas jouer !", Toast.LENGTH_SHORT).show();
-			Intent intent = new Intent(JeuActivity.this, HomeActivity.class);
+			Intent intent = new Intent(JeuActivity.this, ChoicesActivity.class);
 			/**
 			 * show new intent
 			 * @param intent
@@ -171,9 +171,9 @@ public class JeuActivity extends Activity {
 			/**
 			 * init intent in new view
 			 * @param JeuActivity.this
-			 * @param HomeActivity.class
+			 * @param ChoicesActivity.class
 			 */
-			Intent intent = new Intent(JeuActivity.this, HomeActivity.class);
+			Intent intent = new Intent(JeuActivity.this, ChoicesActivity.class);
 			/**
 			 * show new intent
 			 * @param intent
@@ -308,14 +308,13 @@ public class JeuActivity extends Activity {
 						 * @param String R.string.Jeu_BonneReponse
 						 * @param int Toast.LENGTH_SHORT
 						 */
-						Toast.makeText(JeuActivity.this,
-								getString(R.string.Jeu_BonneReponse), Toast.LENGTH_SHORT).show();
+						Toast.makeText(JeuActivity.this,allreponses.get(0).getArguments(), Toast.LENGTH_LONG).show();
 						/**
 						 * init intent in new view
 						 * @param JeuActivity.this
-						 * @param HomeActivity.class
+						 * @param ChoicesActivity.class
 						 */
-						Intent intent = new Intent(JeuActivity.this, HomeActivity.class);
+						Intent intent = new Intent(JeuActivity.this, ChoicesActivity.class);
 						/**
 						 * show new intent
 						 * @param intent
@@ -344,13 +343,6 @@ public class JeuActivity extends Activity {
 						 */
 						Toast.makeText(JeuActivity.this,
 								getString(R.string.Jeu_MauvaiseReponse), Toast.LENGTH_SHORT).show();
-
-						//YoutubeActivity ya = new YoutubeActivity();
-						//Intent intent = new Intent(JeuActivity.this, YoutubeActivity.class);
-						//startActivity(intent);
-						//WebService wb = new WebService(JeuActivity.this);
-						//wb.execute("https://www.youtube.com/watch?v=r2ShaMdKF6E");
-
 					}
 				}
 			});

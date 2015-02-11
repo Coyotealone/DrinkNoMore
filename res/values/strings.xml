@@ -21,6 +21,9 @@
     <string name="lblParametres_jours">Jours de la semaine</string>
     <string name="main_parametres">Paramètres</string>
     <string name="main_play">Jouer</string>
+    <string name="main_stats">Statistiques</string>
+    <string name="main_questions">Liste des questions</string>
+    <string name="main_reponses">Liste des réponses</string>
     <string name="menu_item_create">Add</string>
     <string name="menu_item_delete">Delete</string>
     <string name="menu_item_edit">Edit</string>

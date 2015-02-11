@@ -19,62 +19,67 @@ import com.google.common.base.Joiner;
  * This criteria value represents a method (ie. strtf(param1, param2))
  */
 public class MethodValue extends CriteriaValue {
-    /** Parameters. */
-    private String[] values;
-    
-    /** Method used. */
-    private String method;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
-    /**
-     * Contructor.
-     * @param method The method called
-     * @param values The method arguments
-     */
-    public MethodValue(String method, String... values) {
-        super();
-        this.values = values;
-        this.method = method;
-    }
+	/** Parameters. */
+	private String[] values;
 
-    /**
-     * Set the value of this StringValue.
-     * @param values The new arguments
-     */
-    public void setValues(String... values) {
-        this.values = values;
-    }
+	/** Method used. */
+	private String method;
 
-    /**
-     * Get this StringValue's value.
-     * @return the values
-     */
-    public String[] getValues() {
-        return this.values;
-    }
+	/**
+	 * Contructor.
+	 * @param method The method called
+	 * @param values The method arguments
+	 */
+	public MethodValue(String method, String... values) {
+		super();
+		this.values = values;
+		this.method = method;
+	}
 
-    @Override
-    public String toSQLiteString() {
-        String result = this.method + "(";
-        result += Joiner.on(", ").skipNulls().join(this.values);
-        result += ")";
-        return result;
-    }
+	/**
+	 * Set the value of this StringValue.
+	 * @param values The new arguments
+	 */
+	public void setValues(String... values) {
+		this.values = values;
+	}
 
-    @Override
-    public String toSQLiteSelection() {
-        String result = this.method + "(";
-        String[] interrogationMarks = new String[this.values.length];
-        Arrays.fill(interrogationMarks, "?");
-        result += Joiner.on(", ").skipNulls().join(interrogationMarks);
-        result += ")";
-        return result;
-    }
+	/**
+	 * Get this StringValue's value.
+	 * @return the values
+	 */
+	public String[] getValues() {
+		return this.values;
+	}
 
-    @Override
-    public void toSQLiteSelectionArgs(final ArrayList<String> array) {
-        for (String value : this.values) {
-            array.add(value);
-        }
-    }
+	@Override
+	public String toSQLiteString() {
+		String result = this.method + "(";
+		result += Joiner.on(", ").skipNulls().join(this.values);
+		result += ")";
+		return result;
+	}
+
+	@Override
+	public String toSQLiteSelection() {
+		String result = this.method + "(";
+		String[] interrogationMarks = new String[this.values.length];
+		Arrays.fill(interrogationMarks, "?");
+		result += Joiner.on(", ").skipNulls().join(interrogationMarks);
+		result += ")";
+		return result;
+	}
+
+	@Override
+	public void toSQLiteSelectionArgs(final ArrayList<String> array) {
+		for (String value : this.values) {
+			array.add(value);
+		}
+	}
 }
 
