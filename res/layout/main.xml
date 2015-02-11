@@ -1,28 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="fill_parent" >
+
     <LinearLayout
         android:id="@+id/homeLayout"
-        android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:padding="4dp">
-                <Button
+        android:orientation="vertical"
+        android:padding="4dp" >
+
+        <Button
             android:id="@+id/reponses_list_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="List all Reponses" />
+            android:text="@string/main_reponses" />
+
         <Button
             android:id="@+id/questions_list_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="List all Questions" />
+            android:text="@string/main_questions" />
+
         <Button
             android:id="@+id/statistiques_list_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="List all Statistiques" />
+            android:text="@string/main_stats" />
 
         <Button
             android:id="@+id/btn_play"
@@ -35,7 +39,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/main_parametres" />
-
     </LinearLayout>
-</ScrollView>
 
+</ScrollView>

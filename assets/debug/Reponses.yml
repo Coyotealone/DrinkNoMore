@@ -1,6 +1,64 @@
 Reponses:
    Reponses_1:
       id: 1
-      solution: "bim"
-      arguments: ""
+      solution: "0"
+      arguments: "Il n'en reste aucun, les autres se sont envolés."
       question: Questions_1
+   Reponses_2:
+      id: 2
+      solution: "0,5"
+      arguments: "Un panier de fruits pèse 11 kilos. Les fruits seuls pèsent 10 kilos de plus que le panier vide.Le 
+      panier vide pèse donc 0,5kg (les fruits seuls pèsent 10 kg de plus soit 10,5 kg !!)."
+      question: Questions_2
+   Reponses_3:
+      id: 3
+      solution: "5"
+      arguments: "J'ai ainsi (X-5) euros et toi (X+5)."
+      question: Questions_3
+   Reponses_4:
+      id: 4
+      solution: "8"
+      arguments: "L'escargot arrive donc au sommet le soir du 8ème jour (les 7 premiers jours, il ne montait que d'un 
+      mètre par jour; le 8ème, il parvient au sommet). "
+      question: Questions_4
+   Reponses_5:
+      id: 5
+      solution: "2"
+      arguments: "Vous participez à une course cycliste, si vous doublez le deuxième, vous devenez donc deuxième."
+      question: Questions_5
+   Reponses_6:
+      id: 6
+      solution: "Dos à dos"
+      arguments: "En vous plaçant dos à dos."
+      question: Questions_6
+   Reponses_7:
+      id: 7
+      solution: "8"
+      arguments: "Avec les 49 mégots, elle roule 7 cigarettes les fume puis récupère donc 7 autres mégots et peut ainsi 
+      rouler une 8ème cigarette !"
+      question: Questions_7
+   Reponses_8:
+      id: 8
+      solution: "19"
+      arguments: "9,19,29,39,49,59,69,79,89,90-91-92-93-94-95-96-97-98 et 99."
+      question: Questions_8
+   Reponses_9:
+      id: 9
+      solution: "4"
+      arguments: "Il y a 4 tabourets, un dans chaque coin."
+      question: Questions_9
+   Reponses_10:
+      id: 10
+      solution: "2"
+      arguments: "Une brique pèse 2kg."
+      question: Questions_10
+   Reponses_11:
+      id: 11
+      solution: "20"
+      arguments: "Le bénéfice est de 20 € bien sûr."
+      question: Questions_11
+   Reponses_12:
+      id: 12
+      solution: "99"
+      arguments: "Il recouvrait la moitié au bout de 99 jours (puisqu'il double chaque jour)."
+      question: Questions_12

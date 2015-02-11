@@ -22,21 +22,22 @@ public class Statistiques implements Serializable , Parcelable {
     protected List<Parcelable> parcelableParents;
 
 
-    /**
+	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
-	@GeneratedValue(strategy=Strategy.MODE_IDENTITY)
-    @Column(type = Type.INT, hidden = true)
-    private int id;
+	@GeneratedValue(strategy = Strategy.MODE_IDENTITY)
+	@Column(type = Type.INT, hidden = true)
+	private int id;
 
 	@Column(type = Type.DATETIME)
-    private DateTime date;
-	
+	private DateTime date;
+
 	@Column(type = Type.INT)
-    private Integer nberreurs;
+	private Integer nberreurs;
+
 
     /**
      * Default constructor.

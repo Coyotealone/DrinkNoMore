@@ -1,6 +1,62 @@
 Questions:
    Questions_1:
       id: 1
-      enigme: "Hello"
-      arguments: ""
-      reponse:
+      enigme: "Treize oiseaux sont dans un cerisier. Un chasseur passe et tue un oiseau. Combien reste-t-il d'oiseaux 
+      dans le cerisier ?"
+      arguments: "13;12;1;0"
+   Questions_2:
+      id: 2
+      enigme: "Un panier de fruits pèse 11 kilos. Les fruits seuls pèsent 10 kilos de plus que le panier vide.Combien 
+      pèse le panier vide ?"
+      arguments: "1;21;10,5;0,5"
+   Questions_3:
+      id: 3
+      enigme: "Je suppose que nous possédons, toi et moi, la même somme d'argent.
+      Combien dois-je te donner pour que tu aies 10€ de plus que moi ?"
+      arguments: "5;10;15;20"
+   Questions_4:
+      id: 4
+      enigme: "Un escargot décide d'atteindre le toit d'une maison. Le mur fait 10 mètres de haut. L'escargot monte 
+      pendant la journée de trois mètres, mais la nuit, il glisse et redescend de deux mètres. En combien de temps 
+      parvient-il sur le toit ?"
+      arguments: "10;9;8;7"
+   Questions_5:
+      id: 5
+      enigme: "Vous participez à une course cycliste; à un moment donné, vous doublez le deuxième.
+      Vous devenez..."
+      arguments: "1;2;3;4"
+   Questions_6:
+      id: 6
+      enigme: "Comment pouvez-vous vous tenir derrière votre père, tandis qu'il se tient aussi derrière vous ?"
+      arguments: "Impossible;Dos à dos; Face à Face; Côte à côte"
+   Questions_7:
+      id: 7
+      enigme: "Une vieille clocharde fait la récolte des mégots de cigarette dans les cendriers pour récupérer le tabac 
+      qu'elles contiennent encore et rouler ainsi ses propres cigarettes. Elle sait qu'il lui faut 7 mégots pour faire 
+      une cigarette. Si elle ramasse 49 mégots, combien de cigarettes pourra-t-elle se rouler ?"
+      arguments: "49;7;8;17"
+   Questions_8:
+      id: 8
+      enigme: "Un artisan doit réaliser 100 plaques de rues numérotées de 1 à 100. Combien de fois devra t-il écrire le
+      chiffre 9 ?"
+      arguments: "9;19;20;99"
+   Questions_9:
+      id: 9
+      enigme: "Dans une pièce il y a quatre coins et dans chaque coin il y a un tabouret et devant chaque tabouret il y 
+      a trois tabourets. Combien y a-t-il de tabourets ?"
+      arguments: "4;12;8;16"
+   Questions_10:
+      id: 10
+      enigme: "Une brique pèse un kilo + une demi-brique. Combien pèse une brique ?"
+      arguments: "0,5;1;1,5;2"
+   Questions_11:
+      id: 11
+      enigme: "Un libraire achète un livre 70 euros, le vend 80€, le rachète 90€ et le revend 100€. Quel est son 
+      bénéfice ?"
+      arguments: "10;20;30;40"
+   Questions_12:
+      id: 12
+      enigme: "Le nénuphar mutant d'un étang double de surface chaque jour. Au bout de 100 jours, il recouvre tout 
+      l'étang. Au bout de combien de jours en recouvrait-il la moitié ?"
+      arguments: "1;50;75;99"
+   

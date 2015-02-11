@@ -1,158 +1,195 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-	package="com.coyote.drinknomore"
-	android:versionCode="1"
-	android:versionName="@string/app_version"
-	android:installLocation="auto">
-	<uses-sdk
-		android:minSdkVersion="7"
-		android:targetSdkVersion="18" />
-	<uses-permission android:name="android.permission.GET_TASKS" />
-	<application
-		android:label="@string/app_name"
-		android:name=".DrinknomoreApplication"
-		android:icon="@drawable/ic_launcher"
-		android:allowBackup="true"
-		android:theme="@style/PinnedTheme">
-		<activity
-			android:name=".HomeActivity"
-			android:label="@string/app_name">
-			<intent-filter>
-				<action android:name="android.intent.action.MAIN" />
-				<category android:name="android.intent.category.LAUNCHER" />
-			</intent-filter>
-		</activity>
-		<activity
-			android:name=".view.reponses.ReponsesCreateActivity"
-			android:label="@string/app_name"
-			android:exported="false">
-			<intent-filter>
-				<action android:name="INSERT" />
-				<category android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.android.cursor.item/com.coyote.drinknomore.Reponses" />
-			</intent-filter>
-		</activity>
-		<activity
-			android:name=".view.reponses.ReponsesEditActivity"
-			android:label="@string/app_name"
-			android:exported="false">
-			<intent-filter>
-				<action android:name="EDIT" />
-				<category android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.android.cursor.item/com.coyote.drinknomore.Reponses" />
-			</intent-filter>
-		</activity>
-		<activity
-			android:name=".view.reponses.ReponsesShowActivity"
-			android:label="@string/app_name"
-			android:exported="false">
-			<intent-filter>
-				<action android:name="VIEW" />
-				<category android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.android.cursor.item/com.coyote.drinknomore.Reponses" />
-			</intent-filter>
-		</activity>
-		<activity
-			android:name=".view.reponses.ReponsesListActivity"
-			android:label="@string/app_name"
-			android:exported="false">
-			<intent-filter>
-				<action android:name="VIEW" />
-				<category android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.android.cursor.collection/com.coyote.drinknomore.Reponses" />
-			</intent-filter>
-		</activity>
-		<activity
-			android:name=".view.questions.QuestionsCreateActivity"
-			android:label="@string/app_name"
-			android:exported="false">
-			<intent-filter>
-				<action android:name="INSERT" />
-				<category android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.android.cursor.item/com.coyote.drinknomore.Questions" />
-			</intent-filter>
-		</activity>
-		<activity
-			android:name=".view.questions.QuestionsEditActivity"
-			android:label="@string/app_name"
-			android:exported="false">
-			<intent-filter>
-				<action android:name="EDIT" />
-				<category android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.android.cursor.item/com.coyote.drinknomore.Questions" />
-			</intent-filter>
-		</activity>
-		<activity
-			android:name=".view.questions.QuestionsShowActivity"
-			android:label="@string/app_name"
-			android:exported="false">
-			<intent-filter>
-				<action android:name="VIEW" />
-				<category android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.android.cursor.item/com.coyote.drinknomore.Questions" />
-			</intent-filter>
-		</activity>
-		<activity
-			android:name=".view.questions.QuestionsListActivity"
-			android:label="@string/app_name"
-			android:exported="false">
-			<intent-filter>
-				<action android:name="VIEW" />
-				<category android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.android.cursor.collection/com.coyote.drinknomore.Questions" />
-			</intent-filter>
-		</activity>
-		<activity
-			android:name=".view.statistiques.StatistiquesCreateActivity"
-			android:label="@string/app_name"
-			android:exported="false">
-			<intent-filter>
-				<action android:name="INSERT" />
-				<category android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.android.cursor.item/com.coyote.drinknomore.Statistiques" />
-			</intent-filter>
-		</activity>
-		<activity
-			android:name=".view.statistiques.StatistiquesEditActivity"
-			android:label="@string/app_name"
-			android:exported="false">
-			<intent-filter>
-				<action android:name="EDIT" />
-				<category android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.android.cursor.item/com.coyote.drinknomore.Statistiques" />
-			</intent-filter>
-		</activity>
-		<activity
-			android:name=".view.statistiques.StatistiquesShowActivity"
-			android:label="@string/app_name"
-			android:exported="false">
-			<intent-filter>
-				<action android:name="VIEW" />
-				<category android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.android.cursor.item/com.coyote.drinknomore.Statistiques" />
-			</intent-filter>
-		</activity>
-		<activity
-			android:name=".view.statistiques.StatistiquesListActivity"
-			android:label="@string/app_name"
-			android:exported="false">
-			<intent-filter>
-				<action android:name="VIEW" />
-				<category android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.android.cursor.collection/com.coyote.drinknomore.Statistiques" />
-			</intent-filter>
-		</activity>
-		<activity
-			android:name=".view.jeu.JeuActivity"
-			android:label="@string/app_name" />
-		<activity
-			android:name=".view.jeu.ParametresActivity"
-			android:label="@string/app_name" />
-		<provider
-			android:name="com.coyote.drinknomore.provider.DrinknomoreProvider"
-			android:authorities="com.coyote.drinknomore.provider"
-			android:label="@string/app_provider_name"
-			android:description="@string/app_provider_description"
-			android:exported="false" />
-	</application>
+    package="com.coyote.drinknomore"
+    android:installLocation="auto"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="11"
+        android:targetSdkVersion="21" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name=".DrinknomoreApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:noHistory="true"
+        android:theme="@style/PinnedTheme" >
+        <activity
+            android:name=".HomeActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".view.reponses.ReponsesCreateActivity"
+            android:exported="false"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="INSERT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="vnd.android.cursor.item/com.coyote.drinknomore.Reponses" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".view.reponses.ReponsesEditActivity"
+            android:exported="false"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="EDIT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="vnd.android.cursor.item/com.coyote.drinknomore.Reponses" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".view.reponses.ReponsesShowActivity"
+            android:exported="false"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="vnd.android.cursor.item/com.coyote.drinknomore.Reponses" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".view.reponses.ReponsesListActivity"
+            android:exported="false"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="vnd.android.cursor.collection/com.coyote.drinknomore.Reponses" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".view.questions.QuestionsCreateActivity"
+            android:exported="false"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="INSERT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="vnd.android.cursor.item/com.coyote.drinknomore.Questions" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".view.questions.QuestionsEditActivity"
+            android:exported="false"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="EDIT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="vnd.android.cursor.item/com.coyote.drinknomore.Questions" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".view.questions.QuestionsShowActivity"
+            android:exported="false"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="vnd.android.cursor.item/com.coyote.drinknomore.Questions" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".view.questions.QuestionsListActivity"
+            android:exported="false"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="vnd.android.cursor.collection/com.coyote.drinknomore.Questions" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".view.statistiques.StatistiquesCreateActivity"
+            android:exported="false"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="INSERT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="vnd.android.cursor.item/com.coyote.drinknomore.Statistiques" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".view.statistiques.StatistiquesEditActivity"
+            android:exported="false"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="EDIT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="vnd.android.cursor.item/com.coyote.drinknomore.Statistiques" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".view.statistiques.StatistiquesShowActivity"
+            android:exported="false"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="vnd.android.cursor.item/com.coyote.drinknomore.Statistiques" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".view.statistiques.StatistiquesListActivity"
+            android:exported="false"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="vnd.android.cursor.collection/com.coyote.drinknomore.Statistiques" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".view.jeu.JeuActivity"
+            android:label="@string/app_name" />
+        <activity
+            android:name=".view.jeu.ParametresActivity"
+            android:label="@string/app_name" />
+        <activity
+            android:name=".view.youtube.YoutubeActivity"
+            android:label="@string/app_name" />
+        <activity
+            android:name=".ChoicesActivity"
+            android:label="@string/app_name" />
+
+        <provider
+            android:name=".provider.DrinknomoreProvider"
+            android:authorities="com.coyote.drinknomore.provider"
+            android:description="@string/app_provider_description"
+            android:exported="false"
+            android:label="@string/app_provider_name" />
+    </application>
+
 </manifest>

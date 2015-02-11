@@ -1,11 +1,11 @@
 /**************************************************************************
  * ReponsesTestDBBase.java, drinknomore Android
  *
- * Copyright 2014
+ * Copyright 2015
  * Description : 
  * Author(s)   : Harmony
  * Licence     : 
- * Last update : Dec 19, 2014
+ * Last update : Feb 10, 2015
  *
  **************************************************************************/
 package com.coyote.drinknomore.test.base;
