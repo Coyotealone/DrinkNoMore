@@ -69,7 +69,7 @@
     <string name="reponses_reponse_label">Reponse</string>
     <string name="reponses_solution_invalid_field_error">Field Solution is invalid.</string>
     <string name="reponses_solution_label">Solution</string>
-    <string name="statistiques_date_date_title">Select date date</string>
+    <string name="statistiques_date_date_title">Select date</string>
     <string name="statistiques_date_invalid_field_error">Field Date is invalid.</string>
     <string name="statistiques_date_label">Date</string>
     <string name="statistiques_date_time_title">Select date time</string>
@@ -107,7 +107,6 @@
     <string name="Parametres_cb_horaire_dimanche">cb_horaire_dimanche</string>
     <string name="Parametres_timeWidget_horaire">timeWidget_Parametres_horaire</string>
     <string name="app_name_youtube">Youtube Player</string>
-    <string name="title_logo">NATIONAL GEOGRAPHIC</string>
     <string name="btn_skip_intro">Skip Intro</string>
     <string name="error_player">There was an error initializing the YouTubePlayer (%1$s)</string>
     <string name="title_activity_youtube">YoutubeActivity</string>

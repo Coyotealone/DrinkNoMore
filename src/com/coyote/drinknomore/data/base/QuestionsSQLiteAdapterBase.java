@@ -12,10 +12,7 @@ package com.coyote.drinknomore.data.base;
 
 import java.util.ArrayList;
 
-import android.R.bool;
 import android.content.ContentValues;
-import android.database.sqlite.SQLiteDatabase;
-
 import com.coyote.drinknomore.data.SQLiteAdapter;
 import com.coyote.drinknomore.data.ReponsesSQLiteAdapter;
 import com.coyote.drinknomore.provider.contract.QuestionsContract;
