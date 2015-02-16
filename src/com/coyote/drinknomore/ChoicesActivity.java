@@ -46,6 +46,7 @@ implements OnClickListener {
 		this.findViewById(R.id.questions_list_button).setOnClickListener(this);
 		this.findViewById(R.id.statistiques_list_button).setOnClickListener(this);
 		this.findViewById(R.id.btn_parametres).setOnClickListener(this);
+		this.findViewById(R.id.btn_play).setOnClickListener(this);
 	}
 
 	@Override
@@ -66,6 +67,10 @@ implements OnClickListener {
 
 		case R.id.btn_parametres:
 			intent = new Intent(this, ParametresActivity.class);
+			break;
+			
+		case R.id.btn_play:
+			intent = new Intent(this, JeuActivity.class);
 			break;
 
 		default:

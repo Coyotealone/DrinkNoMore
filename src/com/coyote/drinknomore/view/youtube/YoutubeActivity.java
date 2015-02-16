@@ -46,8 +46,8 @@ YouTubePlayer.OnInitializedListener {
 			public void onClick(View v) {
 				/**
 				 * init intent in new view
-				 * @param JeuActivity.this
-				 * @param HomeActivity.class
+				 * @param YoutubeActivity.this
+				 * @param ChoicesActivity.class
 				 */
 				Intent intent = new Intent(YoutubeActivity.this, ChoicesActivity.class);
 				/**
@@ -55,9 +55,6 @@ YouTubePlayer.OnInitializedListener {
 				 * @param intent
 				 */
 				startActivity(intent);
-				//Toast.makeText(YoutubeActivity.this,
-				//		"Skip Button OnClick", Toast.LENGTH_SHORT).show();
-
 			}
 		});
 	}

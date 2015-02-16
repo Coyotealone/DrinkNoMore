@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import android.content.Context;
-
-import com.coyote.drinknomore.data.QuestionsSQLiteAdapter;
 import com.coyote.drinknomore.data.base.QuestionsSQLiteAdapterBase;
 import com.coyote.drinknomore.data.base.ReponsesSQLiteAdapterBase;
 import com.coyote.drinknomore.entity.Questions;
@@ -16,7 +14,7 @@ public class Fonctions {
 	public static final String PREFS_PARAMETERS = "prefFileParameters";
 
 	/**
-	 *
+	 * Function to split time
 	 * @param value
 	 * @return String
 	 */
@@ -31,6 +29,11 @@ public class Fonctions {
 		return result;
 	}
 
+	/**
+	 * Function random about id Question
+	 * @param maxId
+	 * @return Integer id
+	 */
 	public static Integer RandomId(int maxId)
 	{
 		int min = 0;
@@ -50,6 +53,11 @@ public class Fonctions {
 		return randomNum;
 	}
 
+	/**
+	 * Function to find Parameters about integer day
+	 * @param day
+	 * @return string
+	 */
 	public static String NameDay(int day)
 	{
 		String dayString;
@@ -74,7 +82,12 @@ public class Fonctions {
 		return dayString;
 	}
 
-	public Integer AssociateQuestionsReponses(Context ctx)
+	/**
+	 * Function to associate Question Reponse in db
+	 * @param ctx
+	 * @return true if associated is OK else false
+	 */
+	public Boolean AssociateQuestionsReponses(Context ctx)
 	{
 		QuestionsSQLiteAdapterBase questionsSQL = new QuestionsSQLiteAdapterBase(ctx);
 		ReponsesSQLiteAdapterBase reponsesSQL = new ReponsesSQLiteAdapterBase(ctx);
@@ -98,8 +111,8 @@ public class Fonctions {
 				reponsesSQL.insertOrUpdate(reponses);
 			}
 			
-			return 99;
+			return true;
 		}
-		return -10;
+		return false;
 	}
 }
