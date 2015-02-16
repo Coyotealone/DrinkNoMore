@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    
     <string name="app_provider_description">Provider of drinknomore to access data</string>
     <string name="app_provider_name">Provider of drinknomore</string>
     <string name="btnParametres_valider">Valider</string>

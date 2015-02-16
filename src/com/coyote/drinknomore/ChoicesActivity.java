@@ -68,7 +68,7 @@ implements OnClickListener {
 		case R.id.btn_parametres:
 			intent = new Intent(this, ParametresActivity.class);
 			break;
-			
+
 		case R.id.btn_play:
 			intent = new Intent(this, JeuActivity.class);
 			break;

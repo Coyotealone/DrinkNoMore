@@ -107,7 +107,7 @@ public class TimeWidget extends FrameLayout implements OnClickListener {
                // 24H format
                int format24Hid = a.getInt(
                        R.styleable.TimeWidget_timeWidget_format24H,
-                       2);
+                       1);
                switch (format24Hid) {
                     case H24_ENUM_CONSTANT:
                        this.timeFormat = TimeFormatType.H24;
