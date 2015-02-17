@@ -1,11 +1,11 @@
 /**************************************************************************
- * HomeActivity.java, drinknomore Android
+ * ChoicesActivity.java, drinknomore Android
  *
  * Copyright 2014
  * Description :
- * Author(s)   : Harmony
+ * Author(s)   : Coyote
  * Licence     :
- * Last update : Dec 26, 2014
+ * Last update : Feb 17, 2015
  *
  **************************************************************************/
 package com.coyote.drinknomore;
@@ -22,10 +22,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 
 /**
- * Home Activity.
+ * Choices Activity.
  * This is from where you can access to your entities activities by default.
- * BEWARE : This class is regenerated with orm:generate:crud. Don't modify it.
- * @see android.app.Activity
  */
 public class ChoicesActivity extends HarmonyFragmentActivity
 implements OnClickListener {
@@ -34,7 +32,6 @@ implements OnClickListener {
 	public void onCreate(Bundle savedInstanceState)    {
 		super.onCreate(savedInstanceState);
 		this.setContentView(R.layout.main);
-
 		this.initButtons();
 	}
 
@@ -52,6 +49,9 @@ implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		Intent intent;
+		/**
+		 * Switch case to show Activity onClick
+		 */
 		switch (v.getId()) {
 		case R.id.reponses_list_button:
 			intent = new Intent(this, ReponsesListActivity.class);

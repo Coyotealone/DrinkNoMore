@@ -61,8 +61,7 @@ extends ProviderAdapter<Statistiques> {
 
 	/**
 	 * Constructor.
-	 * @param ctx context
-	 * @param db database
+	 * @param provider provider
 	 */
 	public StatistiquesProviderAdapterBase(
 			DrinknomoreProviderBase provider) {

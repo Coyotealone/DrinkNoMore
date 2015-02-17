@@ -18,21 +18,21 @@ import java.util.ArrayList;
 public interface ICriteria {
     /**
      * Convert the criteria to a SQLite String.
-     * @return The SQLite String representation of the criteria. ex : <br />
-     * "(price > 15.0)"
+     * @return The SQLite String representation of the criteria. ex : 
+     * "(price supp 15.0)"
      */
     String toSQLiteString();
 
     /**
      * Convert the criteria to a SQLite Selection String.
-     * @return The SQLite Selection String representation of the criteria.<br />
-     * ex : "(price > ?)"
+     * @return The SQLite Selection String representation of the criteria.
+     * ex : "(price supp ?)"
      */
     String toSQLiteSelection();
 
     /**
      * Convert the criteria to a SQLite Selection Args array.
-     * @param array The SQLite SelectionArgs array of String . ex : <br />
+     * @param array The SQLite SelectionArgs array of String . ex : 
      * ["15"]
      */
     void toSQLiteSelectionArgs(ArrayList<String> array);

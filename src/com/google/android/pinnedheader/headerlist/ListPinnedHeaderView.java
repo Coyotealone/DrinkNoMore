@@ -140,6 +140,7 @@ public class ListPinnedHeaderView extends ViewGroup {
 
     /**
      * Sets section header or makes it invisible if the title is null.
+     * @param title String
      */
     public void setSectionHeader(String title) {
         if (!TextUtils.isEmpty(title)) {

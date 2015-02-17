@@ -95,7 +95,6 @@ extends FixtureBase<Questions> {
 	}
 	/**
 	 * Loads Questionss into the DataManager.
-	 * @param manager The DataManager
 	 */
 	@Override
 	public void load(final DataManager dataManager) {

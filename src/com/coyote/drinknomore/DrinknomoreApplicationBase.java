@@ -230,6 +230,8 @@ public abstract class DrinknomoreApplicationBase
 
     /**
      * Gets the device type associated to this context.
+     * @param context Context
+     * @return DeviceType
      */
     public static DeviceType getDeviceType(android.content.Context context) {
         return DeviceType.fromValue(context.getString(R.string.device_type));
@@ -259,6 +261,8 @@ public abstract class DrinknomoreApplicationBase
 
         /**
          * Gets the device type corresponding to the given string.
+         * @param configValue String
+         * @return DeviceType
          */
         public static DeviceType fromValue(String configValue) {
             DeviceType result = null;

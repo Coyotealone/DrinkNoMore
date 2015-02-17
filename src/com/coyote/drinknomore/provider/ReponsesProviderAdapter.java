@@ -26,7 +26,7 @@ public class ReponsesProviderAdapter
 
     /**
      * Constructor.
-     * @param ctx context
+     * @param provider
      */
     public ReponsesProviderAdapter(
             final DrinknomoreProviderBase provider) {

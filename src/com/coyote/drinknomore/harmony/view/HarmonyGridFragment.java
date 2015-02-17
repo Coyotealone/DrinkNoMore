@@ -306,7 +306,6 @@ public abstract class HarmonyGridFragment<T> extends Fragment
      * <p>Applications do not normally need to use this themselves.  The default
      * behavior of ListFragment is to start with the list not being shown, only
      * showing it once an adapter is given with 
-     * {@link #setListAdapter(ListAdapter)}.
      * If the list at that point had not been shown, when it does get shown
      * it will be do without the user ever seeing the hidden state.
      * 

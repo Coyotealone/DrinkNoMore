@@ -17,9 +17,7 @@ import android.os.Bundle;
 
 /**
  * Home Activity.
- * This is from where you can access to your entities activities by default.
- * BEWARE : This class is regenerated with orm:generate:crud. Don't modify it.
- * @see android.app.Activity
+ * Show YoutubeActivity by default
  */
 public class HomeActivity extends HarmonyFragmentActivity {
 

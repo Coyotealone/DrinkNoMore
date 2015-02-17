@@ -237,7 +237,6 @@ public class ReponsesCreateFragment extends HarmonyFragment
 
         /**
          * Constructor of the task.
-         * @param entity The entity to insert in the DB
          * @param fragment The parent fragment from where the aSyncTask is
          * called
          */

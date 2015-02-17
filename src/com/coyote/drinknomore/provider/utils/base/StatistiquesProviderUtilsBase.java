@@ -153,7 +153,7 @@ public abstract class StatistiquesProviderUtilsBase
 
     /**
      * Query the DB to get all entities.
-     * @return ArrayList<Statistiques>
+     * @return ArrayList result
      */
     public ArrayList<Statistiques> queryAll() {
         ArrayList<Statistiques> result =
@@ -178,7 +178,7 @@ public abstract class StatistiquesProviderUtilsBase
     /**
      * Query the DB to get the entities filtered by criteria.
      * @param expression The criteria expression defining the selection and selection args
-     * @return ArrayList<Statistiques>
+     * @return ArrayList
      */
     public ArrayList<Statistiques> query(CriteriaExpression expression) {
         ArrayList<Statistiques> result =

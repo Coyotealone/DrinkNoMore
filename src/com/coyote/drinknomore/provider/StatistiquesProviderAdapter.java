@@ -26,7 +26,7 @@ public class StatistiquesProviderAdapter
 
     /**
      * Constructor.
-     * @param ctx context
+     * @param provider
      */
     public StatistiquesProviderAdapter(
             final DrinknomoreProviderBase provider) {

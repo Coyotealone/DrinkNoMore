@@ -116,7 +116,7 @@ extends SQLiteAdapter<Questions> {
 
 	//// CRUD Entity ////
 	/**
-	 * Find & read Questions by id in database.
+	 * Find and read Questions by id in database.
 	 *
 	 * @param id Identify of Questions
 	 * @return Questions entity

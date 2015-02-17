@@ -26,8 +26,8 @@ public class QuestionsProviderAdapter
 
     /**
      * Constructor.
-     * @param ctx context
-     */
+	 * @param provider
+	 */
     public QuestionsProviderAdapter(
             final DrinknomoreProviderBase provider) {
         super(provider);

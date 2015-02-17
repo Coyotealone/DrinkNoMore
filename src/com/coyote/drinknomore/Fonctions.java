@@ -9,17 +9,25 @@ import com.coyote.drinknomore.data.base.ReponsesSQLiteAdapterBase;
 import com.coyote.drinknomore.entity.Questions;
 import com.coyote.drinknomore.entity.Reponses;
 
+/**
+ * 
+ * @author Coyote
+ *
+ */
 public class Fonctions {
 
+	/**
+	 * 
+	 */
 	public static final String PREFS_PARAMETERS = "prefFileParameters";
 
 	/**
 	 * Function to split time
-	 * @param value
-	 * @return String
+	 * @param valuetime String
+	 * @return time format String
 	 */
-	public static String SplitTime(String value) {
-		String[] nospace = value.split(" ");
+	public static String SplitTime(String valuetime) {
+		String[] nospace = valuetime.split(" ");
 		String result = "";
 		if (nospace.length > 3) {
 			String[] nodoublepoint = nospace[3].split(":");
@@ -31,8 +39,8 @@ public class Fonctions {
 
 	/**
 	 * Function random about id Question
-	 * @param maxId
-	 * @return Integer id
+	 * @param maxId Integer
+	 * @return id of Questions
 	 */
 	public static Integer RandomId(int maxId)
 	{
@@ -55,8 +63,8 @@ public class Fonctions {
 
 	/**
 	 * Function to find Parameters about integer day
-	 * @param day
-	 * @return string
+	 * @param day Integer
+	 * @return String correspondant au numéro de la journée
 	 */
 	public static String NameDay(int day)
 	{
@@ -84,7 +92,7 @@ public class Fonctions {
 
 	/**
 	 * Function to associate Question Reponse in db
-	 * @param ctx
+	 * @param ctx Context
 	 * @return true if associated is OK else false
 	 */
 	public Boolean AssociateQuestionsReponses(Context ctx)

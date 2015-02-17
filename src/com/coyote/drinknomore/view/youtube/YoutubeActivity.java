@@ -21,8 +21,9 @@ YouTubePlayer.OnInitializedListener {
 
 	private static final int RECOVERY_DIALOG_REQUEST = 1;
 
-	// YouTube player view
+	/** * YouTube player view */
 	private YouTubePlayerView youTubeView;
+	/** * Button to skip video */
 	private Button btn_skip_music;
 
 	@Override
@@ -33,9 +34,7 @@ YouTubePlayer.OnInitializedListener {
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 		setContentView(R.layout.activity_youtube);
-
 		youTubeView = (YouTubePlayerView) findViewById(R.id.youtube_view);
-
 		// Initializing video player with developer key
 		youTubeView.initialize(Config.DEVELOPER_KEY, this);
 
@@ -97,7 +96,5 @@ YouTubePlayer.OnInitializedListener {
 	private YouTubePlayer.Provider getYouTubePlayerProvider() {
 		return (YouTubePlayerView) findViewById(R.id.youtube_view);
 	}
-
-
 
 }

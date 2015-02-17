@@ -112,7 +112,7 @@ extends SQLiteAdapter<Statistiques> {
 
 	//// CRUD Entity ////
 	/**
-	 * Find & read Statistiques by id in database.
+	 * Find and read Statistiques by id in database.
 	 *
 	 * @param id Identify of Statistiques
 	 * @return Statistiques entity

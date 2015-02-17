@@ -91,7 +91,7 @@ public class MultiLoader implements LoaderManager.LoaderCallbacks<android.databa
     
     /**
      * Gets a new loader for the given uri.
-     *
+     * @param uri Uri
      * @return the new cursor loader
      */
     public CursorLoader getLoader(Uri uri) {

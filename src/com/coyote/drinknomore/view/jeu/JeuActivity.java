@@ -28,19 +28,16 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class JeuActivity extends Activity {
-	/**
-	 * name SharedPreferences
-	 *
-	 * @value #PREFS_NAME String
-	 */
+
+	/** * name SharedPreferences about game */
 	public static final String PREFS_GAME = "prefFileJeu";
+	/** * name SharedPreferences about parameters */
 	public static final String PREFS_PARAMETERS = "prefFileParameters";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		//Show view activity_jeu
+		/** * Show view activity_jeu */
 		this.setContentView(R.layout.activity_jeu);
 		/**
 		 * {@value #settings} SharePreferences

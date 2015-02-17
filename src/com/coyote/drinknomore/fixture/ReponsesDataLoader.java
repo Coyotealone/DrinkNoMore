@@ -92,7 +92,6 @@ public final class ReponsesDataLoader
     }
     /**
      * Loads Reponsess into the DataManager.
-     * @param manager The DataManager
      */
     @Override
     public void load(final DataManager dataManager) {

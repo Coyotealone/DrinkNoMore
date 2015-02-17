@@ -120,7 +120,7 @@ extends SQLiteAdapter<Reponses> {
 
 	//// CRUD Entity ////
 	/**
-	 * Find & read Reponses by id in database.
+	 * Find and read Reponses by id in database.
 	 *
 	 * @param id Identify of Reponses
 	 * @return Reponses entity
@@ -146,9 +146,12 @@ extends SQLiteAdapter<Reponses> {
 	}
 
 	/**
-	 * Find & read Reponses by question.
+	 * Find and read Reponses by question.
 	 * @param questionId questionId
-	 * @param orderBy Order by string (can be null)
+	 * @param projection String[]
+	 * @param selection String
+	 * @param selectionArgs String[]
+	 * @param orderBy  Order by string (can be null)
 	 * @return List of Reponses entities
 	 */
 	public android.database.Cursor getByQuestion(final int questionId, String[] projection, String selection, String[] selectionArgs, String orderBy) {

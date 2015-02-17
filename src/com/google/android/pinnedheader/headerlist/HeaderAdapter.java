@@ -206,6 +206,8 @@ public abstract class HeaderAdapter<T> extends ArrayAdapter<T> implements Pinned
      * Computes the item's placement within its section and populates the {@code placement}
      * object accordingly.  Please note that the returned object is volatile and should be
      * copied if the result needs to be used later.
+     * @param position int
+     * @return Placement
      */
     public Placement getItemPlacementInSection(int position) {
         if (mPlacementCache.position == position) {
@@ -250,6 +252,7 @@ public abstract class HeaderAdapter<T> extends ArrayAdapter<T> implements Pinned
     }
     
     /**
+     * @param sectionIndex int
      * @return relative position of the section in the indexed partition
      */
     public int getPositionForSection(int sectionIndex) {
@@ -262,6 +265,7 @@ public abstract class HeaderAdapter<T> extends ArrayAdapter<T> implements Pinned
 
     /**
      * @param position relative position in the indexed partition
+     * @return int or -1 if error
      */
     public int getSectionForPosition(int position) {
         if (mIndexer == null) {

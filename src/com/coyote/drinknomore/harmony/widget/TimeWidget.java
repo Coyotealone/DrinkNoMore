@@ -198,6 +198,7 @@ public class TimeWidget extends FrameLayout implements OnClickListener {
     
     /**
      * Set the default time when user click and field is empty.
+     * @param defaultTime DateTime
      */
     public void setDefaultTime(DateTime defaultTime) {
         this.defaultTime = defaultTime;
@@ -297,16 +298,19 @@ public class TimeWidget extends FrameLayout implements OnClickListener {
     public interface OnTimeClickListener {
         /**
          * Called when User click on the Time EditText.
+         * @param timeWidget TimeWidget
          */
         void onClickTimeEditText(TimeWidget timeWidget);
 
         /**
          * Called when User click on the Time picker dialog's ok button.
+         * @param timeWidget TimeWidget
          */
         void onValidateTime(TimeWidget timeWidget);
 
         /**
          * Called when User click on the Time picker dialog's cancel button.
+         * @param timeWidget TimeWidget
          */
         void onCancelTime(TimeWidget timeWidget);
     }
