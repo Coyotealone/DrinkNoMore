@@ -49,7 +49,7 @@ public class ChoicesActivity extends HarmonyFragmentActivity implements OnClickL
     public void onClick(View v) {
         Intent intent;
         /**
-         * Switch case to show Activity onClick
+         * Switch case to show Activity onClick.
          */
         switch (v.getId()) {
             case R.id.reponses_list_button:

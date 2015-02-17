@@ -30,49 +30,49 @@ import com.coyote.drinknomore.entity.Statistiques;
 
 public class JeuActivity extends Activity {
 
-    /** * name SharedPreferences about game */
+    /** * name SharedPreferences about game. */
     public static final String PREFS_GAME = "prefFileJeu";
-    /** * name SharedPreferences about parameters */
+    /** * name SharedPreferences about parameters. */
     public static final String PREFS_PARAMETERS = "prefFileParameters";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        /** * Show view activity_jeu */
+        /** * Show view activity_jeu. */
         this.setContentView(R.layout.activity_jeu);
         /**
-         * {@value #settings} SharePreferences
+         * {@value #settings} SharePreferences.
          * @param String PREFS_NAME
          * @param Integer Mode init 0
          */
         final SharedPreferences settings = getSharedPreferences(PREFS_GAME, 0);
         /**
-         * {@value #viewTxtEnigme} TextView
+         * {@value #viewTxtEnigme} TextView.
          * init by id view activity_jeu
          */
         final TextView txtviewEnigme = (TextView) findViewById(R.id.jeu_txtEnigme);
         /**
-         * {@value #rdbtnRep1} RadioButton
+         * {@value #rdbtnRep1} RadioButton.
          * init by id view activity_jeu
          */
         final RadioButton rdbtnRep1 = (RadioButton) findViewById(R.id.Jeu_Radio_Rep1);
         /**
-         * {@value #rdbtnRep2} RadioButton
+         * {@value #rdbtnRep2} RadioButton.
          * init by id view activity_jeu
          */
         final RadioButton rdbtnRep2 = (RadioButton) findViewById(R.id.Jeu_Radio_Rep2);
         /**
-         * {@value #rdbtnRep3} RadioButton
+         * {@value #rdbtnRep3} RadioButton.
          * init by id view activity_jeu
          */
         final RadioButton rdbtnRep3 = (RadioButton) findViewById(R.id.Jeu_Radio_Rep3);
         /**
-         * {@value #rdbtnRep4} RadioButton
+         * {@value #rdbtnRep4} RadioButton.
          * init by id view activity_jeu
          */
         final RadioButton rdbtnRep4 = (RadioButton) findViewById(R.id.Jeu_Radio_Rep4);
         /**
-         * {@value #rdgpRep} RadioGroup
+         * {@value #rdgpRep} RadioGroup.
          * init by id view activity_jeu
          */
         final RadioGroup rdgpRep = (RadioGroup) findViewById(R.id.radioReponses);
@@ -84,12 +84,12 @@ public class JeuActivity extends Activity {
 
         Boolean checkday = checkday(settingsParameters, dayOfweek);
 
-        if(checkday == true && (compareDateTime(settingsParameters, calendarNow) > 0)) {
+        if (checkday == true && (compareDateTime(settingsParameters, calendarNow) > 0)) {
             Toast.makeText(JeuActivity.this,
                     "Tu ne peux pas jouer !", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(JeuActivity.this, ChoicesActivity.class);
             /**
-             * show new intent
+             * show new intent.
              * @param intent Intent
              */
             startActivity(intent);
@@ -124,39 +124,39 @@ public class JeuActivity extends Activity {
          */
         final StatistiquesSQLiteAdapterBase statsSql = new StatistiquesSQLiteAdapterBase(this);
         /**
-         * open db questionsSql
+         * open db questionsSql.
          */
         questionsSql.open();
         /**
-         * open db reponsesSql
+         * open db reponsesSql.
          */
         reponsesSql.open();
         /**
-         * String containing the question recovered database
+         * String containing the question recovered database.
          * {@value #enigme} String
          * init empty
          */
         String enigme = "";
         /**
-         * String containing the good response recovered database
+         * String containing the good response recovered database.
          * {@value #reponses} String
          * init empty
          */
         String reponses = "";
         /**
-         * Array String containing responses recovered database
+         * Array String containing responses recovered database.
          * {@value #choixreponses} String[]
          * init null
          */
         String[] choixreponses = null;
         /**
-         * Array Integer containing number errors
+         * Array Integer containing number errors.
          * {@value #erreurs} Integer[]
          * init 0 if SharedPreferences empty
          */
         final Integer[] erreurs = {settings.getInt(getString(R.string.Jeu_Nb_Erreurs), 0)};
         /**
-         * Array int containing all id Questions
+         * Array int containing all id Questions.
          * {@value #getId()}
          */
         int[] nbQuestions = questionsSql.getId();
@@ -171,7 +171,7 @@ public class JeuActivity extends Activity {
              */
             Intent intent = new Intent(JeuActivity.this, ChoicesActivity.class);
             /**
-             * show new intent
+             * show new intent.
              * @param intent instance courante
              */
             startActivity(intent);
@@ -179,68 +179,64 @@ public class JeuActivity extends Activity {
         else {
             int randomNum = Fonctions.randomId(nbQuestions.length);
             /**
-             * init questions compared to id in db
-             * {@value #questionsSql.getByID}
+             * init questions compared to id in db.
+             * value #questionsSql.getByID
              * @param int value array nbQuestions
              */
             questions = questionsSql.getByID(nbQuestions[randomNum]);
             /**
-             * set enigme with getEnigme()
-             * {@value #questions.getEnigme()}
+             * set enigme with getEnigme().
+             * value #questions.getEnigme()
              */
             enigme = questions.getEnigme();
             /**
-             * set reponses with getArguments()
-             * {@value #questions.getArguments()}
+             * set reponses with getArguments().
+             * value #questions.getArguments()
              */
             reponses = questions.getArguments();
             /**
-             * set text view enigme
+             * set text view enigme.
              * {@value #enigme}
              */
             txtviewEnigme.setText(enigme);
             /**
-             * split choixreponses
+             * split choixreponses.
              * @param ;
              * @return array String
              */
             choixreponses = reponses.split(";");
             /**
-             * set text radioButton
-             * {@value #choixreponses[0]}
+             * set text radioButton.
+             * value #choixreponses[0]
              */
             if (choixreponses.length > 3) {
                 rdbtnRep1.setText(choixreponses[0]);
                 /**
-                 * set text radioButton
-                 * {@value #choixreponses[1]}
+                 * set text radioButton.
+                 * value #choixreponses[1]
                  */
                 rdbtnRep2.setText(choixreponses[1]);
                 /**
-                 * set text radioButton
-                 * {@value #choixreponses[2]}
+                 * set text radioButton.
+                 * value #choixreponses[2]
                  */
                 rdbtnRep3.setText(choixreponses[2]);
                 /**
-                 * set text radioButton
-                 * {@value #choixreponses[3]}
+                 * set text radioButton.
+                 * value #choixreponses[3]
                  */
                 rdbtnRep4.setText(choixreponses[3]);
-                /**
-                 * Button init by id activity_jeu
-                 *
-                 */
             }
 
             Button btnJeuvalider = (Button) this.findViewById(R.id.jeu_btnValider);
             /**
-             * Action onClickButton btnJeuvalider
+             * Action onClickButton btnJeuvalider.
              */
             btnJeuvalider.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     /**
-                     * String reponse containing value reponse about question
+                     * String reponse containing value reponse about question.
                      * @value empty
                      */
                     String reponse = "";
@@ -249,38 +245,38 @@ public class JeuActivity extends Activity {
                      */
                     SharedPreferences.Editor editor = settings.edit();
                     /**
-                     *  Array containing all responses
+                     *  Array containing all responses.
                      */
                     ArrayList<Reponses> allreponses = questions.getReponse();
                     /**
-                     * set string reponse about object allreponses with function getSolution()
+                     * set string reponse about object allreponses with function getSolution().
                      */
                     if (allreponses.size() > 0) {
                         reponse = allreponses.get(0).getSolution();
                     }
                     /**
-                     * find radiobutton checked
+                     * find radiobutton checked.
                      * @value #getCheckedRadioButtonId()
                      */
                     int selectedId = rdgpRep.getCheckedRadioButtonId();
                     /**
-                     * Find the radiobutton by returned id
+                     * Find the radiobutton by returned id.
                      */
                     RadioButton radionbuttonReponse = (RadioButton) findViewById(selectedId);
                     /**
-                     *  set verifreponse about radio button check
+                     *  set verifreponse about radio button check.
                      */
                     String verifreponse = radionbuttonReponse.getText().toString();
                     /**
-                     * check value response checked and response question
+                     * check value response checked and response question.
                      */
                     if (reponse.equals(verifreponse)) {
                         /**
-                         * open db stats
+                         * open db stats.
                          */
                         statsSql.open();
                         /**
-                         * set number errors
+                         * set number errors.
                          * @value #setNberreurs
                          * @param int erreurs[0]
                          */
@@ -292,7 +288,7 @@ public class JeuActivity extends Activity {
                          */
                         stats.setDate(DateTime.now());
                         /**
-                         * insert stats in db
+                         * insert stats in db.
                          * @param stats Objects Statistiques
                          */
                         statsSql.insert(stats);
@@ -310,17 +306,14 @@ public class JeuActivity extends Activity {
                          */
                         Intent intent = new Intent(JeuActivity.this, ChoicesActivity.class);
                         /**
-                         * show new intent
+                         * show new intent.
                          * @param intent view ChoicesActivity
                          */
                         startActivity(intent);
                     }
-                    /**
-                     *
-                     */
                     else {
                         /**
-                         * incremented number errors
+                         * incremented number errors.
                          */
                         erreurs[0]++;
                         /**
@@ -348,31 +341,31 @@ public class JeuActivity extends Activity {
         switch (dayOfweek) {
             case "1":
                 checkday = settingsParameters.getBoolean(
-                getString(R.string.Parametres_cb_horaire_dimanche), false);
+                        getString(R.string.Parametres_cb_horaire_dimanche), false);
                 break;
             case "2": 
                 checkday = settingsParameters.getBoolean(
-                getString(R.string.Parametres_cb_horaire_lundi), false);
+                        getString(R.string.Parametres_cb_horaire_lundi), false);
                 break;
             case "3": 
                 checkday = settingsParameters.getBoolean(
-                getString(R.string.Parametres_cb_horaire_mardi), false);
+                        getString(R.string.Parametres_cb_horaire_mardi), false);
                 break;
             case "4": 
                 checkday = settingsParameters.getBoolean(
-                getString(R.string.Parametres_cb_horaire_mercredi), false);
+                        getString(R.string.Parametres_cb_horaire_mercredi), false);
                 break;
             case "5": 
                 checkday = settingsParameters.getBoolean(
-                getString(R.string.Parametres_cb_horaire_jeudi), false);
+                        getString(R.string.Parametres_cb_horaire_jeudi), false);
                 break;
             case "6": 
                 checkday = settingsParameters.getBoolean(
-                getString(R.string.Parametres_cb_horaire_vendredi), false);
+                        getString(R.string.Parametres_cb_horaire_vendredi), false);
                 break;
             case "7": 
                 checkday = settingsParameters.getBoolean(
-                getString(R.string.Parametres_cb_horaire_samedi), false);
+                        getString(R.string.Parametres_cb_horaire_samedi), false);
                 break;
             default: 
                 checkday = false;

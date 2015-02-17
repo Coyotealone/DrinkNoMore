@@ -10,20 +10,14 @@ import com.coyote.drinknomore.data.base.ReponsesSQLiteAdapterBase;
 import com.coyote.drinknomore.entity.Questions;
 import com.coyote.drinknomore.entity.Reponses;
 
-/**
- * 
+/** 
+ * Class regroup functions.
  * @author Coyote
- *
  */
 public class Fonctions {
 
     /**
-     * 
-     */
-    public static final String PREFS_PARAMETERS = "prefFileParameters";
-
-    /**
-     * Function to split time
+     * Function to split time.
      * @param valuetime String
      * @return time format String
      */
@@ -40,19 +34,23 @@ public class Fonctions {
     }
 
     /**
-     * Function random about id Question
+     * Function random about id Question.
      * @param maxId Integer
      * @return id of Questions
      */
     public static Integer randomId(int maxId) {
-        int min = 0;
         /**
-         * int maximum into random
-         * {@value nbQuestions.length - 1}
+         * int minimun into random.
+         */
+        int min = 0;
+        
+        /**
+         * int maximum into random.
+         * value nbQuestions.length - 1.
          */
         int max = maxId - 1;
         /**
-         * {@value #new Random}
+         * value #new Random.
          */
         Random rand = new Random();
         // nextInt is normally exclusive of the top value,
@@ -63,7 +61,7 @@ public class Fonctions {
     }
 
     /**
-     * Function to find Parameters about integer day
+     * Function to find Parameters about integer day.
      * @param day Integer
      * @return String correspondant au numéro de la journée
      */
@@ -99,7 +97,7 @@ public class Fonctions {
     }
 
     /**
-     * Function to associate Question Reponse in db
+     * Function to associate Question Reponse in db.
      * @param ctx Context
      * @return true if associated is OK else false
      */

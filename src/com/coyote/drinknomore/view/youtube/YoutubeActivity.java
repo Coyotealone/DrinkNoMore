@@ -2,13 +2,13 @@ package com.coyote.drinknomore.view.youtube;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View.OnClickListener;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
-import com.coyote.drinknomore.view.youtube.Config;
+
 import com.coyote.drinknomore.ChoicesActivity;
 import com.coyote.drinknomore.R;
 import com.google.android.youtube.player.YouTubeBaseActivity;
@@ -16,15 +16,14 @@ import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 
-public class YoutubeActivity extends YouTubeBaseActivity implements
-YouTubePlayer.OnInitializedListener {
+public class YoutubeActivity extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener {
 
     private static final int RECOVERY_DIALOG_REQUEST = 1;
 
-    /** * YouTube player view */
+    /** * YouTube player view. */
     private YouTubePlayerView youTubeView;
-    /** * Button to skip video */
-    private Button btn_skip_music;
+    /** * Button to skip video. */
+    private Button btnskipMusic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +37,8 @@ YouTubePlayer.OnInitializedListener {
         // Initializing video player with developer key
         youTubeView.initialize(Config.DEVELOPER_KEY, this);
 
-        btn_skip_music = (Button) findViewById(R.id.btn_skip_music);
-        btn_skip_music.setOnClickListener(new OnClickListener() {
+        btnskipMusic = (Button) findViewById(R.id.btn_skip_music);
+        btnskipMusic.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -50,8 +49,8 @@ YouTubePlayer.OnInitializedListener {
                  */
                 Intent intent = new Intent(YoutubeActivity.this, ChoicesActivity.class);
                 /**
-                 * show new intent
-                 * @param intent
+                 * show new intent.
+                 * @param intent view ChoicesActivity
                  */
                 startActivity(intent);
             }
