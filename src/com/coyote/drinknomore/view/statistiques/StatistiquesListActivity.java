@@ -1,31 +1,28 @@
 /**************************************************************************
  * StatistiquesListActivity.java, drinknomore Android
- *
  * Copyright 2015
  * Description : 
  * Author(s)   : Harmony
  * Licence     : 
  * Last update : Feb 10, 2015
- *
  **************************************************************************/
+
 package com.coyote.drinknomore.view.statistiques;
-
-import com.coyote.drinknomore.R;
-
-import com.coyote.drinknomore.harmony.view.HarmonyFragmentActivity;
-import com.coyote.drinknomore.harmony.view.HarmonyListFragment;
-import com.google.android.pinnedheader.util.ComponentUtils;
-import com.coyote.drinknomore.entity.Statistiques;
-import com.coyote.drinknomore.provider.contract.StatistiquesContract;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 
+import com.coyote.drinknomore.R;
+import com.coyote.drinknomore.entity.Statistiques;
+import com.coyote.drinknomore.harmony.view.HarmonyFragmentActivity;
+import com.coyote.drinknomore.harmony.view.HarmonyListFragment;
+import com.coyote.drinknomore.provider.contract.StatistiquesContract;
+import com.google.android.pinnedheader.util.ComponentUtils;
+
 /**
  * This class will display Statistiques entities in a list.
- *
  * This activity has a different behaviour wether you're on a tablet or a phone.
  * - On a phone, you will have a Statistiques list. A click on an item will get 
  * you to StatistiquesShowActivity.
@@ -86,7 +83,7 @@ public class StatistiquesListActivity
                 Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode <= SUPPORT_V4_RESULT_HACK) {
-            switch(requestCode) {
+            switch (requestCode) {
                 default:
                     break;
             }
@@ -144,8 +141,7 @@ public class StatistiquesListActivity
     @Override
     public void onListLoaded() {
         if (this.isDualMode()) {
-            int newPosition =
-                ((StatistiquesListAdapter) this.listFragment.getListAdapter())
+            int newPosition = ((StatistiquesListAdapter) this.listFragment.getListAdapter())
                         .getPosition(this.lastSelectedItem);
             if (newPosition < 0) {
                 this.selectListItem(this.lastSelectedItemPosition);

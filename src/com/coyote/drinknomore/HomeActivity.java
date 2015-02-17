@@ -1,6 +1,5 @@
 /**************************************************************************
  * HomeActivity.java, drinknomore Android
- *
  * Copyright 2014
  * Description :
  * Author(s)   : Harmony
@@ -10,10 +9,11 @@
 
 package com.coyote.drinknomore;
 
-import com.coyote.drinknomore.harmony.view.HarmonyFragmentActivity;
-import com.coyote.drinknomore.view.youtube.YoutubeActivity;
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.coyote.drinknomore.harmony.view.HarmonyFragmentActivity;
+import com.coyote.drinknomore.view.youtube.YoutubeActivity;
 
 /**
  * Home Activity.
@@ -24,11 +24,11 @@ public class HomeActivity extends HarmonyFragmentActivity {
     @Override
     public void onCreate(Bundle savedInstanceState)    {
         super.onCreate(savedInstanceState);
-		this.setContentView(R.layout.main);
-		Fonctions fcts = new Fonctions();
-		fcts.AssociateQuestionsReponses(this);
-		Intent intent = new Intent(this, YoutubeActivity.class);
-		this.startActivity(intent);
-	}
+        this.setContentView(R.layout.main);
+        Fonctions fcts = new Fonctions();
+        fcts.associateQuestionsReponses(this);
+        Intent intent = new Intent(this, YoutubeActivity.class);
+        this.startActivity(intent);
+    }
 
 }

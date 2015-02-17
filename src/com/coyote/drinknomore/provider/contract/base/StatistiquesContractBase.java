@@ -1,31 +1,26 @@
 /**************************************************************************
  * StatistiquesContractBase.java, drinknomore Android
- *
  * Copyright 2015
  * Description : 
  * Author(s)   : Harmony
  * Licence     : 
  * Last update : Feb 10, 2015
- *
  **************************************************************************/
+
 package com.coyote.drinknomore.provider.contract.base;
-
-import android.content.ContentValues;
-
 
 import java.util.ArrayList;
 
 import org.joda.time.DateTime;
 import org.joda.time.format.ISODateTimeFormat;
+
+import android.content.ContentValues;
+
 import com.coyote.drinknomore.entity.Statistiques;
-
-
-
-import com.coyote.drinknomore.provider.contract.StatistiquesContract;
 import com.coyote.drinknomore.harmony.util.DateUtils;
+import com.coyote.drinknomore.provider.contract.StatistiquesContract;
 
 /** Drinknomore contract base.
- *
  * This class is regenerated. DO NOT MODIFY.
  */
 public abstract class StatistiquesContractBase {
@@ -84,18 +79,15 @@ public abstract class StatistiquesContractBase {
     public static ContentValues itemToContentValues(final Statistiques item) {
         final ContentValues result = new ContentValues();
 
-            result.put(StatistiquesContract.COL_ID,
-                String.valueOf(item.getId()));
+        result.put(StatistiquesContract.COL_ID, String.valueOf(item.getId()));
 
-            if (item.getDate() != null) {
-                result.put(StatistiquesContract.COL_DATE,
-                    item.getDate().toString(ISODateTimeFormat.dateTime()));
-            }
+        if (item.getDate() != null) {
+            result.put(StatistiquesContract.COL_DATE, item.getDate().toString(ISODateTimeFormat.dateTime()));
+        }
 
-            if (item.getNberreurs() != null) {
-                result.put(StatistiquesContract.COL_NBERREURS,
-                    String.valueOf(item.getNberreurs()));
-            }
+        if (item.getNberreurs() != null) {
+            result.put(StatistiquesContract.COL_NBERREURS, String.valueOf(item.getNberreurs()));
+        }
 
 
         return result;
@@ -123,24 +115,24 @@ public abstract class StatistiquesContractBase {
         if (cursor.getCount() != 0) {
             int index;
 
-                index = cursor.getColumnIndexOrThrow(StatistiquesContract.COL_ID);
-                result.setId(
-                        cursor.getInt(index));
+            index = cursor.getColumnIndexOrThrow(StatistiquesContract.COL_ID);
+            result.setId(
+                    cursor.getInt(index));
 
-                index = cursor.getColumnIndexOrThrow(StatistiquesContract.COL_DATE);
-                final DateTime dtDate =
-                        DateUtils.formatISOStringToDateTime(
-                                cursor.getString(index));
-                if (dtDate != null) {
-                        result.setDate(
-                                dtDate);
-                } else {
-                    result.setDate(new DateTime());
-                }
+            index = cursor.getColumnIndexOrThrow(StatistiquesContract.COL_DATE);
+            final DateTime dtDate =
+                    DateUtils.formatISOStringToDateTime(
+                            cursor.getString(index));
+            if (dtDate != null) {
+                result.setDate(
+                            dtDate);
+            } else {
+                result.setDate(new DateTime());
+            }
 
-                index = cursor.getColumnIndexOrThrow(StatistiquesContract.COL_NBERREURS);
-                result.setNberreurs(
-                        cursor.getInt(index));
+            index = cursor.getColumnIndexOrThrow(StatistiquesContract.COL_NBERREURS);
+            result.setNberreurs(
+                    cursor.getInt(index));
 
 
         }

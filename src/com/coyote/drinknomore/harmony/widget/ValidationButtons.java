@@ -1,23 +1,21 @@
 /**************************************************************************
  * ValidationButtons.java, drinknomore Android
- *
  * Copyright 2015
  * Description : 
  * Author(s)   : Harmony
  * Licence     : 
  * Last update : Feb 10, 2015
- *
  **************************************************************************/
+
 package com.coyote.drinknomore.harmony.widget;
-
-import com.coyote.drinknomore.R;
-
 
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+
+import com.coyote.drinknomore.R;
 
 /**
  * Simple widget for validation. (1 button ok, 1 button cancel)

@@ -1,19 +1,17 @@
 /**************************************************************************
  * TimeWidget.java, drinknomore Android
- *
  * Copyright 2015
  * Description : 
  * Author(s)   : Harmony
  * Licence     : 
  * Last update : Feb 10, 2015
- *
  **************************************************************************/
+
 package com.coyote.drinknomore.harmony.widget;
 
 import org.joda.time.DateTime;
 
 import android.app.AlertDialog;
-
 import android.content.DialogInterface;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
@@ -24,12 +22,11 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.TimePicker;
 
-import com.google.common.base.Strings;
-
 import com.coyote.drinknomore.DrinknomoreApplication;
 import com.coyote.drinknomore.R;
 import com.coyote.drinknomore.harmony.util.DateUtils;
 import com.coyote.drinknomore.harmony.util.DateUtils.TimeFormatType;
+import com.google.common.base.Strings;
 
 /**
  * View for Time selection.

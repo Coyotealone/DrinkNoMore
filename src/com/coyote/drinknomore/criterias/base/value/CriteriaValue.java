@@ -20,10 +20,10 @@ import com.coyote.drinknomore.criterias.base.ICriteria;
  */
 public abstract class CriteriaValue implements ICriteria, Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
 
 }
 

@@ -18,15 +18,15 @@ public abstract class HeaderSectionIndexer<T> implements SectionIndexer {
     private ArrayList<Integer> mPositions = new ArrayList<Integer>();
     private static final String BLANK_HEADER_STRING = " ";
     private int totalCount;
-    
+
     protected HeaderSectionIndexer(List<T> items) {  
         this.items = items;
         this.totalCount = items.size();
-                
+
         int size = items.size();
         for (int i = 0; i < size; i++) {
             String header = this.getHeaderText(items.get(i));
-                    
+
             if (!mSections.contains(header)) {                
                 if (TextUtils.isEmpty(header)) {
                     mSections.add(BLANK_HEADER_STRING);
@@ -35,19 +35,19 @@ public abstract class HeaderSectionIndexer<T> implements SectionIndexer {
                 } else {
                     mSections.add(header);
                 }
-                
+
                 mPositions.add(i);
             }
         }
     }
-    
+
     protected abstract String getHeaderText(T item);
-    
+
     public Object[] getSections() {
         return mSections.toArray();
     }
-    
-    public List<T> getItems(){
+
+    public List<T> getItems() {
         return this.items;
     }
 
@@ -55,7 +55,7 @@ public abstract class HeaderSectionIndexer<T> implements SectionIndexer {
         if (section < 0 || section >= mPositions.size()) {
             return -1;
         }
-        
+
         return mPositions.get(section);
     }
 
@@ -77,26 +77,26 @@ public abstract class HeaderSectionIndexer<T> implements SectionIndexer {
         return index >= 0 ? index : -index - 2;
     }
 
-//    public void setProfileHeader(String header) {
-//        if (mSections != null) {
-//            // Don't do anything if the header is already set properly.
-//            if (mSections.length > 0 && header.equals(mSections[0])) {
-//                return;
-//            }
-//
-//            // Since the section indexer isn't aware of the profile at the top, we need to add a
-//            // special section at the top for it and shift everything else down.
-//            String[] tempSections = new String[mSections.length + 1];
-//            int[] tempPositions = new int[mPositions.length + 1];
-//            tempSections[0] = header;
-//            tempPositions[0] = 0;
-//            for (int i = 1; i <= mPositions.length; i++) {
-//                tempSections[i] = mSections[i - 1];
-//                tempPositions[i] = mPositions[i - 1] + 1;
-//            }
-//            mSections = tempSections;
-//            mPositions = tempPositions;
-//            mCount++;
-//        }
-//    }
+    //    public void setProfileHeader(String header) {
+    //        if (mSections != null) {
+    //            // Don't do anything if the header is already set properly.
+    //            if (mSections.length > 0 && header.equals(mSections[0])) {
+    //                return;
+    //            }
+    //
+    //            // Since the section indexer isn't aware of the profile at the top, we need to add a
+    //            // special section at the top for it and shift everything else down.
+    //            String[] tempSections = new String[mSections.length + 1];
+    //            int[] tempPositions = new int[mPositions.length + 1];
+    //            tempSections[0] = header;
+    //            tempPositions[0] = 0;
+    //            for (int i = 1; i <= mPositions.length; i++) {
+    //                tempSections[i] = mSections[i - 1];
+    //                tempPositions[i] = mPositions[i - 1] + 1;
+    //            }
+    //            mSections = tempSections;
+    //            mPositions = tempPositions;
+    //            mCount++;
+    //        }
+    //    }
 }

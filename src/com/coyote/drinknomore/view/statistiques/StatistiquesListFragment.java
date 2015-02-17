@@ -1,26 +1,17 @@
 /**************************************************************************
  * StatistiquesListFragment.java, drinknomore Android
- *
  * Copyright 2015
  * Description : 
  * Author(s)   : Harmony
  * Licence     : 
  * Last update : Feb 10, 2015
- *
  **************************************************************************/
+
 package com.coyote.drinknomore.view.statistiques;
 
 import java.util.ArrayList;
 
-import com.coyote.drinknomore.criterias.base.CriteriaExpression;
-import com.coyote.drinknomore.menu.CrudCreateMenuWrapper.CrudCreateMenuInterface;
-import com.coyote.drinknomore.provider.StatistiquesProviderAdapter;
-import com.coyote.drinknomore.provider.contract.StatistiquesContract;
-import com.coyote.drinknomore.harmony.view.HarmonyListFragment;
-import com.google.android.pinnedheader.headerlist.PinnedHeaderListView;
-
 import android.content.Intent;
-
 import android.os.Bundle;
 import android.support.v4.content.Loader;
 import android.view.LayoutInflater;
@@ -28,12 +19,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-
 import com.coyote.drinknomore.R;
+import com.coyote.drinknomore.criterias.base.CriteriaExpression;
 import com.coyote.drinknomore.entity.Statistiques;
+import com.coyote.drinknomore.harmony.view.HarmonyListFragment;
+import com.coyote.drinknomore.menu.CrudCreateMenuWrapper.CrudCreateMenuInterface;
+import com.coyote.drinknomore.provider.StatistiquesProviderAdapter;
+import com.coyote.drinknomore.provider.contract.StatistiquesContract;
+import com.google.android.pinnedheader.headerlist.PinnedHeaderListView;
 
 /** Statistiques list fragment.
- *
  * This fragment gives you an interface to list all your Statistiquess.
  *
  * @see android.app.Fragment
@@ -155,6 +150,7 @@ public class StatistiquesListFragment
         // Clear the data in the adapter.
         this.mAdapter.clear();
     }
+    
     @Override
     public void onClickAdd() {
         Intent intent = new Intent(this.getActivity(),

@@ -1,13 +1,12 @@
 /**************************************************************************
  * StringValue.java, drinknomore Android
- *
  * Copyright 2015
  * Description : 
  * Author(s)   : Harmony
  * Licence     : 
  * Last update : Feb 10, 2015
- *
  **************************************************************************/
+
 package com.coyote.drinknomore.criterias.base.value;
 
 import java.util.ArrayList;
@@ -18,10 +17,10 @@ import java.util.ArrayList;
  */
 public class StringValue extends CriteriaValue {
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	/**
+     * serialVersionUID
+     */
+    private static final long serialVersionUID = 1L;
+    /**
      * List of values.
      */
     private String value;

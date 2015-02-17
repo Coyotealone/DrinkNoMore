@@ -18,10 +18,10 @@ import java.util.ArrayList;
  */
 public class ArrayValue extends CriteriaValue {
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	/**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
+    /**
      * List of values.
      */
     private ArrayList<String> values = new ArrayList<String>();

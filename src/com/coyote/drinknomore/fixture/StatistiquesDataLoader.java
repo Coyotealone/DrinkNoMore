@@ -1,27 +1,21 @@
 /**************************************************************************
  * StatistiquesDataLoader.java, drinknomore Android
- *
  * Copyright 2015
  * Description : 
  * Author(s)   : Harmony
  * Licence     : 
  * Last update : Feb 10, 2015
- *
  **************************************************************************/
+
 package com.coyote.drinknomore.fixture;
 
 import java.util.Map;
-
-
-
-
 
 import com.coyote.drinknomore.entity.Statistiques;
 
 
 /**
  * StatistiquesDataLoader.
- *
  * This dataloader implements the parsing method needed while reading
  * the fixtures files.
  */
@@ -120,8 +114,8 @@ public final class StatistiquesDataLoader
     protected Statistiques get(final String key) {
         final Statistiques result;
         if (this.items.containsKey(key)) {
-            result = this.items.get(key);
-        }
+            result = this.items.get(key); 
+            }
         else {
             result = null;
         }
