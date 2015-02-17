@@ -6,8 +6,8 @@
  * Author(s)   : Harmony
  * Licence     :
  * Last update : Dec 26, 2014
- *
  **************************************************************************/
+
 package com.coyote.drinknomore;
 
 import com.coyote.drinknomore.harmony.view.HarmonyFragmentActivity;
@@ -21,9 +21,9 @@ import android.os.Bundle;
  */
 public class HomeActivity extends HarmonyFragmentActivity {
 
-	@Override
-	public void onCreate(Bundle savedInstanceState)    {
-		super.onCreate(savedInstanceState);
+    @Override
+    public void onCreate(Bundle savedInstanceState)    {
+        super.onCreate(savedInstanceState);
 		this.setContentView(R.layout.main);
 		Fonctions fcts = new Fonctions();
 		fcts.AssociateQuestionsReponses(this);

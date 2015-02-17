@@ -26,10 +26,10 @@ import android.view.View.OnClickListener;
  * This is from where you can access to your entities activities by default.
  */
 public class ChoicesActivity extends HarmonyFragmentActivity
-implements OnClickListener {
+    implements OnClickListener {
 
-	@Override
-	public void onCreate(Bundle savedInstanceState)    {
+    @Override
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.setContentView(R.layout.main);
 		this.initButtons();
