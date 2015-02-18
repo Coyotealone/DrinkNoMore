@@ -74,7 +74,7 @@
         android:id="@+id/timeWidget_Parametres_horaire"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        harmony:timeWidget_dialogTitle="@string/timeWidget_Parametres_horaire" >
+        harmony:timeWidget_dialogTitle="@string/timewidget_parameters_horaire" >
     </com.coyote.drinknomore.harmony.widget.TimeWidget>
 
     <Button

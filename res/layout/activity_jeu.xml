@@ -9,7 +9,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/jeu_txtTitle"
+        android:text="@string/jeu_txttitle"
         android:id="@+id/jeu_txtTitle"
         android:layout_gravity="center_horizontal" />
 
@@ -17,7 +17,7 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/jeu_txtEnigme"
+        android:text="@string/jeu_txtenigme"
         android:id="@+id/jeu_txtEnigme"
         android:layout_gravity="center_horizontal"
         android:layout_weight="0.15" />
@@ -33,7 +33,7 @@
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/Jeu_Radio_Rep1"
+            android:text="@string/jeu_radio_rep1"
             android:id="@+id/Jeu_Radio_Rep1"
             android:layout_row="0"
             android:layout_column="0" />
@@ -41,7 +41,7 @@
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/Jeu_Radio_Rep2"
+            android:text="@string/jeu_radio_rep2"
             android:id="@+id/Jeu_Radio_Rep2"
             android:layout_row="1"
             android:layout_column="0" />
@@ -49,7 +49,7 @@
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/Jeu_Radio_Rep3"
+            android:text="@string/jeu_radio_rep3"
             android:id="@+id/Jeu_Radio_Rep3"
             android:layout_row="0"
             android:layout_column="1" />
@@ -57,7 +57,7 @@
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/Jeu_Radio_Rep4"
+            android:text="@string/jeu_radio_rep4"
             android:id="@+id/Jeu_Radio_Rep4"
             android:layout_row="1"
             android:layout_column="1" />
@@ -67,7 +67,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/jeu_btnValider"
+        android:text="@string/jeu_btnvalider"
         android:id="@+id/jeu_btnValider"
         android:layout_gravity="center_horizontal" />
 </LinearLayout>

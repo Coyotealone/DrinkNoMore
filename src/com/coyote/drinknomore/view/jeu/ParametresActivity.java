@@ -47,25 +47,25 @@ public class ParametresActivity extends Activity {
                 .findViewById(R.id.timeWidget_Parametres_horaire);
 
         cb_horaire_lundi.setChecked(
-                settings.getBoolean(getString(R.string.Parametres_cb_horaire_lundi),
+                settings.getBoolean(getString(R.string.parametres_cb_horaire_lundi),
                         false));
         cb_horaire_mardi.setChecked(settings.getBoolean(
-                getString(R.string.Parametres_cb_horaire_mardi),
+                getString(R.string.parametres_cb_horaire_mardi),
                 false));
         cb_horaire_mercredi.setChecked(settings.getBoolean(
-                getString(R.string.Parametres_cb_horaire_mercredi), false));
+                getString(R.string.parametres_cb_horaire_mercredi), false));
         cb_horaire_jeudi.setChecked(settings.getBoolean(
-                getString(R.string.Parametres_cb_horaire_jeudi),
+                getString(R.string.parametres_cb_horaire_jeudi),
                 false));
         cb_horaire_vendredi.setChecked(settings.getBoolean(
-                getString(R.string.Parametres_cb_horaire_vendredi), false));
+                getString(R.string.parametres_cb_horaire_vendredi), false));
         cb_horaire_samedi.setChecked(settings.getBoolean(
-                getString(R.string.Parametres_cb_horaire_samedi),
+                getString(R.string.parametres_cb_horaire_samedi),
                 false));
         cb_horaire_dimanche.setChecked(settings.getBoolean(
-                getString(R.string.Parametres_cb_horaire_dimanche), false));
+                getString(R.string.parametres_cb_horaire_dimanche), false));
 
-        String valuetime = settings.getString(getString(R.string.Parametres_timeWidget_horaire),
+        String valuetime = settings.getString(getString(R.string.parametres_timewidget_horaire),
                 null);
         if (valuetime != null) {
             DateTimeFormatter formatter = DateTimeFormat.forPattern("HH:mm");
@@ -83,19 +83,19 @@ public class ParametresActivity extends Activity {
 
                 // Set values in editor
                 SharedPreferences.Editor editor = settings.edit();
-                editor.putBoolean(getString(R.string.Parametres_cb_horaire_lundi),
+                editor.putBoolean(getString(R.string.parametres_cb_horaire_lundi),
                         cb_horaire_lundi.isChecked());
-                editor.putBoolean(getString(R.string.Parametres_cb_horaire_mardi),
+                editor.putBoolean(getString(R.string.parametres_cb_horaire_mardi),
                         cb_horaire_mardi.isChecked());
-                editor.putBoolean(getString(R.string.Parametres_cb_horaire_mercredi),
+                editor.putBoolean(getString(R.string.parametres_cb_horaire_mercredi),
                         cb_horaire_mercredi.isChecked());
-                editor.putBoolean(getString(R.string.Parametres_cb_horaire_jeudi),
+                editor.putBoolean(getString(R.string.parametres_cb_horaire_jeudi),
                         cb_horaire_jeudi.isChecked());
-                editor.putBoolean(getString(R.string.Parametres_cb_horaire_vendredi),
+                editor.putBoolean(getString(R.string.parametres_cb_horaire_vendredi),
                         cb_horaire_vendredi.isChecked());
-                editor.putBoolean(getString(R.string.Parametres_cb_horaire_samedi),
+                editor.putBoolean(getString(R.string.parametres_cb_horaire_samedi),
                         cb_horaire_samedi.isChecked());
-                editor.putBoolean(getString(R.string.Parametres_cb_horaire_dimanche),
+                editor.putBoolean(getString(R.string.parametres_cb_horaire_dimanche),
                         cb_horaire_dimanche.isChecked());
 
                 String valuesave = Fonctions.splitTime((String) timewidget
@@ -103,7 +103,7 @@ public class ParametresActivity extends Activity {
                 if (valuesave == "") {
                     valuesave = null;
                 }
-                editor.putString(getString(R.string.Parametres_timeWidget_horaire), valuesave);
+                editor.putString(getString(R.string.parametres_timewidget_horaire), valuesave);
 
                 // Commit values
                 editor.commit();

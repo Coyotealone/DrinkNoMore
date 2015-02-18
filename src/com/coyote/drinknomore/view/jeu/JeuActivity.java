@@ -8,6 +8,9 @@ import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -35,17 +38,13 @@ public class JeuActivity extends Activity {
     /** * name SharedPreferences about parameters. */
     public static final String PREFS_PARAMETERS = "prefFileParameters";
 
+    final Context context = this;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         /** * Show view activity_jeu. */
         this.setContentView(R.layout.activity_jeu);
-        /**
-         * {@value #settings} SharePreferences.
-         * @param String PREFS_NAME
-         * @param Integer Mode init 0
-         */
-        final SharedPreferences settings = getSharedPreferences(PREFS_GAME, 0);
         /**
          * {@value #viewTxtEnigme} TextView.
          * init by id view activity_jeu
@@ -150,12 +149,6 @@ public class JeuActivity extends Activity {
          */
         String[] choixreponses = null;
         /**
-         * Array Integer containing number errors.
-         * {@value #erreurs} Integer[]
-         * init 0 if SharedPreferences empty
-         */
-        final Integer[] erreurs = {settings.getInt(getString(R.string.Jeu_Nb_Erreurs), 0)};
-        /**
          * Array int containing all id Questions.
          * {@value #getId()}
          */
@@ -163,7 +156,7 @@ public class JeuActivity extends Activity {
 
         if (nbQuestions.length < 1) {
             Toast.makeText(JeuActivity.this,
-                    getString(R.string.Jeu_ErreurDonnees), Toast.LENGTH_SHORT).show();
+                    getString(R.string.jeu_error_data), Toast.LENGTH_SHORT).show();
             /**
              * init intent in new view
              * @param JeuActivity.this
@@ -236,14 +229,23 @@ public class JeuActivity extends Activity {
                 @Override
                 public void onClick(View v) {
                     /**
+                     * {@value #settingsGame} SharePreferences.
+                     * @param String PREFS_GAME
+                     * @param Integer Mode init 0 private
+                     */
+                    SharedPreferences settingsGame = getSharedPreferences(PREFS_GAME, 0);
+                    
+                    /**
+                     * {@value #error} Integer.
+                     * Integer to calculate count error, init about settingsGame
+                     */
+                    Integer error = settingsGame.getInt("error", 0);
+                    settingsGame.getInt(String.valueOf(R.string.jeu_error_data), 0);
+                    /**
                      * String reponse containing value reponse about question.
                      * @value empty
                      */
                     String reponse = "";
-                    /**
-                     *
-                     */
-                    SharedPreferences.Editor editor = settings.edit();
                     /**
                      *  Array containing all responses.
                      */
@@ -278,9 +280,9 @@ public class JeuActivity extends Activity {
                         /**
                          * set number errors.
                          * @value #setNberreurs
-                         * @param int erreurs[0]
+                         * @param int error
                          */
-                        stats.setNberreurs(erreurs[0]);
+                        stats.setNberreurs(error);
                         /**
                          * set date
                          * @value #setDate
@@ -312,24 +314,41 @@ public class JeuActivity extends Activity {
                         startActivity(intent);
                     }
                     else {
+                        
+                        // Set values in editor
+                        SharedPreferences.Editor editorGame = settingsGame.edit();
                         /**
-                         * incremented number errors.
+                         * put error in editorGame 
                          */
-                        erreurs[0]++;
-                        /**
-                         * set number errors in SharedPreferences
-                         * @param String R.string.Jeu_Nb_Erreurs
-                         * @param Integer erreurs[0]
-                         */
-                        editor.putInt(getString(R.string.Jeu_Nb_Erreurs), erreurs[0]);
-                        /**
-                         * send toast
-                         * @param JeuActivity.this
-                         * @param String R.string.Jeu_MauvaiseReponse
-                         * @param int Toast.LENGTH_SHORT
-                         */
-                        Toast.makeText(JeuActivity.this,
-                                getString(R.string.Jeu_MauvaiseReponse), Toast.LENGTH_SHORT).show();
+                        editorGame.putInt(String.valueOf(R.string.jeu_error_data), error++);
+                        // Commit values
+                        editorGame.commit();
+
+                        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                                context);
+
+                        // set title
+                        alertDialogBuilder.setTitle(R.string.jeu_mauvaisereponse);
+
+                        // set dialog message
+                        alertDialogBuilder
+                        .setMessage(allreponses.get(0).getArguments())
+                        .setCancelable(false)
+                        .setPositiveButton(R.string.btn_ok,new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,int id) {
+                                // if this button is clicked, close
+                                // current activity
+                                JeuActivity.this.finish();
+                                Intent intent = new Intent(JeuActivity.this, JeuActivity.class);
+                                startActivity(intent);
+                            }
+                        });
+
+                        // create alert dialog
+                        AlertDialog alertDialog = alertDialogBuilder.create();
+
+                        // show it
+                        alertDialog.show();
                     }
                 }
             });
@@ -341,31 +360,31 @@ public class JeuActivity extends Activity {
         switch (dayOfweek) {
             case "1":
                 checkday = settingsParameters.getBoolean(
-                        getString(R.string.Parametres_cb_horaire_dimanche), false);
+                        getString(R.string.parametres_cb_horaire_dimanche), false);
                 break;
             case "2": 
                 checkday = settingsParameters.getBoolean(
-                        getString(R.string.Parametres_cb_horaire_lundi), false);
+                        getString(R.string.parametres_cb_horaire_lundi), false);
                 break;
             case "3": 
                 checkday = settingsParameters.getBoolean(
-                        getString(R.string.Parametres_cb_horaire_mardi), false);
+                        getString(R.string.parametres_cb_horaire_mardi), false);
                 break;
             case "4": 
                 checkday = settingsParameters.getBoolean(
-                        getString(R.string.Parametres_cb_horaire_mercredi), false);
+                        getString(R.string.parametres_cb_horaire_mercredi), false);
                 break;
             case "5": 
                 checkday = settingsParameters.getBoolean(
-                        getString(R.string.Parametres_cb_horaire_jeudi), false);
+                        getString(R.string.parametres_cb_horaire_jeudi), false);
                 break;
             case "6": 
                 checkday = settingsParameters.getBoolean(
-                        getString(R.string.Parametres_cb_horaire_vendredi), false);
+                        getString(R.string.parametres_cb_horaire_vendredi), false);
                 break;
             case "7": 
                 checkday = settingsParameters.getBoolean(
-                        getString(R.string.Parametres_cb_horaire_samedi), false);
+                        getString(R.string.parametres_cb_horaire_samedi), false);
                 break;
             default: 
                 checkday = false;
@@ -376,7 +395,7 @@ public class JeuActivity extends Activity {
 
     private Integer compareDateTime(SharedPreferences settingsParameters, Calendar calendarNow) {
         String timeSave = settingsParameters.getString(
-                getString(R.string.Parametres_timeWidget_horaire),null);
+                getString(R.string.parametres_timewidget_horaire),null);
 
         DateTimeFormatter formatter = DateTimeFormat.forPattern("HH:mm");
         DateTime datetimeSave = formatter.parseDateTime(timeSave);
