@@ -239,11 +239,10 @@ public class QuestionsCreateFragment extends HarmonyFragment
 
         /**
          * Constructor of the task.
-         * @param entity The entity to insert in the DB
          * @param fragment The parent fragment from where the aSyncTask is
          * called
          */
-        public LoadTask(final QuestionsCreateFragment fragment) {
+         public LoadTask(final QuestionsCreateFragment fragment) {
             super();
             this.ctx = fragment.getActivity();
             this.fragment = fragment;

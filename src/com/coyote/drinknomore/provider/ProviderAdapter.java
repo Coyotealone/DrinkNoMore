@@ -25,12 +25,13 @@ public abstract class ProviderAdapter<T> extends ProviderAdapterBase<T> {
 
     /**
      * Provider Adapter Base constructor.
-     *
-     * @param context The context.
+     * 
+     * @param provider
+     * @param adapter
      */
     public ProviderAdapter(
-                final DrinknomoreProviderBase provider,
-                final SQLiteAdapterBase<T> adapter) {
+            final DrinknomoreProviderBase provider,
+            final SQLiteAdapterBase<T> adapter) {
         super(provider, adapter);
     }
 }

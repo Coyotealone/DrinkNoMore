@@ -67,11 +67,11 @@ public class DataManager {
     /**
      * Tells the ObjectManager to make an instance managed and persistent.
      *
-     * The object will be entered into the database as a result of the <br />
+     * The object will be entered into the database as a result of the 
      * flush operation.
      *
-     * NOTE: The persist operation always considers objects that are not<br />
-     * yet known to this ObjectManager as NEW. Do not pass detached <br />
+     * NOTE: The persist operation always considers objects that are not
+     * yet known to this ObjectManager as NEW. Do not pass detached 
      * objects to the persist operation.
      *
      * @param object $object The instance to make managed and persistent.
@@ -98,7 +98,7 @@ public class DataManager {
     /**
      * Removes an object instance.
      *
-     * A removed object will be removed from the database as a result of <br />
+     * A removed object will be removed from the database as a result of 
      * the flush operation.
      *
      * @param object $object The object instance to remove.
@@ -174,8 +174,8 @@ public class DataManager {
 //    }
 
     /**
-     * Flushes all changes to objects that have been queued up to now to <br />
-     * the database. This effectively synchronizes the in-memory state of<br />
+     * Flushes all changes to objects that have been queued up to now to 
+     * the database. This effectively synchronizes the in-memory state of
      * managed objects with the database.
      */
     public void flush() {
@@ -214,7 +214,7 @@ public class DataManager {
 //    /**
 //     * Returns the ClassMetadata descriptor for a class.
 //     *
-//     * The class name must be the fully-qualified class name without a <br />
+//     * The class name must be the fully-qualified class name without a 
 //     * leading backslash (as it is returned by get_class($obj)).
 //     *
 //     * @param className $className

@@ -28,7 +28,7 @@ public class SelectionItemView extends ViewGroup {
     private Drawable mHorizontalDividerDrawable;
     private int mHorizontalDividerHeight;
     //private int mVerticalDividerMargin;
-    
+
     // Style values for layout and appearance
     private final int mPreferredHeight;
     private final int mHeaderTextColor;
@@ -41,44 +41,44 @@ public class SelectionItemView extends ViewGroup {
     private final int mTextIndent;
     private Drawable mActivatedBackgroundDrawable;    
     //private ColorStateList mSecondaryTextColor;
-    
+
     private boolean mActivatedStateSupported;
-        
+
     private Rect mBoundsWithoutHeader = new Rect();
-    
+
     protected final android.content.Context mContext;
-    
+
     // Header layout data
     private boolean mHeaderVisible;
     private View mHeaderDivider;
     private int mHeaderBackgroundHeight;
     private TextView mHeaderTextView;
-    
+
     // List item objects    
     private ViewGroup innerLayout;
     private int innerLayoutHeight;
-    
+
     public SelectionItemView(android.content.Context context) {
         this(context, null);
     }
-    
+
     public SelectionItemView(android.content.Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
-    
+
     public SelectionItemView(android.content.Context context, AttributeSet attrs, int layout) {
         super(context, attrs);
-        
+
         this.mContext = context;
-                
+
         // Read all style values
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ContactListItemView);
-        
+
         mActivatedBackgroundDrawable = a.getDrawable(
                 R.styleable.ContactListItemView_activated_background);
         mHorizontalDividerDrawable = a.getDrawable(
                 R.styleable.ContactListItemView_list_item_divider);     
-        
+
         mHeaderTextIndent = a.getDimensionPixelOffset(
                 R.styleable.ContactListItemView_list_item_header_text_indent, 0);
         mHeaderTextColor = a.getColor(
@@ -91,43 +91,43 @@ public class SelectionItemView extends ViewGroup {
                 R.styleable.ContactListItemView_list_item_header_underline_height, 1);
         mHeaderUnderlineColor = a.getColor(
                 R.styleable.ContactListItemView_list_item_header_underline_color, 0);
-        
+
         this.mPreferredHeight = 0;
         this.mTextIndent = 0;
-        
-//        this.mVerticalDividerMargin = 0;
-//        this.mCountViewTextSize = 0;
-//        this.mCountViewTextColor = 0;        
-        
+
+        //        this.mVerticalDividerMargin = 0;
+        //        this.mCountViewTextSize = 0;
+        //        this.mCountViewTextColor = 0;        
+
         if (this.mHorizontalDividerDrawable != null) {
             this.mHorizontalDividerHeight = this.mHorizontalDividerDrawable.getIntrinsicHeight();
             this.mHorizontalDividerVisible = true;
         }
-        
+
         if (mActivatedBackgroundDrawable != null) {
             mActivatedBackgroundDrawable.setCallback(this);
         }
-        
+
         //Force ActivatedStateSupport to true
         this.setActivatedStateSupported(true);
-        
+
         if (layout != 0) {
             this.innerLayout = (ViewGroup) inflate(context, layout, null);
             this.addView(this.innerLayout);
         }
     }
-    
-    protected ViewGroup getInnerLayout(){
+
+    protected ViewGroup getInnerLayout() {
         return this.innerLayout;
     }
-    
+
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         // We will match parent's width and wrap content vertically, but make sure
         // height is no less than listPreferredItemHeight.
         final int specWidth = resolveSize(0, widthMeasureSpec);
         final int preferredHeight;
-        
+
         if (mHorizontalDividerVisible) {
             preferredHeight = mPreferredHeight + mHorizontalDividerHeight;
         } else {
@@ -144,13 +144,13 @@ public class SelectionItemView extends ViewGroup {
         // Go over all visible text views and measure actual width of each of them.
         // Also calculate their heights to get the total height for this entire view.
 
-        if (isVisible(this.innerLayout)){
+        if (isVisible(this.innerLayout)) {
             this.innerLayout.measure(
-                MeasureSpec.makeMeasureSpec(effectiveWidth, MeasureSpec.EXACTLY),
-                MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
+                    MeasureSpec.makeMeasureSpec(effectiveWidth, MeasureSpec.EXACTLY),
+                    MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
             this.innerLayoutHeight = this.innerLayout.getMeasuredHeight();
         }
-        
+
         // Calculate height including padding.
         int height = this.innerLayoutHeight;
 
@@ -170,11 +170,11 @@ public class SelectionItemView extends ViewGroup {
             mHeaderTextView.measure(
                     MeasureSpec.makeMeasureSpec(specWidth, MeasureSpec.EXACTLY),
                     MeasureSpec.makeMeasureSpec(mHeaderBackgroundHeight, MeasureSpec.EXACTLY));
-//            if (mCountView != null) {
-//                mCountView.measure(
-//                        MeasureSpec.makeMeasureSpec(specWidth, MeasureSpec.AT_MOST),
-//                        MeasureSpec.makeMeasureSpec(mHeaderBackgroundHeight, MeasureSpec.EXACTLY));
-//            }
+            //            if (mCountView != null) {
+            //                mCountView.measure(
+            //                        MeasureSpec.makeMeasureSpec(specWidth, MeasureSpec.AT_MOST),
+            //                        MeasureSpec.makeMeasureSpec(mHeaderBackgroundHeight, MeasureSpec.EXACTLY));
+            //            }
             mHeaderBackgroundHeight = Math.max(mHeaderBackgroundHeight,
                     mHeaderTextView.getMeasuredHeight());
             height += (mHeaderBackgroundHeight + mHeaderUnderlineHeight);
@@ -182,7 +182,7 @@ public class SelectionItemView extends ViewGroup {
 
         setMeasuredDimension(specWidth, height);
     }
-    
+
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         final int height = bottom - top;
@@ -200,12 +200,12 @@ public class SelectionItemView extends ViewGroup {
                     0,
                     rightBound,
                     mHeaderBackgroundHeight);
-//            if (mCountView != null) {
-//                mCountView.layout(rightBound - mCountView.getMeasuredWidth(),
-//                        0,
-//                        rightBound,
-//                        mHeaderBackgroundHeight);
-//            }
+            //            if (mCountView != null) {
+            //                mCountView.layout(rightBound - mCountView.getMeasuredWidth(),
+            //                        0,
+            //                        rightBound,
+            //                        mHeaderBackgroundHeight);
+            //            }
             mHeaderDivider.layout(leftBound,
                     mHeaderBackgroundHeight,
                     rightBound,
@@ -233,11 +233,11 @@ public class SelectionItemView extends ViewGroup {
         leftBound += mTextIndent;
 
         // Layout the call button.
-//        mVerticalDividerVisible = false;
+        //        mVerticalDividerVisible = false;
 
         // Center text vertically
         final int totalTextHeight = this.innerLayoutHeight;
-        
+
         int textTopBound = (bottomBound + topBound - totalTextHeight) / 2;
 
         if (isVisible(this.innerLayout)) {
@@ -248,7 +248,7 @@ public class SelectionItemView extends ViewGroup {
             textTopBound += this.innerLayoutHeight;
         }
     }
-    
+
     /**
      * Sets section header or makes it invisible if the title is null.
      */
@@ -270,10 +270,10 @@ public class SelectionItemView extends ViewGroup {
             setMarqueeText(mHeaderTextView, title);
             mHeaderTextView.setVisibility(View.VISIBLE);
             mHeaderDivider.setVisibility(View.VISIBLE);
-            
+
             if (ComponentUtils.isIceCreamSandwich())
                 mHeaderTextView.setAllCaps(true);
-            
+
             mHeaderVisible = true;
         } else {
             if (mHeaderTextView != null) {
@@ -285,7 +285,7 @@ public class SelectionItemView extends ViewGroup {
             mHeaderVisible = false;
         }
     }
-    
+
     @Override
     protected void drawableStateChanged() {
         super.drawableStateChanged();
@@ -293,7 +293,7 @@ public class SelectionItemView extends ViewGroup {
             mActivatedBackgroundDrawable.setState(getDrawableState());
         }
     }
-    
+
     @Override
     protected boolean verifyDrawable(Drawable who) {
         return who == mActivatedBackgroundDrawable || super.verifyDrawable(who);
@@ -315,13 +315,13 @@ public class SelectionItemView extends ViewGroup {
         if (mHorizontalDividerVisible) {
             mHorizontalDividerDrawable.draw(canvas);
         }
-//        if (mVerticalDividerVisible) {
-//            mVerticalDividerDrawable.draw(canvas);
-//        }
+        //        if (mVerticalDividerVisible) {
+        //            mVerticalDividerDrawable.draw(canvas);
+        //        }
 
         super.dispatchDraw(canvas);
     }
-    
+
     public void setDividerVisible(boolean visible) {
         mHorizontalDividerVisible = visible && this.mHorizontalDividerDrawable != null;
     }
@@ -333,20 +333,20 @@ public class SelectionItemView extends ViewGroup {
         // view (ListView).
         forceLayout();
     }
-    
+
     protected boolean isVisible(View view) {
         return view != null && view.getVisibility() == View.VISIBLE;
     }
-    
+
     private TruncateAt getTextEllipsis() {
         return TruncateAt.MARQUEE;
     }
-    
+
     public void setActivatedStateSupported(boolean flag) {
         if (this.mActivatedBackgroundDrawable != null)
             this.mActivatedStateSupported = flag;
     }
-    
+
     protected void setMarqueeText(TextView textView, CharSequence text) {
         if (getTextEllipsis() == TruncateAt.MARQUEE) {
             // To show MARQUEE correctly (with END effect during non-active state), we need

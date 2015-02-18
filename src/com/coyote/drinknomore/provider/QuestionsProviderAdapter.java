@@ -22,11 +22,11 @@ import com.coyote.drinknomore.provider.base.DrinknomoreProviderBase;
  * Feel free to override any method here.
  */
 public class QuestionsProviderAdapter
-                    extends QuestionsProviderAdapterBase {
+extends QuestionsProviderAdapterBase {
 
     /**
      * Constructor.
-     * @param ctx context
+     * @param provider
      */
     public QuestionsProviderAdapter(
             final DrinknomoreProviderBase provider) {

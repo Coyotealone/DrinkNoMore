@@ -1,21 +1,19 @@
 /**************************************************************************
  * StatistiquesProviderAdapter.java, drinknomore Android
- *
  * Copyright 2015
  * Description : 
  * Author(s)   : Harmony
  * Licence     : 
  * Last update : Feb 10, 2015
- *
  **************************************************************************/
+
 package com.coyote.drinknomore.provider;
 
-import com.coyote.drinknomore.provider.base.StatistiquesProviderAdapterBase;
 import com.coyote.drinknomore.provider.base.DrinknomoreProviderBase;
+import com.coyote.drinknomore.provider.base.StatistiquesProviderAdapterBase;
 
 /**
  * StatistiquesProviderAdapter.
- *
  * A provider adapter is used to separate your provider requests for
  * each entity of your application.
  * You will find here basic methods for database manipulation.
@@ -26,7 +24,7 @@ public class StatistiquesProviderAdapter
 
     /**
      * Constructor.
-     * @param ctx context
+     * @param provider Provider
      */
     public StatistiquesProviderAdapter(
             final DrinknomoreProviderBase provider) {

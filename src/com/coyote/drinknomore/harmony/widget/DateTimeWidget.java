@@ -35,7 +35,7 @@ import com.coyote.drinknomore.harmony.util.DateUtils.TimeFormatType;
 /**
  * View for DateTime selection.
  * This view is composed of two disabled edit text next to each other and
- * of two alert dialogs (DatePickerDialog & TimePickerDialog).
+ * of two alert dialogs (DatePickerDialog and TimePickerDialog).
  * It is really helpful to let your users chose a date.
  */
 public class DateTimeWidget extends FrameLayout implements OnClickListener {
@@ -255,6 +255,7 @@ public class DateTimeWidget extends FrameLayout implements OnClickListener {
 
     /**
      * Set the default date when user click and field is empty.
+     * @param defaultDate DateTime
      */
     public void setDefaultDate(DateTime defaultDate) {
         this.defaultDate = defaultDate;
@@ -294,6 +295,7 @@ public class DateTimeWidget extends FrameLayout implements OnClickListener {
 
     /**
      * Set the default time when user click and field is empty.
+     * @param defaultTime DateTime
      */
     public void setDefaultTime(DateTime defaultTime) {
         this.defaultTime = defaultTime;
@@ -337,6 +339,7 @@ public class DateTimeWidget extends FrameLayout implements OnClickListener {
 
     /**
      * Set the default date and time when user click and field is empty.
+     * @param defaultDateTime DateTime
      */
     public void setDefaultDateTime(DateTime defaultDateTime) {
         this.setDefaultDate(defaultDateTime);
@@ -504,16 +507,19 @@ public class DateTimeWidget extends FrameLayout implements OnClickListener {
     public interface OnDateClickListener {
         /**
          * Called when User click on the Date EditText.
+         * @param dateTimeWidget DateTimeWidget
          */
         void onClickDateEditText(DateTimeWidget dateTimeWidget);
 
         /**
          * Called when User click on the date picker dialog's ok button.
+         * @param dateTimeWidget DateTimeWidget
          */
         void onValidateDate(DateTimeWidget dateTimeWidget);
 
         /**
          * Called when User click on the date picker dialog's cancel button.
+         * @param dateTimeWidget DateTimeWidget
          */
         void onCancelDate(DateTimeWidget dateTimeWidget);
     }
@@ -522,16 +528,19 @@ public class DateTimeWidget extends FrameLayout implements OnClickListener {
     public interface OnTimeClickListener {
         /**
          * Called when User click on the Time EditText.
+         * @param dateTimeWidget DateTimeWidget
          */
         void onClickTimeEditText(DateTimeWidget dateTimeWidget);
 
         /**
          * Called when User click on the Time picker dialog's ok button.
+         * @param dateTimeWidget DateTimeWidget
          */
         void onValidateTime(DateTimeWidget dateTimeWidget);
 
         /**
          * Called when User click on the Time picker dialog's cancel button.
+         * @param dateTimeWidget DateTimeWidget
          */
         void onCancelTime(DateTimeWidget dateTimeWidget);
     }

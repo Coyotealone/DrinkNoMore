@@ -1,13 +1,12 @@
 /**************************************************************************
  * StatistiquesCreateFragment.java, drinknomore Android
- *
  * Copyright 2015
  * Description : 
  * Author(s)   : Harmony
  * Licence     : 
  * Last update : Feb 10, 2015
- *
  **************************************************************************/
+
 package com.coyote.drinknomore.view.statistiques;
 
 
@@ -39,7 +38,6 @@ import com.coyote.drinknomore.provider.utils.StatistiquesProviderUtils;
 
 /**
  * Statistiques create fragment.
- *
  * This fragment gives you an interface to create a Statistiques.
  */
 public class StatistiquesCreateFragment extends HarmonyFragment
@@ -141,8 +139,7 @@ public class StatistiquesCreateFragment extends HarmonyFragment
         /**
          * Constructor of the task.
          * @param entity The entity to insert in the DB
-         * @param fragment The parent fragment from where the aSyncTask is
-         * called
+         * @param fragment The parent fragment from where the aSyncTask is called
          */
         public CreateTask(final StatistiquesCreateFragment fragment,
                 final Statistiques entity) {

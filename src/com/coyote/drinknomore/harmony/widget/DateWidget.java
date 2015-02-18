@@ -149,6 +149,7 @@ public class DateWidget extends FrameLayout implements OnClickListener {
     
     /**
      * Set the default date when user click and field is empty.
+     * @param defaultDate DateTime
      */
     public void setDefaultDate(DateTime defaultDate) {
         this.defaultDate = defaultDate;
@@ -245,16 +246,19 @@ public class DateWidget extends FrameLayout implements OnClickListener {
     public interface OnDateClickListener {
         /**
          * Called when User click on the Date EditText.
+         * @param dateWidget DateWidget
          */
         void onClickDateEditText(DateWidget dateWidget);
 
         /**
          * Called when User click on the date picker dialog's ok button.
+         * @param dateWidget DateWidget
          */
         void onValidateDate(DateWidget dateWidget);
 
         /**
          * Called when User click on the date picker dialog's cancel button.
+         * @param dateWidget DateWidget
          */
         void onCancelDate(DateWidget dateWidget);
     }

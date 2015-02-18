@@ -1,43 +1,35 @@
 /**************************************************************************
  * StatistiquesProviderUtilsBase.java, drinknomore Android
- *
  * Copyright 2015
  * Description : 
  * Author(s)   : Harmony
  * Licence     : 
  * Last update : Feb 10, 2015
- *
  **************************************************************************/
+
 package com.coyote.drinknomore.provider.utils.base;
 
 import java.util.ArrayList;
 
 import android.content.ContentProviderOperation;
 import android.content.ContentProviderResult;
-
 import android.content.ContentResolver;
 import android.content.ContentValues;
-
 import android.content.OperationApplicationException;
 import android.net.Uri;
 import android.os.RemoteException;
 
-
-import com.coyote.drinknomore.provider.utils.ProviderUtils;
 import com.coyote.drinknomore.criterias.base.CriteriaExpression;
 import com.coyote.drinknomore.criterias.base.CriteriaExpression.GroupType;
-
 import com.coyote.drinknomore.entity.Statistiques;
-
-import com.coyote.drinknomore.provider.StatistiquesProviderAdapter;
 import com.coyote.drinknomore.provider.DrinknomoreProvider;
+import com.coyote.drinknomore.provider.StatistiquesProviderAdapter;
 import com.coyote.drinknomore.provider.contract.StatistiquesContract;
+import com.coyote.drinknomore.provider.utils.ProviderUtils;
 
 /**
  * Statistiques Provider Utils Base.
- *
  * DO NOT MODIFY THIS CLASS AS IT IS REGENERATED
- *
  * This class is a utility class helpful for complex provider calls.
  * ex : inserting an entity and its relations alltogether, etc.
  */
@@ -135,11 +127,11 @@ public abstract class StatistiquesProviderUtilsBase
                     String.valueOf(id));
 
         android.database.Cursor cursor = prov.query(
-            StatistiquesProviderAdapter.STATISTIQUES_URI,
-            StatistiquesContract.ALIASED_COLS,
-            crits.toSQLiteSelection(),
-            crits.toSQLiteSelectionArgs(),
-            null);
+                StatistiquesProviderAdapter.STATISTIQUES_URI,
+                StatistiquesContract.ALIASED_COLS,
+                crits.toSQLiteSelection(),
+                crits.toSQLiteSelectionArgs(),
+                null);
 
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
@@ -153,7 +145,7 @@ public abstract class StatistiquesProviderUtilsBase
 
     /**
      * Query the DB to get all entities.
-     * @return ArrayList<Statistiques>
+     * @return ArrayList result
      */
     public ArrayList<Statistiques> queryAll() {
         ArrayList<Statistiques> result =
@@ -178,7 +170,7 @@ public abstract class StatistiquesProviderUtilsBase
     /**
      * Query the DB to get the entities filtered by criteria.
      * @param expression The criteria expression defining the selection and selection args
-     * @return ArrayList<Statistiques>
+     * @return ArrayList
      */
     public ArrayList<Statistiques> query(CriteriaExpression expression) {
         ArrayList<Statistiques> result =

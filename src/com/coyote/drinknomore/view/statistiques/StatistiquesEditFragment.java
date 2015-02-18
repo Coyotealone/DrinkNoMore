@@ -1,13 +1,12 @@
 /**************************************************************************
  * StatistiquesEditFragment.java, drinknomore Android
- *
  * Copyright 2015
  * Description : 
  * Author(s)   : Harmony
  * Licence     : 
  * Last update : Feb 10, 2015
- *
  **************************************************************************/
+
 package com.coyote.drinknomore.view.statistiques;
 
 
@@ -15,35 +14,28 @@ package com.coyote.drinknomore.view.statistiques;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteException;
-
 import android.os.AsyncTask;
 import android.os.Bundle;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.common.base.Strings;
 import com.coyote.drinknomore.R;
 import com.coyote.drinknomore.entity.Statistiques;
-
-import com.coyote.drinknomore.harmony.view.HarmonyFragmentActivity;
 import com.coyote.drinknomore.harmony.view.HarmonyFragment;
+import com.coyote.drinknomore.harmony.view.HarmonyFragmentActivity;
 import com.coyote.drinknomore.harmony.widget.DateTimeWidget;
-
 import com.coyote.drinknomore.menu.SaveMenuWrapper.SaveMenuInterface;
-
-import com.coyote.drinknomore.provider.utils.StatistiquesProviderUtils;
 import com.coyote.drinknomore.provider.contract.StatistiquesContract;
+import com.coyote.drinknomore.provider.utils.StatistiquesProviderUtils;
+import com.google.common.base.Strings;
 
 /** Statistiques create fragment.
- *
  * This fragment gives you an interface to edit a Statistiques.
  *
  * @see android.app.Fragment
@@ -115,6 +107,7 @@ public class StatistiquesEditFragment extends HarmonyFragment
         }
         return error == 0;
     }
+    
     @Override
     public View onCreateView(
                 LayoutInflater inflater,
@@ -152,8 +145,7 @@ public class StatistiquesEditFragment extends HarmonyFragment
         /**
          * Constructor of the task.
          * @param entity The entity to insert in the DB
-         * @param fragment The parent fragment from where the aSyncTask is
-         * called
+         * @param fragment The parent fragment from where the aSyncTask is called
          */
         public EditTask(final StatistiquesEditFragment fragment,
                     final Statistiques entity) {

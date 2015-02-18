@@ -1,32 +1,29 @@
 /**************************************************************************
  * StatistiquesListAdapter.java, drinknomore Android
- *
  * Copyright 2015
  * Description : 
  * Author(s)   : Harmony
  * Licence     : 
  * Last update : Feb 10, 2015
- *
  **************************************************************************/
+
 package com.coyote.drinknomore.view.statistiques;
 
 import java.util.List;
-
-import com.coyote.drinknomore.R;
-
 
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.SectionIndexer;
 import android.widget.TextView;
 
+import com.coyote.drinknomore.R;
+import com.coyote.drinknomore.entity.Statistiques;
 import com.coyote.drinknomore.harmony.util.DateUtils;
 import com.coyote.drinknomore.harmony.view.HarmonyFragmentActivity;
 import com.google.android.pinnedheader.SelectionItemView;
 import com.google.android.pinnedheader.headerlist.HeaderAdapter;
 import com.google.android.pinnedheader.headerlist.HeaderSectionIndexer;
 import com.google.android.pinnedheader.headerlist.PinnedHeaderListView.PinnedHeaderAdapter;
-import com.coyote.drinknomore.entity.Statistiques;
 
 /**
  * List adapter for Statistiques entity.
@@ -150,11 +147,9 @@ public class StatistiquesListAdapter
          */
         public void populate(final Statistiques model) {
             View convertView = this.getInnerLayout();
-            TextView dateView =
-                (TextView) convertView.findViewById(
+            TextView dateView = (TextView) convertView.findViewById(
                         R.id.row_statistiques_date);
-            TextView nberreursView =
-                (TextView) convertView.findViewById(
+            TextView nberreursView = (TextView) convertView.findViewById(
                         R.id.row_statistiques_nberreurs);
 
 

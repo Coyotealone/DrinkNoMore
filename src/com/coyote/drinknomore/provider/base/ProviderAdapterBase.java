@@ -23,11 +23,14 @@ import com.coyote.drinknomore.data.base.SQLiteAdapterBase;
 import com.coyote.drinknomore.provider.DrinknomoreProvider;
 
 /**
- * ProviderAdapterBase<T>. 
- *
+ * 
+ * @author Coyote
+ * ProviderAdapterBase<T>
  * DO NOT MODIFY THIS CLASS AS IT IS REGENERATED
- *
- * @param <T> must extends Serializable
+ * */
+
+/**
+ * @param <T> T
  */
 public abstract class ProviderAdapterBase<T> {
     /** TAG for debug purpose. */
@@ -46,7 +49,8 @@ public abstract class ProviderAdapterBase<T> {
     /**
      * Provider Adapter Base constructor.
      *
-     * @param context The context.
+     * @param provider The context.
+     * @param adapter The context.
      */
     public ProviderAdapterBase(
             final DrinknomoreProviderBase provider,
@@ -71,8 +75,8 @@ public abstract class ProviderAdapterBase<T> {
      * @return how many token deleted
      */
     public abstract int delete(final Uri uri,
-                            String selection,
-                            String[] selectionArgs);
+            String selection,
+            String[] selectionArgs);
 
 
     /**
@@ -84,7 +88,7 @@ public abstract class ProviderAdapterBase<T> {
      * @return how many token inserted
      */
     public abstract Uri insert(final Uri uri,
-                            final ContentValues values);
+            final ContentValues values);
 
     /**
      * Send a query to the DB.
@@ -98,10 +102,10 @@ public abstract class ProviderAdapterBase<T> {
      * @return A cursor pointing to the result of the query
      */
     public abstract android.database.Cursor query(final Uri uri,
-                        final String[] projection,
-                        final String selection,
-                        final String[] selectionArgs,
-                        final String sortOrder);
+            final String[] projection,
+            final String selection,
+            final String[] selectionArgs,
+            final String sortOrder);
 
 
     /**
@@ -115,9 +119,9 @@ public abstract class ProviderAdapterBase<T> {
      * @return how many token update
      */
     public abstract int update(final Uri uri,
-                        final ContentValues values,
-                          final String selection,
-                        final String[] selectionArgs);
+            final ContentValues values,
+            final String selection,
+            final String[] selectionArgs);
 
     /**
      * Get the entity from the URI.
@@ -146,9 +150,7 @@ public abstract class ProviderAdapterBase<T> {
 
     /**
      * Tells if this provider adapter match the given uri.
-     *
-     * @param the uri
-     *
+     * @param uri Uri
      * @return true if the uri is matched by this adapter
      */
     public boolean match(Uri uri) {

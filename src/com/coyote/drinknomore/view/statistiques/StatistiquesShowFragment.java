@@ -1,13 +1,12 @@
 /**************************************************************************
  * StatistiquesShowFragment.java, drinknomore Android
- *
  * Copyright 2015
  * Description : 
  * Author(s)   : Harmony
  * Licence     : 
  * Last update : Feb 10, 2015
- *
  **************************************************************************/
+
 package com.coyote.drinknomore.view.statistiques;
 
 
@@ -36,7 +35,6 @@ import com.coyote.drinknomore.provider.StatistiquesProviderAdapter;
 import com.coyote.drinknomore.provider.contract.StatistiquesContract;
 
 /** Statistiques show fragment.
- *
  * This fragment gives you an interface to show a Statistiques.
  * 
  * @see android.app.Fragment
@@ -89,15 +87,13 @@ public class StatistiquesShowFragment
             this.dataLayout.setVisibility(View.VISIBLE);
             this.emptyText.setVisibility(View.GONE);
 
-
-        if (this.model.getDate() != null) {
-            this.dateView.setText(
-                    DateUtils.formatDateTimeToString(
+            if (this.model.getDate() != null) {
+                this.dateView.setText(DateUtils.formatDateTimeToString(
                             this.model.getDate()));
-        }
-        if (this.model.getNberreurs() != null) {
-            this.nberreursView.setText(String.valueOf(this.model.getNberreurs()));
-        }
+            }
+            if (this.model.getNberreurs() != null) {
+                this.nberreursView.setText(String.valueOf(this.model.getNberreurs()));
+            }
         } else {
             this.dataLayout.setVisibility(View.GONE);
             this.emptyText.setVisibility(View.VISIBLE);

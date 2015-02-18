@@ -53,7 +53,7 @@ public abstract class ProviderUtilsBase<T> {
 
     /**
      * Query an object of type T by the provider.
-     * @param T the item with its ids set
+     * @param item the item with its ids set
      * @return The T entity
      */
     public abstract T query(final T item);
@@ -67,7 +67,7 @@ public abstract class ProviderUtilsBase<T> {
     /**
      * Query the DB to get the entities filtered by the given expression.
      * @param expression The expression defining the selection and selection args
-     * @return ArrayList<T>
+     * @return arraylist
      */
     public abstract ArrayList<T> query(CriteriaExpression expression);
 

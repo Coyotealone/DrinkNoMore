@@ -1,19 +1,17 @@
 /**************************************************************************
  * TimeWidget.java, drinknomore Android
- *
  * Copyright 2015
  * Description : 
  * Author(s)   : Harmony
  * Licence     : 
  * Last update : Feb 10, 2015
- *
  **************************************************************************/
+
 package com.coyote.drinknomore.harmony.widget;
 
 import org.joda.time.DateTime;
 
 import android.app.AlertDialog;
-
 import android.content.DialogInterface;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
@@ -24,12 +22,11 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.TimePicker;
 
-import com.google.common.base.Strings;
-
 import com.coyote.drinknomore.DrinknomoreApplication;
 import com.coyote.drinknomore.R;
 import com.coyote.drinknomore.harmony.util.DateUtils;
 import com.coyote.drinknomore.harmony.util.DateUtils.TimeFormatType;
+import com.google.common.base.Strings;
 
 /**
  * View for Time selection.
@@ -107,7 +104,7 @@ public class TimeWidget extends FrameLayout implements OnClickListener {
                // 24H format
                int format24Hid = a.getInt(
                        R.styleable.TimeWidget_timeWidget_format24H,
-                       2);
+                       1);
                switch (format24Hid) {
                     case H24_ENUM_CONSTANT:
                        this.timeFormat = TimeFormatType.H24;
@@ -198,6 +195,7 @@ public class TimeWidget extends FrameLayout implements OnClickListener {
     
     /**
      * Set the default time when user click and field is empty.
+     * @param defaultTime DateTime
      */
     public void setDefaultTime(DateTime defaultTime) {
         this.defaultTime = defaultTime;
@@ -297,16 +295,19 @@ public class TimeWidget extends FrameLayout implements OnClickListener {
     public interface OnTimeClickListener {
         /**
          * Called when User click on the Time EditText.
+         * @param timeWidget TimeWidget
          */
         void onClickTimeEditText(TimeWidget timeWidget);
 
         /**
          * Called when User click on the Time picker dialog's ok button.
+         * @param timeWidget TimeWidget
          */
         void onValidateTime(TimeWidget timeWidget);
 
         /**
          * Called when User click on the Time picker dialog's cancel button.
+         * @param timeWidget TimeWidget
          */
         void onCancelTime(TimeWidget timeWidget);
     }

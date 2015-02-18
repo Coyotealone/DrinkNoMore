@@ -53,6 +53,8 @@ public class AutoScrollListView extends ListView {
      * scroll to the requested position.  This creates an impression of full smooth
      * scrolling without actually traversing the entire list.  If smooth scrolling is
      * not requested, instantly positions the requested item at a preferred offset.
+     * @param position int
+     * @param smoothScroll boolean
      */
     public void requestPositionToScreen(int position, boolean smoothScroll) {
         mRequestedScrollPosition = position;

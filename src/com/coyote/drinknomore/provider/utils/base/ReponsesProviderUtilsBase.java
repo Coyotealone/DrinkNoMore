@@ -160,7 +160,7 @@ public abstract class ReponsesProviderUtilsBase
 
     /**
      * Query the DB to get all entities.
-     * @return ArrayList<Reponses>
+     * @return ArrayList result
      */
     public ArrayList<Reponses> queryAll() {
         ArrayList<Reponses> result =
@@ -184,8 +184,7 @@ public abstract class ReponsesProviderUtilsBase
 
     /**
      * Query the DB to get the entities filtered by criteria.
-     * @param expression The criteria expression defining the selection and selection args
-     * @return ArrayList<Reponses>
+     * @return ArrayList result
      */
     public ArrayList<Reponses> query(CriteriaExpression expression) {
         ArrayList<Reponses> result =

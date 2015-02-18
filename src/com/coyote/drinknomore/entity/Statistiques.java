@@ -1,12 +1,14 @@
 package com.coyote.drinknomore.entity;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.joda.time.DateTime;
 import org.joda.time.format.ISODateTimeFormat;
+
 import android.os.Parcel;
 import android.os.Parcelable;
-import java.util.List;
-import java.util.ArrayList;
-import java.io.Serializable;
-import org.joda.time.DateTime;
 
 import com.tactfactory.harmony.annotation.Column;
 import com.tactfactory.harmony.annotation.Column.Type;
@@ -22,21 +24,21 @@ public class Statistiques implements Serializable , Parcelable {
     protected List<Parcelable> parcelableParents;
 
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = Strategy.MODE_IDENTITY)
-	@Column(type = Type.INT, hidden = true)
-	private int id;
+    @Id
+    @GeneratedValue(strategy = Strategy.MODE_IDENTITY)
+    @Column(type = Type.INT, hidden = true)
+    private int id;
 
-	@Column(type = Type.DATETIME)
-	private DateTime date;
+    @Column(type = Type.DATETIME)
+    private DateTime date;
 
-	@Column(type = Type.INT)
-	private Integer nberreurs;
+    @Column(type = Type.INT)
+    private Integer nberreurs;
 
 
     /**
@@ -50,42 +52,42 @@ public class Statistiques implements Serializable , Parcelable {
      * @return the id
      */
     public int getId() {
-         return this.id;
+        return this.id;
     }
 
     /**
      * @param value the id to set
      */
     public void setId(final int value) {
-         this.id = value;
+        this.id = value;
     }
 
     /**
      * @return the date
      */
     public DateTime getDate() {
-         return this.date;
+        return this.date;
     }
 
     /**
      * @param value the date to set
      */
     public void setDate(final DateTime value) {
-         this.date = value;
+        this.date = value;
     }
 
     /**
      * @return the nberreurs
      */
     public Integer getNberreurs() {
-         return this.nberreurs;
+        return this.nberreurs;
     }
 
     /**
      * @param value the nberreurs to set
      */
     public void setNberreurs(final Integer value) {
-         this.nberreurs = value;
+        this.nberreurs = value;
     }
 
     /**
@@ -115,7 +117,6 @@ public class Statistiques implements Serializable , Parcelable {
 
     /**
      * Regenerated Parcel Constructor. 
-     *
      * This stub of code is regenerated. DO NOT MODIFY THIS METHOD.
      *
      * @param parc The parcel to read from
@@ -125,8 +126,8 @@ public class Statistiques implements Serializable , Parcelable {
         if (parc.readInt() == 1) {
             this.setDate(
                     ISODateTimeFormat.dateTimeParser()
-                            .withOffsetParsed().parseDateTime(
-                                    parc.readString()));
+                    .withOffsetParsed().parseDateTime(
+                            parc.readString()));
         }
         this.setNberreurs(parc.readInt());
     }
@@ -158,7 +159,7 @@ public class Statistiques implements Serializable , Parcelable {
      * Use this method to write this entity to a parcel from another entity.
      * (Useful for relations)
      *
-     * @param parent The entity being parcelled that need to parcel this one
+     * @param parents The entity being parcelled that need to parcel this one
      * @param dest The destination parcel
      * @param flags The flags
      */
@@ -178,12 +179,11 @@ public class Statistiques implements Serializable , Parcelable {
     /**
      * Parcelable creator.
      */
-    public static final Parcelable.Creator<Statistiques> CREATOR
-        = new Parcelable.Creator<Statistiques>() {
+    public static final Parcelable.Creator<Statistiques> CREATOR = new Parcelable.Creator<Statistiques>() {
         public Statistiques createFromParcel(Parcel in) {
             return new Statistiques(in);
         }
-        
+
         public Statistiques[] newArray(int size) {
             return new Statistiques[size];
         }

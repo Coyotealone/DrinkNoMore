@@ -15,8 +15,8 @@ import com.coyote.drinknomore.data.base.DrinknomoreSQLiteOpenHelperBase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 
 /**
- * This class makes it easy for ContentProvider implementations to defer <br />
- * opening and upgrading the database until first use, to avoid blocking <br />
+ * This class makes it easy for ContentProvider implementations to defer 
+ * opening and upgrading the database until first use, to avoid blocking 
  * application startup with long-running database upgrades.
  * @see android.database.sqlite.SQLiteOpenHelper
  */

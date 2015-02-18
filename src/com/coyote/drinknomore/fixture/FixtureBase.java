@@ -215,7 +215,7 @@ public abstract class FixtureBase<T> {
 
 
     /**
-     * Returns the Map<String, T> loaded from the fixtures.
+     * Returns the Map loaded from the fixtures.
      * @return the Map
      */
     @SuppressWarnings("unchecked")
