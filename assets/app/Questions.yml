@@ -51,7 +51,7 @@ Questions:
       arguments: "0,5;1;1,5;2"
    Questions_11:
       id: 11
-      enigme: "Un libraire achète un livre 70 euros, le vend 80€, le rachète 90€ et le revend 100€. Quel est son 
+      enigme: "Un libraire achète un livre 70 euros, le vend 80€, en achète 90€ un autre et le revend 100€. Quel est son 
       bénéfice ?"
       arguments: "10;20;30;40"
    Questions_12:

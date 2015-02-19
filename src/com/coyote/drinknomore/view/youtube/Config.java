@@ -1,3 +1,13 @@
+/**************************************************************************
+ * Config.java, drinknomore Android
+ *
+ * Copyright 2015
+ * Description : 
+ * Author(s)   : Coyote
+ * Licence     : 
+ * Last update : Feb 19, 2015
+ **************************************************************************/
+
 package com.coyote.drinknomore.view.youtube;
 
 public class Config {
