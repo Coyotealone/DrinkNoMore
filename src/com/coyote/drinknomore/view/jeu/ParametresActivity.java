@@ -33,11 +33,12 @@ public class ParametresActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_parametres);
 
-        // Restore preferences
+        /**
+         * Restore preferences.
+         */
         SharedPreferences settings = getSharedPreferences(PREFS_PARAMETERS, 0);
         final CheckBox cb_horaire_lundi = (CheckBox) this
                 .findViewById(R.id.cb_horaire_lundi);
@@ -91,7 +92,9 @@ public class ParametresActivity extends Activity {
 
                 SharedPreferences settings = getSharedPreferences(PREFS_PARAMETERS, 0);
 
-                // Set values in editor
+                /**
+                 * Set values in editor.
+                 */
                 SharedPreferences.Editor editor = settings.edit();
                 editor.putBoolean(getString(R.string.parametres_cb_horaire_lundi),
                         cb_horaire_lundi.isChecked());
@@ -110,17 +113,18 @@ public class ParametresActivity extends Activity {
 
                 String valuesave = Fonctions.splitTime((String) timewidget
                         .getTime().toDate().toString());
-                if (valuesave == "") {
+                if (valuesave.equals("")) {
                     valuesave = null;
                 }
                 editor.putString(getString(R.string.parametres_timewidget_horaire), valuesave);
-
-                // Commit values
+                /**
+                 * Commit values.
+                 */
                 editor.commit();
-
-                // Show view Parametres
-                Intent intent = new Intent(ParametresActivity.this,
-                        ChoicesActivity.class);
+                /**
+                 * Show view Parametres.
+                 */
+                Intent intent = new Intent(ParametresActivity.this, ChoicesActivity.class);
                 startActivity(intent);
 
             }

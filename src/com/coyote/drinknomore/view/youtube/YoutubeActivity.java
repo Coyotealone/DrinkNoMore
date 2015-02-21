@@ -44,7 +44,9 @@ public class YoutubeActivity extends YouTubeBaseActivity implements YouTubePlaye
 
         setContentView(R.layout.activity_youtube);
         youTubeView = (YouTubePlayerView) findViewById(R.id.youtube_view);
-        // Initializing video player with developer key
+        /**
+         * Initializing video player with developer key.
+         */
         youTubeView.initialize(Config.DEVELOPER_KEY, this);
 
         btnskipMusic = (Button) findViewById(R.id.btn_skip_music);
@@ -54,13 +56,13 @@ public class YoutubeActivity extends YouTubeBaseActivity implements YouTubePlaye
             public void onClick(View v) {
                 /**
                  * init intent in new view
-                 * @param YoutubeActivity.this
-                 * @param ChoicesActivity.class
+                 * @param YoutubeActivity.this Context
+                 * @param ChoicesActivity.class Class
                  */
                 Intent intent = new Intent(YoutubeActivity.this, ChoicesActivity.class);
                 /**
                  * show new intent.
-                 * @param intent view ChoicesActivity
+                 * @param Intent intent view ChoicesActivity
                  */
                 startActivity(intent);
             }
@@ -84,20 +86,25 @@ public class YoutubeActivity extends YouTubeBaseActivity implements YouTubePlaye
             YouTubePlayer player, boolean wasRestored) {
         if (!wasRestored) {
 
-            // loadVideo() will auto play video
-            // Use cueVideo() method, if you don't want to play it automatically
+            /**
+             * Use loadVideo() will auto play video.
+             * Use cueVideo() method, if you don't want to play it automatically.
+             * player.loadVideo(Config.YOUTUBE_VIDEO_CODE);
+             */
             player.cueVideo(Config.YOUTUBE_VIDEO_CODE);
-            //player.loadVideo(Config.YOUTUBE_VIDEO_CODE);
-
-            // Hiding player controls
-            //player.setPlayerStyle(PlayerStyle.CHROMELESS);
+            /**
+             * Hiding player controls.
+             * player.setPlayerStyle(PlayerStyle.CHROMELESS);
+             */
         }
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == RECOVERY_DIALOG_REQUEST) {
-            // Retry initialization if user performed a recovery action
+            /**
+             * Retry initialization if user performed a recovery action.
+             */
             getYouTubePlayerProvider().initialize(Config.DEVELOPER_KEY, this);
         }
     }

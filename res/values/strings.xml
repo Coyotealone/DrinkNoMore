@@ -98,6 +98,7 @@
     <string name="jeu_mauvaisereponse">Erreur, essaye encore !</string>
     <string name="jeu_error_data">Erreur lors du chargement des données</string>
     <string name="jeu_error">error</string>
+    <string name="jeu_dont_play">Tu ne peux pas jouer !</string>
     <string name="parametres_cb_horaire_lundi">cb_horaire_lundi</string>
     <string name="parametres_cb_horaire_mardi">cb_horaire_mardi</string>
     <string name="parametres_cb_horaire_jeudi">cb_horaire_jeudi</string>

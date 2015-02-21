@@ -26,6 +26,7 @@ public class HomeActivity extends HarmonyFragmentActivity {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.main);
         Fonctions fcts = new Fonctions();
+        /** @see Fonctions/associateQuestionsReponses() */
         fcts.associateQuestionsReponses(this);
         Intent intent = new Intent(this, YoutubeActivity.class);
         this.startActivity(intent);

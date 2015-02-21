@@ -11,9 +11,15 @@
 package com.coyote.drinknomore;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Random;
 
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
+
 import android.content.Context;
+import android.content.SharedPreferences;
 
 import com.coyote.drinknomore.data.base.QuestionsSQLiteAdapterBase;
 import com.coyote.drinknomore.data.base.ReponsesSQLiteAdapterBase;
@@ -28,8 +34,8 @@ public class Fonctions {
 
     /**
      * Function to split time.
-     * @param valuetime String
-     * @return time format String
+     * @param String valuetime Time formated in string
+     * @return String result Time formated HH:mm in string
      */
     public static String splitTime(String valuetime) {
         String[] nospace = valuetime.split(" ");
@@ -45,8 +51,8 @@ public class Fonctions {
 
     /**
      * Function random about id Question.
-     * @param maxId Integer
-     * @return id of Questions
+     * @param Integer maxId Count id Questions
+     * @return Integer randomNum id of Questions
      */
     public static Integer randomId(int maxId) {
         /**
@@ -63,53 +69,18 @@ public class Fonctions {
          * value #new Random.
          */
         Random rand = new Random();
-        // nextInt is normally exclusive of the top value,
-        // so add 1 to make it inclusive
+        /**
+         *  NextInt is normally exclusive of the top value, so add 1 to make it inclusive.
+         */
         int randomNum = rand.nextInt((max - min) + 1) + min;
 
         return randomNum;
     }
 
     /**
-     * Function to find Parameters about integer day.
-     * @param day Integer
-     * @return String correspondant au numéro de la journée
-     */
-    public static String nameDay(int day) {
-        String dayString;
-        switch (day) {
-            case 1:
-                dayString = "Parametres_cb_horaire_dimanche";
-                break;
-            case 2:
-                dayString = "Parametres_cb_horaire_lundi";
-                break;
-            case 3: 
-                dayString = "Parametres_cb_horaire_mardi";
-                break;
-            case 4: 
-                dayString = "Parametres_cb_horaire_mercredi";
-                break;
-            case 5: 
-                dayString = "Parametres_cb_horaire_jeudi";
-                break;
-            case 6: 
-                dayString = "Parametres_cb_horaire_vendredi";
-                break;
-            case 7:  
-                dayString = "Parametres_cb_horaire_samedi";
-                break;
-            default: 
-                dayString = "Invalid day";
-                break;
-        }
-        return dayString;
-    }
-
-    /**
      * Function to associate Question Reponse in db.
-     * @param ctx Context
-     * @return true if associated is OK else false
+     * @param Context ctx
+     * @return Boolean true if associated is OK else false
      */
     public Boolean associateQuestionsReponses(Context ctx) {
         QuestionsSQLiteAdapterBase questionsSql = new QuestionsSQLiteAdapterBase(ctx);
@@ -134,5 +105,67 @@ public class Fonctions {
             return true;
         }
         return false;
+    }
+    
+    /**
+     * Function to return string about settingsParameters with number of the day
+     * @param SharedPreferences settingsParameters File settings parameters
+     * @param Integer dayOfweek Number of the day
+     * @return Boolean if true day selected in settings else false
+     */
+    public Boolean checkDay(SharedPreferences settingsParameters, Integer dayOfweek) {
+        Boolean checkday = false;
+        switch (dayOfweek) {
+            case 1:
+                checkday = settingsParameters.getBoolean("cb_horaire_dimanche", false);
+                break;
+            case 2: 
+                checkday = settingsParameters.getBoolean("cb_horaire_lundi", false);
+                break;
+            case 3: 
+                checkday = settingsParameters.getBoolean("cb_horaire_mardi", false);
+                break;
+            case 4: 
+                checkday = settingsParameters.getBoolean("cb_horaire_mercredi", false);
+                break;
+            case 5: 
+                checkday = settingsParameters.getBoolean("cb_horaire_jeudi", false);
+                break;
+            case 6: 
+                checkday = settingsParameters.getBoolean("cb_horaire_vendredi", false);
+                break;
+            case 7: 
+                checkday = settingsParameters.getBoolean("cb_horaire_samedi", false);
+                break;
+            default: 
+                checkday = false;
+                break;
+        }
+        return checkday;
+    }
+
+    /**
+     * Function to compare format time
+     * @param SharedPreferences settingsParameters
+     * @param Calendar calendarNow
+     * @return Integer Difference about the time in settings and time now
+     */
+    public Integer compareDateTime(SharedPreferences settingsParameters) {
+        Calendar calendarNow = Calendar.getInstance();
+        String timeSave = settingsParameters.getString("timeWidget_Parametres_horaire",null);
+        if (timeSave == null)
+        {
+            return -1;
+        }
+        else
+        {
+            String timeNow = String.valueOf(calendarNow.get(Calendar.HOUR_OF_DAY)) + ':' 
+                    + String.valueOf(calendarNow.get(Calendar.MINUTE));
+            DateTimeFormatter formatter = DateTimeFormat.forPattern("HH:mm");
+            DateTime datetimeNow = formatter.parseDateTime(timeNow);
+            DateTime datetimeSave = formatter.parseDateTime(timeSave);
+            
+            return datetimeSave.compareTo(datetimeNow);
+        }
     }
 }
