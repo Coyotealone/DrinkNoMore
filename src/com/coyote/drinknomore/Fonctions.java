@@ -34,8 +34,8 @@ public class Fonctions {
 
     /**
      * Function to split time.
-     * @param String valuetime Time formated in string
-     * @return String result Time formated HH:mm in string
+     * @param valuetime String Time formated in string
+     * @return result String Time formated HH:mm in string
      */
     public static String splitTime(String valuetime) {
         String[] nospace = valuetime.split(" ");
@@ -51,8 +51,8 @@ public class Fonctions {
 
     /**
      * Function random about id Question.
-     * @param Integer maxId Count id Questions
-     * @return Integer randomNum id of Questions
+     * @param maxId Integer Count id Questions
+     * @return randomNum Integer id of Questions
      */
     public static Integer randomId(int maxId) {
         /**
@@ -79,8 +79,8 @@ public class Fonctions {
 
     /**
      * Function to associate Question Reponse in db.
-     * @param Context ctx
-     * @return Boolean true if associated is OK else false
+     * @param ctx Context
+     * @return true Boolean if associated is OK else false
      */
     public Boolean associateQuestionsReponses(Context ctx) {
         QuestionsSQLiteAdapterBase questionsSql = new QuestionsSQLiteAdapterBase(ctx);
@@ -109,8 +109,8 @@ public class Fonctions {
     
     /**
      * Function to return string about settingsParameters with number of the day
-     * @param SharedPreferences settingsParameters File settings parameters
-     * @param Integer dayOfweek Number of the day
+     * @param settingsParameters SharedPreferences File settings parameters
+     * @param dayOfweek Integer Number of the day
      * @return Boolean if true day selected in settings else false
      */
     public Boolean checkDay(SharedPreferences settingsParameters, Integer dayOfweek) {
@@ -146,8 +146,7 @@ public class Fonctions {
 
     /**
      * Function to compare format time
-     * @param SharedPreferences settingsParameters
-     * @param Calendar calendarNow
+     * @param settingsParameters SharedPreferences
      * @return Integer Difference about the time in settings and time now
      */
     public Integer compareDateTime(SharedPreferences settingsParameters) {
